@@ -32,6 +32,15 @@ query
       }
     }
   }
+query
+  {
+    course(id:201){
+      id
+      title
+      tech
+      tutorId
+    }
+  }
 
 
 ```

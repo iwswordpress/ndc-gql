@@ -40,14 +40,13 @@ const Query = {
 
 		return result;
 	},
-	// student: async (root, { id }) => {
-	// 	// id = 101;
-	// 	const student = await fetch(`http://localhost:4010/student/${id}`);
-	// 	const result = await student.json();
-	// 	console.log(`AJAX: http://localhost:4010/student/${id}`);
-	// 	console.log(result);
-	// 	return result;
-	// },
+	student: async (root, { id }) => {
+		const student = await fetch(`http://localhost:4010/students/${id}`);
+		const result = await student.json();
+		console.log(`AJAX: http://localhost:4010/student/${id}`);
+		console.log(result);
+		return result;
+	},
 };
 
 const Mutation = {};
