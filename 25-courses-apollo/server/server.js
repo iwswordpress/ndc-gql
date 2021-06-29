@@ -27,5 +27,8 @@ app.post('/login', (req, res) => {
 	res.send({ email, token: 'VALID' });
 });
 
-const port = 5000;
-app.listen(port, () => console.info(`Server started on port ${port}`));
+const PORT = 5000;
+app.listen(PORT, () => {
+	console.info(`Server started on http://localhost:${PORT}/graphql`);
+	console.log('START JSON SERVER dev:courses!');
+});
