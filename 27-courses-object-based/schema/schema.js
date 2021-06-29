@@ -24,11 +24,7 @@ const CourseType = new GraphQLObjectType({
 			type: TutorType,
 			resolve(parent, args) {
 				console.log('CourseType > tutor | parent is course', parent);
-				return {
-					id: 'TUTOR_ID_HERE',
-					name: 'TUTOR_NAME_HERE',
-				};
-				//return _.find(tutors, { id: parent.id });
+				return _.find(tutors, { id: parent.id });
 			},
 		},
 	}),
@@ -43,7 +39,7 @@ const TutorType = new GraphQLObjectType({
 		courses: {
 			type: new GraphQLList(CourseType),
 			resolve(parent, args) {
-				//return _.filter(books, { authorId: parent.id });
+				return _.filter(courses, { tutorId: parent.id });
 			},
 		},
 	}),
@@ -56,14 +52,14 @@ const RootQuery = new GraphQLObjectType({
 			type: CourseType,
 			args: { id: { type: GraphQLID } },
 			resolve(parent, args) {
-				//return _.find(books, { id: args.id });
+				return _.find(courses, { id: args.id });
 			},
 		},
 		tutor: {
 			type: TutorType,
 			args: { id: { type: GraphQLID } },
 			resolve(parent, args) {
-				//return _.find(authors, { id: args.id });
+				return _.find(tutors, { id: args.id });
 			},
 		},
 		courses: {
