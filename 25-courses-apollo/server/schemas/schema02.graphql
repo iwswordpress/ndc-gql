@@ -1,0 +1,45 @@
+"""
+Description for field
+Supports **multi-line** description for your [API](http://example.com)!
+"""
+type Query {
+	tutor(id: ID!): Tutor
+	tutors: [Tutor]
+	course(id: ID!): Course
+	courses: [Course]
+	student(id: ID!): Student
+	students: [Student]
+}
+"Description for the type"
+type Mutation {
+	createCourse(input: CreateCourseInput): Course
+}
+
+type Course {
+	id: ID!
+	tutorId: String
+	title: String
+	tech: String
+}
+
+type Tutor {
+	id: ID!
+	firstName: String!
+	lastName: String!
+	email: String!
+}
+type Student {
+	id: ID!
+	firstName: String!
+	lastName: String!
+	email: String!
+	age: Int!
+	isGraduate: Boolean
+	# an empty array is OK even with [Int!] as an empty array is not null
+	# https://graphql.org/learn/schema/#object-types-and-fields
+	courses: [Int!]!
+}
+input CreateCourseInput {
+	title: String
+	description: String
+}
