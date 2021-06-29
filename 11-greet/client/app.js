@@ -1,7 +1,7 @@
 const URL = 'http://localhost:5000';
 
 const output = 'TX-' + Math.floor(Math.random() * 100);
-async function fetchMessage() {
+async function fetchMessage(firstName) {
 	const response = await fetch(URL, {
 		method: 'POST',
 		headers: {
@@ -10,9 +10,8 @@ async function fetchMessage() {
 		body: JSON.stringify({
 			query: `
        query{
-				greet(firstName:"Ted" )
+				greet(firstName: "TED" )
 			}
-
      `,
 		}),
 	});
