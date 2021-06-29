@@ -5,6 +5,7 @@ mutation {
      firstName
    }
 }
+use returned id from mutation
 query {
   getPerson(id: "13ef209ca713fdf8fc22"){
     id
