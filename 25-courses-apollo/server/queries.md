@@ -41,6 +41,18 @@ query
       tutorId
     }
   }
-
+{
+  courses{
+      __typename
+    id
+    tutor{
+        __typename
+      id
+      firstName
+      lastName
+      email
+    }
+  }
+}
 
 ```
