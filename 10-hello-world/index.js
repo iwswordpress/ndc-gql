@@ -25,7 +25,7 @@ const resolvers = {
 
 const server = new ApolloServer({ typeDefs, resolvers });
 
-server.listen({ port: 4000 }).then(({ url }) => console.log(`Server running at port ${url}`));
+server.listen({ port: 5000 }).then(({ url }) => console.log(`Server running at port ${url}`));
 
 // EXPERIMENTS:
 // Can we use any variable instead of typeDefs or resolvers?
