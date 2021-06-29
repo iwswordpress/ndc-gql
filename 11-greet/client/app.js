@@ -1,7 +1,7 @@
 const URL = 'http://localhost:5000';
 
-const output = 'TX-' + Math.floor(Math.random() * 100);
 async function fetchMessage(firstName) {
+	console.log(firstName);
 	const response = await fetch(URL, {
 		method: 'POST',
 		headers: {
@@ -9,10 +9,11 @@ async function fetchMessage(firstName) {
 		},
 		body: JSON.stringify({
 			query: `
-       query{
-				greet(firstName: "TED" )
+       query Greet($firstName: String!){
+				greet(firstName :$firstName )
 			}
      `,
+			variables: { firstName },
 		}),
 	});
 
@@ -21,7 +22,7 @@ async function fetchMessage(firstName) {
 	return data;
 }
 
-fetchMessage().then((data) => {
-	console.log(data.greet);
+fetchMessage('PETER').then((data) => {
+	console.log(data);
 	document.querySelector('output').textContent = data.greet;
 });
