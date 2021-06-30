@@ -44,7 +44,7 @@ type Student {
 Details about CreateCourseInput
 """
 type Mutation {
-	createCourse(title: String, tech: String): ID
+	createCourse(title: String, tech: String, tutorId: Int): ID
 }
 input CreateCourseInput {
 	title: String

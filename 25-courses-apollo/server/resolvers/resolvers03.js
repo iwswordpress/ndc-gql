@@ -63,7 +63,13 @@ const Mutation = {
 		console.log('Parent: ', parent);
 		console.log('Args: ', args);
 		console.log('Ctx: ', ctx.id, ctx.role);
-		return Math.floor(Math.random() * 100 + 500);
+		const result = {
+			tx: Math.floor(Math.random() * 10000 + 1000),
+			title: args.title,
+			tech: args.tech,
+			tutorId: args.tutorId,
+		};
+		return Math.floor(Math.random() * 10000 + 1000);
 	},
 };
 
