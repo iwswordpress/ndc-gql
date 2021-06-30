@@ -59,8 +59,10 @@ const Course = {
 };
 
 const Mutation = {
-	createCourse: (_, args, ctx, info) => {
+	createCourse: (parent, args, ctx, info) => {
+		console.log('Parent: ', parent);
 		console.log('Args: ', args);
+		console.log('Ctx: ', ctx.id, ctx.role);
 		return Math.floor(Math.random() * 100 + 500);
 	},
 };
