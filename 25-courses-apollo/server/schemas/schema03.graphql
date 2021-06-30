@@ -1,0 +1,52 @@
+type Query {
+	tutor(id: ID!): Tutor
+	tutors: [Tutor]
+	course(id: ID!): Course
+	courses: [Course]
+	student(id: ID!): Student
+	students: [Student]
+}
+
+"""
+Details about the Course Type
+"""
+type Course {
+	id: ID!
+	# we meed to change resolver so that we get Tutor. Just because it is in schema does not mean we get data.
+	tutor: Tutor
+	title: String
+	tech: String
+}
+"""
+Details about the Tutor Type
+"""
+type Tutor {
+	id: ID!
+	firstName: String!
+	lastName: String!
+	email: String!
+}
+"""
+Description for the Student Type
+"""
+type Student {
+	id: ID!
+	firstName: String!
+	lastName: String!
+	email: String!
+	age: Int!
+	isGraduate: Boolean
+	# an empty array is OK even with [Int!] as an empty array is not null
+	# https://graphql.org/learn/schema/#object-types-and-fields
+	courses: [Int!]!
+}
+"""
+Details about CreateCourseInput
+"""
+type Mutation {
+	createCourse(title: String, tech: String): ID
+}
+input CreateCourseInput {
+	title: String
+	description: String
+}
