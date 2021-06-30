@@ -55,4 +55,18 @@ query
   }
 }
 
+
+query CourseQuery($id: ID!){
+  course(id:$id) {
+    id
+    title
+  }
+}
+
+QV
+{
+  "id":201
+}
+
+
 ```

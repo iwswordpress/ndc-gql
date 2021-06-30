@@ -1,6 +1,12 @@
 const URL = 'http://localhost:5000/graphql';
 
-async function fetchMessage(id) {
+fetchMessage(101).then((data) => {
+	console.log(data.course);
+	document.querySelector('output').textContent = data.course.title;
+});
+
+async function fetchMessage(x) {
+	// use something other for clarity
 	const response = await fetch(URL, {
 		method: 'POST',
 		headers: {
@@ -15,7 +21,7 @@ async function fetchMessage(id) {
 					}
 				}
      `,
-			variables: { id },
+			variables: { id: x },
 		}),
 	});
 
@@ -23,8 +29,3 @@ async function fetchMessage(id) {
 
 	return data;
 }
-
-fetchMessage(301).then((data) => {
-	console.log(data.course);
-	document.querySelector('output').textContent = data.course.title;
-});
