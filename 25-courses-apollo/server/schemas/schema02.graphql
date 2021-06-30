@@ -1,7 +1,3 @@
-"""
-Description for field
-Supports **multi-line** description for your [API](http://example.com)!
-"""
 type Query {
 	tutor(id: ID!): Tutor
 	tutors: [Tutor]
@@ -10,11 +6,13 @@ type Query {
 	student(id: ID!): Student
 	students: [Student]
 }
-"Description for the type"
+
 type Mutation {
 	createCourse(input: CreateCourseInput): Course
 }
-
+"""
+Details about the Course Type
+"""
 type Course {
 	id: ID!
 	# we meed to change resolver so that we get Tutor. Just because it is in schema does not mean we get data.
@@ -22,13 +20,18 @@ type Course {
 	title: String
 	tech: String
 }
-
+"""
+Details about the Tutor Type
+"""
 type Tutor {
 	id: ID!
 	firstName: String!
 	lastName: String!
 	email: String!
 }
+"""
+Description for the Student Type
+"""
 type Student {
 	id: ID!
 	firstName: String!
@@ -40,6 +43,9 @@ type Student {
 	# https://graphql.org/learn/schema/#object-types-and-fields
 	courses: [Int!]!
 }
+"""
+Details about CreateCourseInput
+"""
 input CreateCourseInput {
 	title: String
 	description: String
