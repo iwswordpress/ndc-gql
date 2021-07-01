@@ -12,8 +12,8 @@ const user = {
 	role: 'MEMBER',
 	id: 100,
 };
-const typeDefs = gql(fs.readFileSync('./schemas/schema03.graphql', { encoding: 'utf8' }));
-const resolvers = require('./resolvers/resolvers03');
+const typeDefs = gql(fs.readFileSync('./schemas/schema04.graphql', { encoding: 'utf8' }));
+const resolvers = require('./resolvers/resolvers04');
 const context = user;
 
 const apolloServer = new ApolloServer({ typeDefs, resolvers, context });
