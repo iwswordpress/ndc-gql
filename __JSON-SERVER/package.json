@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start": "json-server --watch -p 4010 courses.json",
+		"start": "json-server --watch -p 4000 courses.json"
 	},
 	"author": "",
 	"license": "ISC",
