@@ -8,7 +8,7 @@ const typeDefs = gql`
 
 	type Owner {
 		ownerName: String!
-		cat: Cat!
+		cat: Cat
 		dog: String
 	}
 	type Cat {
@@ -25,7 +25,7 @@ const resolvers = {
 			console.log('Query > cat > args.name: ', args.name);
 			console.log('Query > cat > ctx: ', ctx.isLoggedIn);
 
-			return { catName: args.name };
+			return { catName: args.name, age: 22, owner: { ownerName: 'Query.cat.SALLY' } };
 			// return {  };
 		},
 		owner: (parent, args, ctx, info) => {
@@ -33,25 +33,15 @@ const resolvers = {
 			console.log('Query > owner > args.name: ', args.name);
 			console.log('Query > owner > ctx: ', ctx.isLoggedIn);
 			return {
-				firstName: args.name,
-				cat: 'ANOTHER CAT',
+				ownerName: args.name,
+				dog: 'Query.owner.TED',
 			};
 		},
 	},
-	// Owner: {
-	// 	firstName: (parent, args, ctx) => {
-	// 		console.log('Owner > firstName > ctx isLoggedIn ', ctx.isLoggedIn);
-	// 		console.log('Owner > firstName > parent', parent);
-	// 		const ownerName = 'OWNER-' + Math.floor(Math.random() * 100 + 1);
-	// 		return ownerName;
-	// 	},
-	// },
 	Cat: {
 		catName: (parent, args, ctx) => {
 			console.log('Cat > catName > ctx isLoggedIn ', ctx.isLoggedIn);
 			console.log('Cat > catName > parent', parent);
-
-			// const catName = 'Parent-catName: ' + parent.catName + ':' + 'CAT-' + Math.floor(Math.random() * 100 + 1);
 			const catName = `PARENT = ${parent.catName} > CAT.catName = ${Math.floor(Math.random() * 100 + 1)}`;
 			return catName;
 		},
