@@ -11,4 +11,7 @@ Mutual MODULE
 
 Resolver-Paths MODULE
 
-COURSES MODULE and 27 Object Type
+COURSES MODULE
+27 Object Type (FYI)
+
+SECURITY https://www.apollographql.com/blog/graphql/security/9-ways-to-secure-your-graphql-api-security-checklist/
