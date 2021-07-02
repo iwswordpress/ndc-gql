@@ -3,18 +3,18 @@ const { ApolloServer, gql } = require('apollo-server');
 const typeDefs = gql`
 	type Query {
 		cat(name: String!): Cat!
-		owner(name: String!): Owner!
+		carer(name: String!): Carer!
 	}
 
-	type Owner {
-		ownerName: String!
+	type Carer {
+		carerName: String!
 		cat: Cat
 		dog: String
 	}
 	type Cat {
 		catName: String!
 		age: Int
-		owner: Owner!
+		carer: Carer!
 	}
 `;
 
@@ -25,15 +25,15 @@ const resolvers = {
 			console.log('Query > cat > args.name: ', args.name);
 			console.log('Query > cat > ctx: ', ctx.isLoggedIn);
 
-			return { catName: args.name, age: 22, owner: { ownerName: 'Query.cat.SALLY' } };
+			return { catName: args.name, age: 22, carer: { carerName: 'Query.cat.SALLY', dog: 'FIDO' } };
 			// return {  };
 		},
-		owner: (parent, args, ctx, info) => {
+		carer: (parent, args, ctx, info) => {
 			console.log('Query > owner > parent: ', parent);
 			console.log('Query > owner > args.name: ', args.name);
 			console.log('Query > owner > ctx: ', ctx.isLoggedIn);
 			return {
-				ownerName: args.name,
+				carerName: args.name,
 				dog: 'Query.owner.TED',
 			};
 		},
@@ -46,14 +46,6 @@ const resolvers = {
 			return catName;
 		},
 	},
-	// Owner: {
-	// 	firstName: (parent, args, ctx) => {
-	// 		console.log('Owner > firstName > ctx isLoggedIn ', ctx.isLoggedIn);
-	// 		console.log('Owner > firstName > parent', parent);
-	// 		const ownerName = 'OWNER-' + Math.floor(Math.random() * 100 + 1);
-	// 		return ownerName;
-	// 	},
-	// },
 };
 
 const server = new ApolloServer({
