@@ -9,12 +9,12 @@ It is a bit like CSS where last rule trumps others.
 Being a Graph, GQL knows all the interconnections.
 
 -  You can either copy and paste index0X into index.js
--  Chagne package.json to use index0x
+-  Change package.json to use index0x
 -  Use node index0x.js
 
 Use to show how resolution passes down
 
-index01 has basic Owner > Cat
+index01 has basic Carer > Cat
 
 ![gql](/_images/15-index01.png)
 

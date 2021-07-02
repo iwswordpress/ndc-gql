@@ -10,10 +10,6 @@ type Query {
 	student(id: ID!): Student
 	students: [Student]
 }
-"Description for the type"
-type Mutation {
-	createCourse(input: CreateCourseInput): Course
-}
 
 type Course {
 	id: ID!
@@ -38,8 +34,4 @@ type Student {
 	# an empty array is OK even with [Int!] as an empty array is not null
 	# https://graphql.org/learn/schema/#object-types-and-fields
 	courses: [Int!]!
-}
-input CreateCourseInput {
-	title: String
-	description: String
 }
