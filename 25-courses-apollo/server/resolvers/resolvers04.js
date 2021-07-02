@@ -64,13 +64,14 @@ const Mutation = {
 		console.log('Parent: ', parent);
 		console.log('Args: ', args);
 		console.log('Ctx: ', ctx.id, ctx.role);
-		const result = {
-			tx: Math.floor(Math.random() * 10000 + 1000),
+		const id = Math.floor(Math.random() * 10000 + 1000);
+		const newCourse = {
+			id: id,
 			title: args.title,
 			tech: args.tech,
 			tutorId: args.tutorId,
 		};
-		return Math.floor(Math.random() * 10000 + 1000);
+		return id;
 	},
 };
 

@@ -89,6 +89,14 @@ type Mutation {
 
 by always using input it makes writing Mutations easier as we do not need to know the parameter name.
 
+![gql](/_images/25-03-input-type.png)
+
+04-add-course.html in client folder shows a client request.
+
+![gql](/_images/25-04-client-add.png)
+
+![gql](/_images/25-04-client-add-code.png)
+
 ## 04 ENUMs, Interfaces, Unions and Fragments
 
 Add ENUM, INTERFACE and UNIONS with Fragments
