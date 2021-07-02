@@ -24,8 +24,9 @@ const resolvers = {
 			console.log('Query > cat > parent: ', parent);
 			console.log('Query > cat > args.name: ', args.name);
 			console.log('Query > cat > ctx: ', ctx.isLoggedIn);
-			// const catName = args.name;
+
 			return { catName: args.name };
+			// return {  };
 		},
 		owner: (parent, args, ctx, info) => {
 			console.log('Query > owner > parent: ', parent);

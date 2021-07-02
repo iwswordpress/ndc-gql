@@ -24,8 +24,12 @@ const resolvers = {
 			console.log('Query > cat > parent: ', parent);
 			console.log('Query > cat > args.name: ', args.name);
 			console.log('Query > cat > ctx: ', ctx.isLoggedIn);
-			// const catName = args.name;
-			return { catName: args.name };
+			const catName = args.name;
+			return {
+				catName: catName,
+				age: 3,
+				owner: { ownerName: 'Sally', dog: 'Mika' },
+			};
 		},
 		owner: (parent, args, ctx, info) => {
 			console.log('Query > owner > parent: ', parent);
@@ -45,16 +49,14 @@ const resolvers = {
 	// 		return ownerName;
 	// 	},
 	// },
-	Cat: {
-		catName: (parent, args, ctx) => {
-			console.log('Cat > catName > ctx isLoggedIn ', ctx.isLoggedIn);
-			console.log('Cat > catName > parent', parent);
-
-			// const catName = 'Parent-catName: ' + parent.catName + ':' + 'CAT-' + Math.floor(Math.random() * 100 + 1);
-			const catName = `PARENT = ${parent.catName} > CAT.catName = ${Math.floor(Math.random() * 100 + 1)}`;
-			return catName;
-		},
-	},
+	// Cat: {
+	// 	firstName: (parent, args, ctx) => {
+	// 		console.log('Cat > firstName > ctx isLoggedIn ', ctx.isLoggedIn);
+	// 		console.log('Cat > firstName > parent', parent);
+	// 		const catName = 'CAT-' + Math.floor(Math.random() * 100 + 1);
+	// 		return catName;
+	// 	},
+	// },
 };
 
 const server = new ApolloServer({
