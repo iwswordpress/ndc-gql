@@ -49,13 +49,45 @@ const Course = {
 
 By adding the above, when GQL sees that on a Course the tutor: Tutor, it can then resolve tutor.
 
-Rember to export all new definitions like this along with Query and Mutation.
+Remember to export all new definitions like this along with Query and Mutation.
+
+![gql](/_images/25-02-query-variable.png)
+
+We have an example of a client posting this to the server. To help understanding what variables are what we use non id names where they are not required by the schema.
 
 EX. Comment out Course in the resolver and remove it as an export and one gets null. With it one gets whatever is in the Course.tutor resolver.
 
 ## 03 Course Mutation
 
-Create CourseInput mutation in resolvers.
+We add a Mutation to enter a Course. We can add fields inline or use and input type to make this easier.
+
+![gql](/_images/25-03-create.png)
+
+```
+type Mutation {
+	createCourse(title: String, tech: String, tutorId: Int): ID
+}
+input CreateCourseInput {
+	title: String
+	description: String
+}
+```
+
+We can give response an alias:
+
+![gql](/_images/25-03-alias.png)
+
+Having lots of arguments can be tedious.
+
+We can use the input type by rewriting the Mutation as follows:
+
+```
+type Mutation {
+	createCourse(input: CreateCourseInput): ID
+}
+```
+
+by always using input it makes writing Mutations easier as we do not need to know the parameter name.
 
 ## 04 ENUMs, Interfaces, Unions and Fragments
 

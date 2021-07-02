@@ -46,7 +46,3 @@ Details about CreateCourseInput
 type Mutation {
 	createCourse(title: String, tech: String, tutorId: Int): ID
 }
-input CreateCourseInput {
-	title: String
-	description: String
-}
