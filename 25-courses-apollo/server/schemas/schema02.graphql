@@ -10,6 +10,7 @@ type Query {
 type Mutation {
 	createCourse(input: CreateCourseInput): Course
 }
+
 """
 Details about the Course Type
 """
