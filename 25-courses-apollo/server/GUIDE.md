@@ -33,6 +33,8 @@ We can treat the list in the same way.
 
 ![gql](/_images/25-lists.png)
 
+![gql](/_images/lists-nulls-spec.png)
+
 ## 02 Passing resolution to LEAF for Course
 
 As it stands, we can get Courses back but no details on Tutor as there is no resolver for it.

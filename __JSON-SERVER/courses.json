@@ -1,84 +1,108 @@
 {
-  "courses": [
-    {
-      "id": 101,
-      "tutorId": 1,
-      "title": "GraphQL",
-      "tech": "API"
-    },
-    {
-      "id": 201,
-      "tutorId": 2,
-      "title": "RxJS",
-      "tech": "LANGUAGES"
-    },
-    {
-      "id": 301,
-      "tutorId": 2,
-      "title": "C#",
-      "tech": "LANGUAGES"
-    },
-    {
-      "id": 401,
-      "tutorId": 1,
-      "title": "AWS",
-      "tech": "API"
-    },
-    {
-      "id": 1001,
-      "tutorId": 2,
-      "title": "New Course",
-      "tech": "API"
-    }
-  ],
-  "tutors": [
-    {
-      "id": "1",
-      "firstName": "John",
-      "lastName": "Doe",
-      "email": "john@test.com"
-    },
-    {
-      "id": "2",
-      "firstName": "Jane",
-      "lastName": "Doe",
-      "email": "jane@test.com"
-    }
-  ],
-  "students": [
-    {
-      "id": "1",
-      "firstName": "Anne",
-      "lastName": "Layton",
-      "email": "anne@test.com",
-      "age": 22,
-      "isGraduate": false,
-      "courses": [
-        101,
-        401
-      ]
-    },
-    {
-      "id": "2",
-      "firstName": "Jack",
-      "lastName": "Dalton",
-      "email": "jack@test.com",
-      "age": 25,
-      "isGraduate": true,
-      "courses": [
-        201,
-        301,
-        401
-      ]
-    },
-    {
-      "id": "3",
-      "firstName": "Leslie",
-      "lastName": "Peters",
-      "email": "leslie@test.com",
-      "age": 25,
-      "isGraduate": false,
-      "courses": []
-    }
-  ]
+	"courses": [
+		{
+			"id": 101,
+			"tutorId": 1,
+			"title": "GraphQL",
+			"tech": "API"
+		},
+		{
+			"id": 201,
+			"tutorId": 2,
+			"title": "RxJS",
+			"tech": "LANGUAGES"
+		},
+		{
+			"id": 301,
+			"tutorId": 2,
+			"title": "C#",
+			"tech": "LANGUAGES"
+		},
+		{
+			"id": 401,
+			"tutorId": 1,
+			"title": "AWS",
+			"tech": "API"
+		},
+		{
+			"id": 1001,
+			"tutorId": 2,
+			"title": "New Course",
+			"tech": "API"
+		}
+	],
+	"tutors": [
+		{
+			"id": "1",
+			"firstName": "John",
+			"lastName": "Doe",
+			"email": "john@test.com",
+			"password": 123456
+		},
+		{
+			"id": "2",
+			"firstName": "Jane",
+			"lastName": "Doe",
+			"email": "jane@test.com",
+			"password": 123456
+		}
+	],
+	"students": [
+		{
+			"id": "11",
+			"firstName": "Anne",
+			"lastName": "Layton",
+			"email": "anne@test.com",
+			"password": 123456,
+			"age": 22,
+			"isGraduate": false,
+			"courses": [101, 401]
+		},
+		{
+			"id": "12",
+			"firstName": "Jack",
+			"lastName": "Dalton",
+			"email": "jack@test.com",
+			"password": 123456,
+			"age": 25,
+			"isGraduate": true,
+			"courses": [201, 301, 401]
+		},
+		{
+			"id": "14",
+			"firstName": "Leslie",
+			"lastName": "Peters",
+			"email": "leslie@test.com",
+			"password": 123456,
+			"age": 25,
+			"isGraduate": false,
+			"courses": []
+		}
+	],
+	"staff": [
+		{
+			"id": "100",
+			"firstName": "Sally",
+			"lastName": "Burton",
+			"email": "sally@test.com",
+			"password": 123456,
+			"role": "ADMIN"
+		},
+		{
+			"id": "101",
+			"firstName": "Harry",
+			"lastName": "Smith",
+			"email": "harry@test.com",
+			"password": 123456,
+			"role": "MANGER"
+		},
+		{
+			"id": "103",
+			"firstName": "Kate",
+			"lastName": "Lewis",
+			"email": "kate@test.com",
+			"password": 123456,
+			"role": "STAFF"
+		}
+	]
 }
