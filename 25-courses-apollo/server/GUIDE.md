@@ -1,3 +1,7 @@
+## Ensure JSON_Server is running to provide database.
+
+## In server.js, use resolver0X and schema0X for each stage.
+
 ## 01 Student and Tutor Type
 
 Add Students and Tutors.

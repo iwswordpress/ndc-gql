@@ -10,20 +10,22 @@ type Query {
 	student(id: ID!): Student
 	students: [Student]
 }
-
+"Details for Course type  in Playground go here... "
 type Course {
 	id: ID!
 	tutorId: String
 	title: String
 	tech: String
 }
-
+"Details for Tutor type  in Playground go here... "
 type Tutor {
 	id: ID!
 	firstName: String!
 	lastName: String!
 	email: String!
 }
+
+" Details for Student type  in Playground go here... "
 type Student {
 	id: ID!
 	firstName: String!
@@ -31,7 +33,5 @@ type Student {
 	email: String!
 	age: Int!
 	isGraduate: Boolean
-	# an empty array is OK even with [Int!] as an empty array is not null
-	# https://graphql.org/learn/schema/#object-types-and-fields
 	courses: [Int!]!
 }
