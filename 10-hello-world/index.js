@@ -10,6 +10,7 @@ const { ApolloServer, gql } = require('apollo-server');
 const typeDefs = gql`
 	type Query {
 		getMessage: String!
+		# getError: ID! used to show errors still give 200 status code
 	}
 
 	schema {

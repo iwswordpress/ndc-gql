@@ -16,6 +16,8 @@ async function fetchMessage() {
 		}),
 	});
 
+	// Add getError below getMessage to show how GQL errors are sent back to client.
+
 	const { data } = await response.json();
 
 	return data;
