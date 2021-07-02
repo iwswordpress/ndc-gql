@@ -1,3 +1,13 @@
+TLDR;
+
+If we have Schema.Query.cat then this is resolved first.
+
+We can also have Schema.Query.Cat.catName that will then overwrite the Schema.Query.cat.catName.
+
+It is a bit like CSS where last rule trumps others.
+
+Being a Graph, GQL knows all the interconnections.
+
 -  You can either copy and paste index0X into index.js
 -  Chagne package.json to use index0x
 -  Use node index0x.js
