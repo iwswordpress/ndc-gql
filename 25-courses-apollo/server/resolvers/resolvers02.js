@@ -49,15 +49,15 @@ const Query = {
 	},
 };
 
+// module.exports = { Query };
+
 // Remember to export!
 const Course = {
 	// course is the parent object
 	tutor: (course, args, ctx, info) => {
-		console.log('Course parent having tutor:Tutor resolved', course);
+		console.log('Course parent having Course.tutor resolved', course);
 		return { id: '11111', firstName: 'A', lastName: 'Tutor', email: 'x@test.com' };
 	},
 };
 
-const Mutation = {};
-
-module.exports = { Query, Mutation, Course };
+module.exports = { Query, Course };

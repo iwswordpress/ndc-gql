@@ -33,18 +33,25 @@ We can treat the list in the same way.
 
 ![gql](/_images/25-lists.png)
 
-## 02 Passing resolution to LEAF
+## 02 Passing resolution to LEAF for Course
 
-Add Mutations and input Type to schema without resolver. Remove and leave for 3?
-Add Course as top level schema type for child resolution.
+As it stands, we can get Courses back but no details on Tutor as there is no resolver for it.
 
-We know add a way of resolving tutor: Tutor in Course object by adding Job schema as sibling to Query.
+```
+const Course = {
+	// course is the parent object
+	tutor: (course, args, ctx, info) => {
+		console.log('Course parent having Course.tutpor resolved', course);
+		return { id: '11111', firstName: 'A', lastName: 'Tutor', email: 'x@test.com' };
+	},
+};
+```
 
-When Course gets to resolve tutor and sees it is of type Tutor it needs to find a definition for this in the schema to resolve it to scalar.
-
-Course has a resolver of tutor that returns the details in object for a given tutor. This shows the first argument in resolvers when a child of a parent.
+By adding the above, when GQL sees that on a Course the tutor: Tutor, it can then resolve tutor.
 
 Rember to export all new definitions like this along with Query and Mutation.
+
+EX. Comment out Course in the resolver and remove it as an export and one gets null. With it one gets whatever is in the Course.tutor resolver.
 
 ## 03 Course Mutation
 

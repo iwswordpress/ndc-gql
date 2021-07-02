@@ -7,10 +7,6 @@ type Query {
 	students: [Student]
 }
 
-type Mutation {
-	createCourse(input: CreateCourseInput): Course
-}
-
 """
 Details about the Course Type
 """
@@ -43,11 +39,4 @@ type Student {
 	# an empty array is OK even with [Int!] as an empty array is not null
 	# https://graphql.org/learn/schema/#object-types-and-fields
 	courses: [Int!]!
-}
-"""
-Details about CreateCourseInput
-"""
-input CreateCourseInput {
-	title: String
-	description: String
 }
