@@ -4,7 +4,7 @@ Uses argument.
 
 Note double quotes and argument needs to be the same as specified in Schema.
 
-Returns scalar type so need for sub fields.
+Returns scalar type so no need for sub fields.
 
 ```
 {
@@ -52,5 +52,3 @@ In client we add a variables property in the body:
 ```
 
 ```
-
-
