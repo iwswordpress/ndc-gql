@@ -56,4 +56,4 @@ app.use((error, req, res, next) => {
 	res.status(status).json({ message: message, data: data });
 });
 
-app.listen(5000, (_) => console.log('Listening on port 5000'));
+app.listen(5000, (_) => console.log('Listening on port http://localhost:5000/graphql'));

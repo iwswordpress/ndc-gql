@@ -4,7 +4,8 @@ const jwt = require('jsonwebtoken');
 
 module.exports = {
 	createUser: async function ({ userInput }, req) {
-		//   const email = args.userInput.email;
+		const email = userInput.email;
+		const firstName = userInput.firstName;
 		const errors = [];
 		if (!validator.isEmail(userInput.email)) {
 			errors.push({ message: 'E-Mail is invalid.' });
@@ -18,6 +19,13 @@ module.exports = {
 			error.code = 422;
 			throw error;
 		}
+		return {
+			id: 1111,
+			firstName,
+			email,
+			status: 'AUTHENTICATED',
+			token: `${Math.floor(Math.random() * 90000000 + 10000000)}`,
+		};
 	},
 	login: async function ({ email, password }) {
 		const isEqual = await bcrypt.compare(password, user.password);
