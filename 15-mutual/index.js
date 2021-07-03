@@ -17,6 +17,14 @@ const typeDefs = gql`
 		carer: Carer!
 	}
 `;
+// We have the following OBJECT values in our schema:
+// Query.cat
+// Query.carer
+// Carer.Cat
+// Cat.Carer
+// all the others resolve to SCALAR
+// We will need to create resolvers for thes.
+// Without them we will get nulls.
 
 const resolvers = {
 	Query: {
@@ -38,16 +46,7 @@ const resolvers = {
 			};
 		},
 	},
-	Cat: {
-		catName: (parent, args, ctx) => {
-			console.log('Cat > catName > ctx isLoggedIn ', ctx.isLoggedIn);
-			console.log('Cat > catName > parent', parent);
-			const catName = `PARENT = ${parent.catName} > CAT.catName = ${Math.floor(Math.random() * 100 + 1)}`;
-			return catName;
-		},
-	},
 };
-
 const server = new ApolloServer({
 	typeDefs,
 	resolvers,
