@@ -8,15 +8,7 @@ const auth = require('./middleware/auth');
 
 const app = express();
 
-const fileFilter = (req, file, cb) => {
-	if (file.mimetype === 'image/png' || file.mimetype === 'image/jpg' || file.mimetype === 'image/jpeg') {
-		cb(null, true);
-	} else {
-		cb(null, false);
-	}
-};
-
-app.use(express.json()); // application/json
+app.use(express.json());
 
 app.use((req, res, next) => {
 	res.setHeader('Access-Control-Allow-Origin', '*');
@@ -30,6 +22,7 @@ app.use((req, res, next) => {
 
 app.use(auth);
 
+// formatError is a built in Apollo function.
 app.use(
 	'/graphql',
 	graphqlHttp({
@@ -56,4 +49,4 @@ app.use((error, req, res, next) => {
 	res.status(status).json({ message: message, data: data });
 });
 
-app.listen(5000, (_) => console.log('Listening on port http://localhost:5000/graphql'));
+app.listen(5000, () => console.log('Listening on port http://localhost:5000/graphql'));

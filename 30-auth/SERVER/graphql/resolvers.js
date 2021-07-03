@@ -3,6 +3,9 @@ const validator = require('validator');
 const jwt = require('jsonwebtoken');
 
 module.exports = {
+	// This is not Apollo so the root argument is not passed in.
+	// In other examples we would have (root, args, ctx, info)
+	// We are destructuring args to userInput as userInput = args.userInput
 	createUser: async function ({ userInput }, req) {
 		const email = userInput.email;
 		const firstName = userInput.firstName;
@@ -20,7 +23,7 @@ module.exports = {
 			throw error;
 		}
 		return {
-			id: 1111,
+			id: `${Math.floor(Math.random() * 100 + 1)}`,
 			firstName,
 			email,
 			status: 'AUTHENTICATED',
