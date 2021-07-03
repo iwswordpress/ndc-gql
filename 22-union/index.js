@@ -2,7 +2,6 @@ const { ApolloServer, gql } = require('apollo-server');
 //https://www.youtube.com/watch?v=wBrSXBpAd10
 
 const typeDefs = gql`
-
 	type ValidationError {
 		field: String
 		msg: String
@@ -18,16 +17,19 @@ const typeDefs = gql`
 	type Query {
 		hello: String
 		register: Error
+		# we must now resolve Error as it is not a scalar type so execution moves to Error in resolvers
 	}
 `;
 
 let showTimeoutError = false;
 
 const resolvers = {
+	// Error determines which of union types it is, returns it.
+	// In Query.register in resolvers, we can then return data depending on union type.
 	Error: {
 		__resolveType: (obj) => {
 			if (obj.reason) {
-				return 'TimeoutError';
+				return 'TimeoutError'; // passed on to the
 			}
 
 			if (obj.field) {
