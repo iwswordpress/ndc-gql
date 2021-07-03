@@ -79,6 +79,8 @@ We can give response an alias:
 
 ![gql](/_images/25-03-alias.png)
 
+## 04 Using the input type.
+
 Having lots of arguments can be tedious.
 
 We can use the input type by rewriting the Mutation as follows:
@@ -97,21 +99,8 @@ by always using input it makes writing Mutations easier as we do not need to kno
 
 ![gql](/_images/25-04-client-add.png)
 
+### This shows us how we pass data from client to GQL.
+
+newCourse will be an object with all the values.
+
 ![gql](/_images/25-04-client-add-code.png)
-
-## 04 ENUMs, Interfaces, Unions and Fragments
-
-Add ENUM, INTERFACE and UNIONS with Fragments
-
-## 05 Subscriptions
-
-Subscriptions
-
-## 06 Authentication
-
-Authentication
-Custom directives, HOF, in resolver, complete
-
-## 07 Errors
-
-Errors
