@@ -14,6 +14,10 @@ const typeDefs = gql`
 	type Query {
 		search(contains: String): [Result]
 	}
+	# schema is included by default but shows why query is a reserved work in playground
+	schema {
+		query: Query
+	}
 `;
 const resolvers = {
 	Result: {

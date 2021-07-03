@@ -4,6 +4,7 @@ const typeDefs = gql`
 	type Query {
 		greet(firstName: String!): String!
 	}
+	# schema is included by default but shows why query is a reserved work in playground
 	schema {
 		query: Query
 	}
@@ -14,7 +15,8 @@ const resolvers = {
 		greet: (parent, args, context, info) => {
 			console.log(args.firstName);
 			return `Hello ${args.firstName}`;
-		},	},
+		},
+	},
 };
 
 const server = new ApolloServer({ typeDefs, resolvers });

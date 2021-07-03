@@ -12,7 +12,7 @@ const typeDefs = gql`
 		getMessage: String!
 		# getError: ID! used to show errors still give 200 status code
 	}
-
+	# schema is included by default but shows why query is a reserved work in playground
 	schema {
 		query: Query
 	}
