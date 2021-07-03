@@ -17,6 +17,14 @@ const typeDefs = gql`
 		carer: Carer!
 	}
 `;
+// We have the following OBJECT values in our schema:
+// Query.cat
+// Query.carer
+// Carer.Cat
+// Cat.Carer
+// all the others resolve to SCALAR
+// We will need to create resolvers for thes.
+// Without them we will get nulls.
 
 const resolvers = {
 	Query: {

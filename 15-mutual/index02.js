@@ -18,6 +18,15 @@ const typeDefs = gql`
 	}
 `;
 
+// We have the following OBJECT values in our schema:
+// Query.cat
+// Query.carer
+// Carer.cat
+// Cat.carer
+// all the others resolve to SCALAR
+// We will need to create resolvers for thes.
+// Without them we will get nulls.
+
 const resolvers = {
 	Query: {
 		cat: (parent, args, ctx, info) => {
@@ -33,7 +42,7 @@ const resolvers = {
 			console.log('Query > owner > args.name: ', args.name);
 			console.log('Query > owner > ctx: ', ctx.isLoggedIn);
 			return {
-				carerName: args.name,
+				carer: `Query.carer args.name: ${args.name}`,
 				dog: 'Query.owner.TED',
 			};
 		},
@@ -42,8 +51,29 @@ const resolvers = {
 		catName: (parent, args, ctx) => {
 			console.log('Cat > catName > ctx isLoggedIn ', ctx.isLoggedIn);
 			console.log('Cat > catName > parent', parent);
-			const catName = `PARENT = ${parent.catName} > CAT.catName = ${Math.floor(Math.random() * 100 + 1)}`;
+			const catName = `Cat.catName`;
 			return catName;
+		},
+		carer: (parent, args, ctx) => {
+			console.log('Cat > carerName > ctx isLoggedIn ', ctx.isLoggedIn);
+			console.log('Cat > carerName > parent', parent);
+			const catName = `Cat.carerName`;
+			return catName;
+		},
+	},
+	Carer: {
+		carerName: (parent, args, ctx) => {
+			console.log('Carer > carerName > ctx isLoggedIn ', ctx.isLoggedIn);
+			console.log('Carer > carerName > parent', parent);
+			const catName = `Carer.carerName`;
+			return catName;
+		},
+		cat: () => {
+			return {
+				catName: 'Carer.cat',
+				age: 200,
+				carer: { carerName: 'Carer.cat.carer' },
+			};
 		},
 	},
 };

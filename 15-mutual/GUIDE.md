@@ -1,5 +1,21 @@
 TLDR;
 
+![gql](/_images/15-schema.png)
+
+In our schema we have the following 'objects':
+
+-  Query.cat
+-  Query.carer
+-  Carer.Cat
+-  Cat.Carer
+-  all the others resolve to SCALAR
+
+When we run queries for Quer.cat, it has no reference to Cat.Carer. It is like foreign keys and needs another table. The same is true if Carer.Cat.
+
+index01.js has Query.cat and Query.carer
+
+index02.js has Carer.cat and Cat.carer
+
 If we have Schema.Query.cat then this is resolved first.
 
 We can also have Schema.Query.Cat.catName that will then overwrite the Schema.Query.cat.catName.
