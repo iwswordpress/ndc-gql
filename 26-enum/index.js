@@ -1,5 +1,6 @@
 const { ApolloServer, gql } = require('apollo-server');
 //https://www.youtube.com/watch?v=wBrSXBpAd10
+
 const typeDefs = gql`
 	type ValidationError {
 		field: String
@@ -13,12 +14,9 @@ const typeDefs = gql`
 
 	union Error = ValidationError | TimeoutError
 
-	type Mutation {
-		register: Error
-	}
-
 	type Query {
 		hello: String
+		register: Error
 	}
 `;
 
@@ -38,8 +36,8 @@ const resolvers = {
 			return null;
 		},
 	},
-	Query: { hello: () => 'hi' },
-	Mutation: {
+	Query: {
+		hello: () => 'hi',
 		register: () => {
 			let error = {};
 
@@ -58,6 +56,6 @@ const resolvers = {
 
 const server = new ApolloServer({ typeDefs, resolvers });
 
-server.listen({port:5000}).then(({ url }) => {
+server.listen({ port: 5000 }).then(({ url }) => {
 	console.log(`🚀  Server ready at ${url}`);
 });
