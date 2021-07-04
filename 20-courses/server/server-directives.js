@@ -1,7 +1,7 @@
 const fs = require('fs'); // to read in the graphql file but other options to do this.
 
 const { ApolloServer, gql } = require('apollo-server-express');
-const { LogDirective, FormatDateDirective } = require('./directives');
+const { LogDirective } = require('./directives');
 const cors = require('cors'); // we will use localhost on a different port
 const express = require('express');
 
@@ -23,7 +23,6 @@ const apolloServer = new ApolloServer({
 	context,
 	schemaDirectives: {
 		log: LogDirective,
-		formatDate: FormatDateDirective,
 	},
 });
 // route for graphiql

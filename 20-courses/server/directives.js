@@ -19,21 +19,4 @@ class LogDirective extends SchemaDirectiveVisitor {
 	}
 }
 
-class FormatDateDirective extends SchemaDirectiveVisitor {
-	visitFieldDefinition(field) {
-		const { resolve = defaultFieldResolver } = field;
-		const { format: defaultFormat } = this.args;
-
-		field.args.push({
-			name: 'format',
-			type: GraphQLString,
-		});
-
-		field.resolve = async function (root, { format, ...rest }, ctx, info) {
-			const date = await resolve.call(this, root, rest, ctx, info);
-			return formatDate(date, format || defaultFormat);
-		};
-	}
-}
-
-module.exports = { LogDirective, FormatDateDirective };
+module.exports = { LogDirective };
