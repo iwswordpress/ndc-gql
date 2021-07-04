@@ -25,11 +25,12 @@ How would we create our own API service?
 
 -  our main module with Query, Mutation and Subscription.
 -  custom directives
--  TODO SUBSCRIPTIONS
 
 22 Unions incl ENUMS, FRAGMENTS
 
 23 Interfaces/Enums - similar to Unions.
+
+25 Subscriptions
 
 27 Object Type (FYI)
 
