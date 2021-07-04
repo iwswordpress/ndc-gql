@@ -4,7 +4,10 @@
 	"main": "index.js",
 	"license": "MIT",
 	"scripts": {
-		"start": "nodemon index.js"
+		"start": "nodemon index.js",
+		"dev01": "nodemon index01.js",
+		"dev02": "nodemon index02.js"
+
 	},
 	"dependencies": {
 		"apollo-server": "^2.3.1",

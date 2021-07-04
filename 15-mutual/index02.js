@@ -47,35 +47,35 @@ const resolvers = {
 			};
 		},
 	},
-	Cat: {
-		catName: (parent, args, ctx) => {
-			console.log('Cat > catName > ctx isLoggedIn ', ctx.isLoggedIn);
-			console.log('Cat > catName > parent', parent);
-			const catName = `Cat.catName`;
-			return catName;
-		},
-		carer: (parent, args, ctx) => {
-			console.log('Cat > carerName > ctx isLoggedIn ', ctx.isLoggedIn);
-			console.log('Cat > carerName > parent', parent);
-			const catName = `Cat.carerName`;
-			return catName;
-		},
-	},
-	Carer: {
-		carerName: (parent, args, ctx) => {
-			console.log('Carer > carerName > ctx isLoggedIn ', ctx.isLoggedIn);
-			console.log('Carer > carerName > parent', parent);
-			const catName = `Carer.carerName`;
-			return catName;
-		},
-		cat: () => {
-			return {
-				catName: 'Carer.cat',
-				age: 200,
-				carer: { carerName: 'Carer.cat.carer' },
-			};
-		},
-	},
+	// Cat: {
+	// 	catName: (parent, args, ctx) => {
+	// 		console.log('Cat > catName > ctx isLoggedIn ', ctx.isLoggedIn);
+	// 		console.log('Cat > catName > parent', parent);
+	// 		const catName = `Cat.catName`;
+	// 		return catName;
+	// 	},
+	// 	carer: (parent, args, ctx) => {
+	// 		console.log('Cat > carerName > ctx isLoggedIn ', ctx.isLoggedIn);
+	// 		console.log('Cat > carerName > parent', parent);
+	// 		const catName = `Cat.carerName`;
+	// 		return catName;
+	// 	},
+	// },
+	// Carer: {
+	// 	carerName: (parent, args, ctx) => {
+	// 		console.log('Carer > carerName > ctx isLoggedIn ', ctx.isLoggedIn);
+	// 		console.log('Carer > carerName > parent', parent);
+	// 		const catName = `Carer.carerName`;
+	// 		return catName;
+	// 	},
+	// 	cat: () => {
+	// 		return {
+	// 			catName: 'Carer.cat',
+	// 			age: 200,
+	// 			carer: { carerName: 'Carer.cat.carer' },
+	// 		};
+	// 	},
+	// },
 };
 
 const server = new ApolloServer({
