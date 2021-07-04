@@ -3,7 +3,8 @@
 	"private": true,
 	"license": "MIT",
 	"scripts": {
-		"start": "nodemon --ext js,graphql server.js"
+		"start": "nodemon --ext js,graphql server.js",
+		"dev": "nodemon --ext js,graphql server-directives.js"
 	},
 	"dependencies": {
 		"apollo-server-express": "2.14.3",

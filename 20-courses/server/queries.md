@@ -70,3 +70,28 @@ QV
 
 
 ```
+
+```
+{
+  one:course(id:101){
+    id
+    title
+    tech
+    tutor{
+      id
+      lastName
+    }
+
+  }
+   two:course(id:101){
+    id
+    title
+    tech
+    tutor{
+      id
+      lastName
+    }
+
+  }
+}
+```

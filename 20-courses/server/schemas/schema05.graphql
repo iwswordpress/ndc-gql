@@ -1,3 +1,6 @@
+directive @log(format: String) on FIELD_DEFINITION
+directive @formatDate(format: String = "d, MMM, yyyy") on FIELD_DEFINITION
+
 type Query {
 	tutor(id: ID!): Tutor
 	tutors: [Tutor]
@@ -11,7 +14,7 @@ type Query {
 Details about the Course Type
 """
 type Course {
-	id: ID! 
+	id: ID! @log
 	# we meed to change resolver so that we get Tutor. Just because it is in schema does not mean we get data.
 	tutor: Tutor
 	title: String
@@ -21,7 +24,7 @@ type Course {
 Details about the Tutor Type
 """
 type Tutor {
-	id: ID!
+	id: ID! @log
 	firstName: String!
 	lastName: String!
 	email: String!
