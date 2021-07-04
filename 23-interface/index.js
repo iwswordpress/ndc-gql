@@ -1,6 +1,12 @@
 const { ApolloServer, gql } = require('apollo-server');
 
 const typeDefs = gql`
+	#  introducing enum - constraint on possilbe values
+	enum AllowedColor {
+		RED
+		GREEN
+		BLUE
+	}
 	interface Animal {
 		species: String
 	}
@@ -11,7 +17,7 @@ const typeDefs = gql`
 	}
 	type Lion implements Animal {
 		species: String
-		color: String
+		color: AllowedColor # we constrain color type
 	}
 
 	type Query {
