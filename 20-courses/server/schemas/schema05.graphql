@@ -1,4 +1,4 @@
-directive @log(message: String) on FIELD_DEFINITION
+directive @log(format: String) on FIELD_DEFINITION
 directive @formatDate(format: String = "d, MMM, yyyy") on FIELD_DEFINITION
 
 type Query {
