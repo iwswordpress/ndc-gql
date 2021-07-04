@@ -95,3 +95,30 @@ QV
   }
 }
 ```
+
+## Custom Directives
+
+```
+{
+  one:course(id:401){
+    id(format:"HHHHH")
+    title
+    tech
+    tutor{
+      id
+      lastName
+    }
+
+  }
+   two:course(id:301){
+    id
+    title
+    tech
+    tutor{
+      id
+      lastName
+    }
+
+  }
+}
+```

@@ -1,7 +1,7 @@
 const fs = require('fs'); // to read in the graphql file but other options to do this.
 
-const { ApolloServer, gql, SchemaDirectiveVisitor } = require('apollo-server-express');
-const { defaultFieldResolver, GraphQLString } = require('graphql');
+const { ApolloServer, gql } = require('apollo-server-express');
+const { LogDirective, FormatDateDirective } = require('./directives');
 const cors = require('cors'); // we will use localhost on a different port
 const express = require('express');
 
@@ -17,33 +17,6 @@ const typeDefs = gql(fs.readFileSync('./schemas/schema05.graphql', { encoding: '
 const resolvers = require('./resolvers/resolvers05');
 const context = user;
 
-class LogDirective extends SchemaDirectiveVisitor {
-	visitFieldDefinition(field, type) {
-		const { resolve = defaultFieldResolver } = field;
-
-		field.resolve = async function (root, args, ctx, info) {
-			console.log(`⚡️  ${type.objectType}.${field.name} `);
-			return resolve.call(this, root, rest, ctx, info);
-		};
-	}
-}
-
-class FormatDateDirective extends SchemaDirectiveVisitor {
-	visitFieldDefinition(field) {
-		const { resolve = defaultFieldResolver } = field;
-		const { format: defaultFormat } = this.args;
-
-		field.args.push({
-			name: 'format',
-			type: GraphQLString,
-		});
-
-		field.resolve = async function (root, { format, ...rest }, ctx, info) {
-			const date = await resolve.call(this, root, rest, ctx, info);
-			return formatDate(date, format || defaultFormat);
-		};
-	}
-}
 const apolloServer = new ApolloServer({
 	typeDefs,
 	resolvers,
