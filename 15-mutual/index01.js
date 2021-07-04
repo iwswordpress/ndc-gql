@@ -50,7 +50,9 @@ const resolvers = {
 const server = new ApolloServer({
 	typeDefs,
 	resolvers,
-	context: { isLoggedIn: true },
+	context: () => {
+		isLoggedIn: true;
+	},
 });
 // defaults to port 4000
 server.listen({ port: 5000 }).then(({ url }) => console.log(`Server running at port ${url}`));
