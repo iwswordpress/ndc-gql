@@ -3,7 +3,7 @@ const { defaultFieldResolver, GraphQLString } = require('graphql');
 
 class LogDirective extends SchemaDirectiveVisitor {
 	visitFieldDefinition(field, type) {
-		const { resolve = defaultFieldResolver } = field;
+		const { resolve = defaultFieldResolver } = field; // if we have no resolver on a field like we do with ID
 		// console.log('--->', this.field.args);
 		const { message: defaultFormat } = this.args;
 
