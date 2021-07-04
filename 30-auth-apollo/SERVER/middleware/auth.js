@@ -1,24 +1,40 @@
-const jwt = require('jsonwebtoken');
+const {AuthenticationError} = require('apollo-server')
 
-module.exports = (req, res, next) => {
-  const authHeader = req.get('Authorization');
-  if (!authHeader) {
-    req.isAuth = false;
-    return next();
-  }
-  const token = authHeader.split(' ')[1];
-  let decodedToken;
+const jwt = require('jsonwebtoken')
+const {models} = require('./db')
+const secret = 'catpack'
+
+const createToken = ({id, role}) => jwt.sign({id, role }, secret)
+
+const getUserFromToken = token => {
   try {
-    decodedToken = jwt.verify(token, 'somesupersecretsecret');
-  } catch (err) {
-    req.isAuth = false;
-    return next();
+    const user = jwt.verify(token, secret)
+    return models.User.findOne({id: user.id})
+  } catch (e) {
+    return null
   }
-  if (!decodedToken) {
-    req.isAuth = false;
-    return next();
+
+}
+
+const authenticated = next => (root, args, context, info) => {
+  if (!context.user) {
+    throw new AuthenticationError('must authenticate')
   }
-  req.userId = decodedToken.userId;
-  req.isAuth = true;
-  next();
-};
+
+  return next(root, args, context, info)
+}
+
+const authorized = (role, next) => (root, args, context, info) => {
+  if (context.user.role !== role) {
+    throw new AuthenticationError(`you must have ${role} role`)
+  }
+
+  return next(root, args, context, info)
+}
+
+module.exports = {
+  getUserFromToken,
+  authenticated,
+  authorized,
+  createToken
+}

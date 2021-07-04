@@ -98,7 +98,9 @@ const resolvers = {
 const server = new ApolloServer({
 	typeDefs,
 	resolvers,
-	context: () => {
+	context: (ctx) => {
+		console.log('ctx', ctx);
+
 		return { isLoggedIn: true };
 	},
 });

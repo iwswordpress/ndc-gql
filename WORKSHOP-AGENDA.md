@@ -12,21 +12,24 @@ How would we create our own API service?
 -  Show POST, html page.
 -  Go through Graphiql – schema, docs, custom scalar.
 
-11 Greet MODULE
+11 Lab MODULE
 
--  supplying a variable
+-  supplying a variable in index.js
+-  lab.js has other methods to add bit by bit.
 
-15 Mutual MODULE to show linked types
+15 Leaf MODULE to show linked types
 
 -  show the GQL resolve chain and (parent, args, ctx, info).
 
 20 COURSES MODULE
 
 -  our main module with Query, Mutation and Subscription.
+-  custom directives
+-  TODO SUBSCRIPTIONS
 
 22 Unions incl ENUMS, FRAGMENTS
 
-23 Interfaces - similar to Unions.
+23 Interfaces/Enums - similar to Unions.
 
 27 Object Type (FYI)
 
@@ -35,9 +38,10 @@ How would we create our own API service?
 30 Auth
 
 -  Overall
--  In resolver
--  Wrapper functions
--  Custom Directives incl
+-  In resolver using ctx - seesn already but expand
+-  Wrapper functions TODO
+-  Custom Directives FYI
+-  SECURITY https://www.apollographql.com/blog/graphql/security/9-ways-to-secure-your-graphql-api-security-checklist/
 
 40 Errors
 
@@ -45,4 +49,7 @@ How would we create our own API service?
 -  Custom Error messages
 -  Stack trace
 
-SECURITY https://www.apollographql.com/blog/graphql/security/9-ways-to-secure-your-graphql-api-security-checklist/
+OTHER
+
+-  middleware
+-  caching, dataloader https://www.youtube.com/watch?v=OQTnXNCDywA
