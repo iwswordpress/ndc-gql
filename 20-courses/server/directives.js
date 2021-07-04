@@ -5,15 +5,15 @@ class LogDirective extends SchemaDirectiveVisitor {
 	visitFieldDefinition(field, type) {
 		const { resolve = defaultFieldResolver } = field;
 		// console.log('--->', this.field.args);
-		const { format: defaultFormat } = this.args;
+		const { message: defaultFormat } = this.args;
 
 		field.args.push({
-			name: 'format',
+			name: 'message',
 			type: GraphQLString,
 		});
 
-		field.resolve = async function (root, { format, ...rest }, ctx, info) {
-			console.log(`🙂   ${type.objectType}.${field.name} ${format}`);
+		field.resolve = async function (root, { message, ...rest }, ctx, info) {
+			console.log(`🙂   ${type.objectType}.${field.name} ${message}`);
 			return resolve.call(this, root, rest, ctx, info);
 		};
 	}
