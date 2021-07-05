@@ -11,7 +11,6 @@ module.exports = gql`
 		id: ID! # log(format: "hello")
 		email: String!
 		token: String
-
 		role: Role
 	}
 
@@ -23,7 +22,6 @@ module.exports = gql`
 	input SignupInput {
 		email: String!
 		password: String!
-		role: Role!
 	}
 
 	input SigninInput {
@@ -32,7 +30,7 @@ module.exports = gql`
 	}
 
 	type Query {
-		me: User!
+		myDetails: User!
 	}
 
 	type Mutation {

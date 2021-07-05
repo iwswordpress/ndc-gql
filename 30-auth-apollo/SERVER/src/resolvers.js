@@ -1,15 +1,11 @@
 const { AuthenticationError } = require('apollo-server');
 
 const { authenticated, authorized } = require('./auth');
+const token = require('./util');
 
-/**
- * Anything Query / Mutation resolver
- * using a user for a DB query
- * requires user authenication
- */
 module.exports = {
 	Query: {
-		me: authenticated((_, __, { user }) => {
+		myDetails: authenticated((_, __, { user }) => {
 			return user;
 		}),
 	},
@@ -23,7 +19,7 @@ module.exports = {
 				throw new AuthenticationError('SIGNUP not allowed as you are not registered ');
 			}
 
-			return { user: { email: input.email, role: input.role } };
+			return { user: { email: input.email, role: 'MEMBER', token: `${token(1)}` } };
 		},
 		signin(_, { input }, { user }) {
 			if (!user) {
