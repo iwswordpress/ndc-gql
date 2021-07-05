@@ -3,8 +3,9 @@ const gql = require('graphql-tag');
 module.exports = gql`
 	enum Role {
 		ADMIN
-		MEMBER
-		GUEST
+		MANAGER
+		STAFF
+		STUDENT
 	}
 
 	type User {

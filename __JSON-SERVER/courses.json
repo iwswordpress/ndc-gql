@@ -94,7 +94,15 @@
 			"lastName": "Smith",
 			"email": "harry@test.com",
 			"password": 123456,
-			"role": "MANGER"
+			"role": "MANAGER"
+		},
+		{
+			"id": "101",
+			"firstName": "Jill",
+			"lastName": "Penfold",
+			"email": "jill@test.com",
+			"password": 123456,
+			"role": "STAFF"
 		},
 		{
 			"id": "103",
