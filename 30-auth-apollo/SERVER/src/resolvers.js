@@ -19,7 +19,7 @@ module.exports = {
 				throw new AuthenticationError('SIGNUP not allowed as you are not registered ');
 			}
 
-			return { user: { email: input.email, role: 'MEMBER', token: `${token(1)}` } };
+			return { user: { id: 1, email: input.email, role: 'MEMBER', token: `${token(1)}` } };
 		},
 		signin(_, { input }, { user }) {
 			if (!user) {
