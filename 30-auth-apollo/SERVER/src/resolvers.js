@@ -8,6 +8,9 @@ module.exports = {
 		myDetails: authenticated((_, __, { user }) => {
 			return user;
 		}),
+		getAdminData: () => {
+			return 'some secure data';
+		},
 	},
 	Mutation: {
 		signup(_, { input }, { user }) {

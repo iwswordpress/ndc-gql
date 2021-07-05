@@ -31,6 +31,7 @@ module.exports = gql`
 
 	type Query {
 		myDetails: User!
+		getAdminData: String!
 	}
 
 	type Mutation {
