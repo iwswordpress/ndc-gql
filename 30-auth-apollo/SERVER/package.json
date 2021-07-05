@@ -1,23 +1,20 @@
 {
-	"name": "job-board-server",
-	"private": true,
+	"name": "30-auth-apollo",
+	"version": "1.0.0",
+	"main": "index.js",
+	"author": "Craig",
 	"license": "MIT",
 	"scripts": {
-		"start": "nodemon  server.js"
-	},
-	"dependencies": {
-		"apollo-server-express": "2.14.3",
-		"cors": "2.8.5",
-		"node-fetch": "^2.6.1",
-		"bcryptjs": "^2.4.3",
-		"express": "^4.16.3",
-		"express-graphql": "^0.6.12",
-		"express-validator": "^5.3.0",
-		"graphql": "^14.0.2",
-		"jsonwebtoken": "^8.3.0",
-		"validator": "^10.8.0"
+		"start": "node src/index.js",
+		"dev": "nodemon src/index.js"
 	},
 	"devDependencies": {
-		"nodemon": "2.0.7"
+		"nodemon": "^2.0.9"
+	},
+	"dependencies": {
+		"apollo-server": "^2.9.6",
+		"graphql": "^15.5.1",
+		"jsonwebtoken": "^8.5.1",
+		"nanoid": "^2.1.3"
 	}
 }
