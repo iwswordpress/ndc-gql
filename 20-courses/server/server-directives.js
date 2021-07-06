@@ -15,12 +15,17 @@ const user = {
 };
 const typeDefs = gql(fs.readFileSync('./schemas/schema05.graphql', { encoding: 'utf8' }));
 const resolvers = require('./resolvers/resolvers05');
-const context = user;
+
+// const context = user;
+// If we supply an object, it will not change on each request.
+// Using context: () => user will mean that the function runs on every request.
 
 const apolloServer = new ApolloServer({
 	typeDefs,
 	resolvers,
-	context,
+	context: () => {
+		return user;
+	},
 	schemaDirectives: {
 		log: LogDirective,
 	},

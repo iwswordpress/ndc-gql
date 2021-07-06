@@ -104,3 +104,36 @@ by always using input it makes writing Mutations easier as we do not need to kno
 newCourse will be an object with all the values.
 
 ![gql](/_images/25-04-client-add-code.png)
+
+## 05 Custom Directives
+
+These can be used in client with the built in @skip and @include.
+
+There is also graphql lodash which enable one to write powerful custom directives.
+
+![gql](/_images/20-courses-lodash.png)
+
+use server-directives.js with
+
+```
+{
+  one: course(id:201) {
+    id(message: "COURSE")
+    title
+    tech
+    tutor {
+      id(message: "TUTOR")
+      lastName
+    }
+  }
+  two: course(id: 301) {
+    id(message: "COURSE")
+    title
+    tech
+    tutor {
+      id(message: "TUTOR")
+      lastName
+    }
+  }
+}
+```
