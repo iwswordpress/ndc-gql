@@ -17,6 +17,9 @@ It is an appropriate introduction of ENUMs:
 		BLUE
 	}
 ```
+
+When passing in as values in queries, us RED not 'RED'.
+
 If we execute the query with data, (TEX in this example), that does not follow this constraint then we will get an error:
 
 - "message": "Expected a value of type \"AllowedColor\" but received: \"TEX\"",

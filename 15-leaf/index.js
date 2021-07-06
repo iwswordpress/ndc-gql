@@ -8,23 +8,26 @@ const typeDefs = gql`
 
 	type Carer {
 		carerName: String!
-		cat: Cat
+		cat: Cat # how does GQL resolve this?
 		dog: String
 	}
 	type Cat {
 		catName: String!
 		age: Int
-		carer: Carer!
+		carer: Carer! # how does GQL resolve this?
 	}
 `;
-// We have the following OBJECT values in our schema:
+
+// QUERIES
 // Query.cat
 // Query.carer
+// We will need to create resolvers for these.
+// Without them we will get nulls.
+
+// We have the following OBJECT values that don't resolve to SCALAR types in our schema:
 // Carer.Cat
 // Cat.Carer
 // all the others resolve to SCALAR
-// We will need to create resolvers for thes.
-// Without them we will get nulls.
 
 const resolvers = {
 	Query: {
