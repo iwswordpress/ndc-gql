@@ -4,6 +4,10 @@ const { GraphQLScalarType, Kind } = require('graphql');
 // From https://www.apollographql.com/docs/apollo-server/schema/custom-scalars/#defining-custom-scalar-logic
 // $ npm install graphql-type-json an eacmple libary
 
+// There are many npm packages that will do all this for you
+// e.g. https://www.npmjs.com/package/graphql-scalars
+// Can be very useful for Dates. e.g. https://www.npmjs.com/package/graphql-iso-date and there are many more.
+
 // Basic schema
 const typeDefs = gql`
 	scalar Odd
@@ -22,9 +26,10 @@ const resolvers = {
 	Odd: new GraphQLScalarType({
 		name: 'Odd',
 		description: 'Odd custom scalar type',
-		parseValue: oddValue,
-		serialize: oddValue,
+		serialize: oddValue, // value coming in
+		parseValue: oddValue, // output of value
 		parseLiteral(ast) {
+			// output of value
 			if (ast.kind === Kind.INT) {
 				return oddValue(parseInt(ast.value, 10));
 			}
