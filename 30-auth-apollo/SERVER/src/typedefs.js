@@ -9,7 +9,7 @@ module.exports = gql`
 	}
 
 	type User {
-		id: ID! # log(format: "hello")
+		id: ID!
 		email: String!
 		token: String
 		role: Role

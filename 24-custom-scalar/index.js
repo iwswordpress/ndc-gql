@@ -8,7 +8,7 @@ const typeDefs = gql`
 		"""
 		Use the custom scalar DateTime
 		"""
-		getTime: DateTime # returns integer "1625670968724"
+		getTime: DateTime
 	}
 `;
 
@@ -18,11 +18,12 @@ const resolvers = {
 		description: 'A date and time, represented as an ISO-8601 string',
 		serialize: (value) => value.toISOString(), // output
 		parseValue: (value) => new Date(value), // input
-		parseLiteral: (ast) => new Date(ast.value), // input
+		parseLiteral: (ast) => new Date(ast.value), // input - this is the Abstract Syntax Tree found on the 4th info argument.
 	}),
 
 	Query: {
 		getTime: () => new Date(),
+		// new Date() will return integer "1625670968724" but our custom scalar converts this to ISO Date
 	},
 };
 
