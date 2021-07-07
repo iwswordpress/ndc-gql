@@ -1,45 +1,30 @@
 const { ApolloServer, gql } = require('apollo-server');
-const { GraphQLScalarType, Kind } = require('graphql');
+const { GraphQLScalarType } = require('graphql');
 
-// From https://www.apollographql.com/docs/apollo-server/schema/custom-scalars/#defining-custom-scalar-logic
-// $ npm install graphql-type-json an eacmple libary
-
-// There are many npm packages that will do all this for you
-// e.g. https://www.npmjs.com/package/graphql-scalars
-// Can be very useful for Dates. e.g. https://www.npmjs.com/package/graphql-iso-date and there are many more.
-
-// Basic schema
 const typeDefs = gql`
-	scalar Odd
+	scalar DateTime
 
-	type MyType {
-		oddValue: Odd
+	type Query {
+		"""
+		Use the custom scalar DateTime
+		"""
+		getTime: DateTime # returns integer "1625670968724"
 	}
 `;
 
-// Validation function
-function oddValue(value) {
-	return value % 2 === 1 ? value : null;
-}
-
 const resolvers = {
-	Odd: new GraphQLScalarType({
-		name: 'Odd',
-		description: 'Odd custom scalar type',
-		serialize: oddValue, // value coming in
-		parseValue: oddValue, // output of value
-		parseLiteral(ast) {
-			// output of value
-			if (ast.kind === Kind.INT) {
-				return oddValue(parseInt(ast.value, 10));
-			}
-			return null;
-		},
+	DateTime: new GraphQLScalarType({
+		name: 'DateTime',
+		description: 'A date and time, represented as an ISO-8601 string',
+		serialize: (value) => value.toISOString(), // output
+		parseValue: (value) => new Date(value), // input
+		parseLiteral: (ast) => new Date(ast.value), // input
 	}),
+
+	Query: {
+		getTime: () => new Date(),
+	},
 };
 
 const server = new ApolloServer({ typeDefs, resolvers });
-
-server.listen().then(({ url }) => {
-	console.log(`🚀 Server ready at ${url}`);
-});
+server.listen(5000).then((serverInfo) => console.info(`Server running at ${serverInfo.url}`));
