@@ -20,3 +20,5 @@ type Subscription {
 ```
 
 ![gql](/_images/25-pub-sub.png)
+
+![gql](/_images/25-subscriptions-resolver.png)
