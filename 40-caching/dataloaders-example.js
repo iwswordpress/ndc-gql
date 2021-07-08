@@ -8,26 +8,39 @@ and then call your batch loading function */
 const DataLoader = require('dataloader');
 
 const batchUsers = async (ids) => {
-  console.log('batchuser called===', ids);
-  return ids;
+	console.log('batchuser called ---> ', ids);
+	return ids;
 };
 
-const batchUserLoader = new DataLoader(keys => batchUsers(keys));
+const batchUserLoader = new DataLoader((keys) => batchUsers(keys));
 
 batchUserLoader.load(1);
+batchUserLoader.load(2);
 batchUserLoader.load(1);
 batchUserLoader.load(1);
+batchUserLoader.load(1);
+batchUserLoader.load(3);
 
 // Force next-tick
 setTimeout(() => {
-  batchUserLoader.load(4);
-  batchUserLoader.load(5);
-  batchUserLoader.load(6);
+	batchUserLoader.load(3);
+	batchUserLoader.load(4);
+	batchUserLoader.load(5);
+	batchUserLoader.load(6);
 }, 100);
 
 // Force next-tick
 setTimeout(() => {
-  batchUserLoader.load(7);
-  batchUserLoader.load(8);
-  batchUserLoader.load(9);
-}, 200); 
+	batchUserLoader.load(1);
+	batchUserLoader.load(2);
+	batchUserLoader.load(3);
+	batchUserLoader.load(4);
+	batchUserLoader.load(5);
+	batchUserLoader.load(6);
+	batchUserLoader.load(7);
+	batchUserLoader.load(8);
+	batchUserLoader.load(9);
+	batchUserLoader.load(10);
+	batchUserLoader.load(11);
+	batchUserLoader.load(12);
+}, 200);
