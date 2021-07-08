@@ -8,6 +8,14 @@ const typeDefs = gql`
 	type Query {
 		test: String!
 		getError: ID! # used to show errors still give 200 status code
+		# details: Int
+		# hobbies: [Int]
+		# me: Me
+	}
+	# type Me {
+	# 	id: ID!
+	# 	stack: String!
+	# }
 	}
 	# schema is included by default but shows why query is a reserved work in playground
 	schema {
@@ -18,6 +26,15 @@ const typeDefs = gql`
 const resolvers = {
 	Query: {
 		test: () => `Hello World! ${Math.floor(Math.random() * 100000 + 100000)}`,
+		// details: (parent, args, context, info) => {
+		// 	return Math.floor(Math.random() * 100);
+		// },
+		// hobbies: (parent, args, context, info) => {
+		// 	return [rnd(), rnd()];
+		// },
+		// me: (parent, args, context, info) => {
+		// 	return { id: 1, stack: 'JS' };
+		// },
 	},
 };
 
