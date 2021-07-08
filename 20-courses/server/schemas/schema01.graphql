@@ -10,14 +10,18 @@ type Query {
 	student(id: ID!): Student
 	students: [Student]
 }
-"Details for Course type  in Playground go here... "
+"""
+Details for Course type  in Playground go here...
+"""
 type Course {
 	id: ID!
 	tutorId: String
 	title: String
 	tech: String
 }
-"Details for Tutor type  in Playground go here... "
+"""
+Details for Tutor type  in Playground go here...
+"""
 type Tutor {
 	id: ID!
 	firstName: String!
@@ -25,7 +29,9 @@ type Tutor {
 	email: String!
 }
 
-" Details for Student type  in Playground go here... "
+"""
+Details for Student type  in Playground go here...
+"""
 type Student {
 	id: ID!
 	firstName: String!
