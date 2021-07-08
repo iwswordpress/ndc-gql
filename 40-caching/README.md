@@ -4,8 +4,12 @@ cd graphql-apollo-api-part2
 
 # install dependencies
 
- npm install
+npm install
 
 # Run local dev server
 
 npm run dev
+
+clear cache for .env
+
+git rm -r --cached .
