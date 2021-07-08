@@ -33,9 +33,9 @@ Settings:
 
 Use of comments and how to insert those comments into docs.
 
-Set up Users and Tasks.
+Set up Students and Projects.
 
-Return all tasks and users.
+Return all projects and students.
 
 Breaks when wanting user sub query.
 
@@ -43,47 +43,27 @@ Breaks when wanting user sub query.
 
 ## SERVER03
 
-```
-{ # now works as we have field resolvers
-  tasks {
-    id
-    name
-    user {
-      id
-      name
-      email
-    }
-  }
-}
-```
-
-add Task.name to see how we can overwrite previous Task.name
-
-Note order of all tasks then resolve name then resolve subquery.
+We can overwrite project.name with a resolver for name
 
 [TOP](#TOP)
 
 ## SERVER04
 
-getTaskById query
+getProjectById query
 
 ```
 {
-  getTaskById(id: 1) {
+  getProjectById(id: 1) {
     id
     name
     completed
-    user{
-      id
-      name
-      email
-    }
+
   }
 }
 
 ```
 
-Same for users. If one has a function in Schema.Query but not defined in resolves the app won't crash until that function is called.
+Same for students. If one has a function in Schema.Query but not defined in resolves the app won't crash until that function is called.
 
 ids are serialized to string type.
 
@@ -91,21 +71,15 @@ ids are serialized to string type.
 
 ## SERVER05
 
-Create Users list with tasks.
+Add createProject Mutation and create type input.
 
-[TOP](#TOP)
-
-## SERVER06
-
-Add createTask Mutation and create type input.
-
-New task store in memory not file.
+New project store in memory not file.
 
 Add mutation: Mutation to schema.
 
 Use Query Variables tab.
 
-In client HTML, the alias TaskCreated is used.
+In client HTML, the alias ProjectCreated is used.
 
 ![gql](/_images/06-query-variables-tab.png)
 

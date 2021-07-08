@@ -1,6 +1,6 @@
 const { ApolloServer, gql } = require('apollo-server');
-const { users } = require('./data/users');
-const { tasks } = require('./data/tasks');
+const { students } = require('./data/students');
+const { projects } = require('./data/projects');
 
 const dotEnv = require('dotenv');
 
@@ -8,77 +8,80 @@ dotEnv.config();
 
 const typeDefs = gql`
 	type Query {
-		users: [User!]
-		tasks: [Task!]
-		getTaskById(id: ID!): Task
-		getUserById(id: ID!): User!
+		students: [Student!]
+		projects: [Project!]
+		getProjectById(id: ID!): Project
+		getStudentById(id: ID!): Student!
 	}
 
-	type User {
+	type Student {
 		id: ID!
 		name: String!
 		email: String!
-		tasks: [Task!]
+		projects: [Project!]
 	}
 
-	type Task {
+	type Project {
 		id: ID!
 		name: String!
 		completed: Boolean!
-		user: User
 	}
 
+	type Mutation {
+		createProject(input: CreateProjectInput): Project!
+	}
+
+	input CreateProjectInput {
+		name: String!
+		completed: Boolean!
+	}
 	schema {
 		query: Query
+		mutation: Mutation
 	}
 `;
 
 const resolvers = {
 	Query: {
-		users: () => {
-			return users;
+		students: () => {
+			return students;
 		},
-		tasks: () => {
-			console.log(tasks);
-			return tasks;
+		projects: () => {
+			console.log(projects);
+			return projects;
 		},
-		getTaskById: (parent, args) => {
+		getProjectById: (parent, args) => {
 			console.log('id is serialized to --->', typeof args.id);
-			const task = tasks.find((task) => task.id == args.id);
-			return task;
+			const project = projects.find((project) => project.id == args.id);
+			return project;
 		},
-		getUserById: (parent, args) => {
+		getStudentById: (parent, args) => {
 			console.log('id is serialized to --->', typeof args.id);
-			const user = users.find((user) => user.id == args.id);
-			return user;
+			const student = students.find((student) => student.id == args.id);
+			return student;
 		},
 	},
-	Task: {
-		user: (parent) => {
-			// we can destucture but left in for teaching purposes
-			console.log('In Task.user');
-			console.log('Task.user > parent.userId', parent.userId);
-			const user = users.find((user) => user.id === parent.userId);
-			console.log('user is', user);
-			return user;
-		},
-		// name: () => {
-		// 	console.log(`---> Task.name returning TEST TASK ${Math.floor(Math.random() * 100000 + 100000)}`);
-		// 	return `TEST TASK - ${Math.floor(Math.random() * 100000 + 100000)}`;
-		// },
-	},
-	User: {
-		tasks: (parent) => {
-			console.log('In User.user');
-			console.log('User.tasks > parent.userId', parent.id);
-			const allTasks = tasks.filter((task) => task.userId === parent.id);
 
-			return allTasks;
+	Student: {
+		projects: (parent) => {
+			console.log('In Student.user');
+			console.log('Student.projects > parent.userId', parent.id);
+			const allProjects = projects.filter((project) => project.id === parent.id);
+
+			return allProjects;
+		},
+	},
+	Mutation: {
+		createProject: (parent, args) => {
+			console.log('input', args.input);
+			const input = args.input;
+			const project = { ...input, id: Math.floor(Math.random() * 10000) };
+			projects.push(project);
+			return project;
 		},
 	},
 };
-
 const PORT = process.env.PORT || 5000;
 const server = new ApolloServer({ typeDefs, resolvers });
 
-server.listen({ port: PORT }).then(({ url }) => console.log(`Server running at port ${url}`));
+server.listen({ port: PORT }).then(({ url }) => console.log(`Server06 running at port ${url}`));

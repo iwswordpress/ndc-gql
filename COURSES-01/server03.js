@@ -1,6 +1,6 @@
 const { ApolloServer, gql } = require('apollo-server');
-const { users } = require('./data/users');
-const { tasks } = require('./data/tasks');
+const { students } = require('./data/students');
+const { projects } = require('./data/projects');
 
 const dotEnv = require('dotenv');
 
@@ -8,22 +8,21 @@ dotEnv.config();
 
 const typeDefs = gql`
 	type Query {
-		users: [User!]
-		tasks: [Task!]
+		students: [Student!]
+		projects: [Project!]
 	}
 
-	type User {
+	type Student {
 		id: ID!
 		name: String!
 		email: String!
-		tasks: [Task!]
+		projects: [Project!]
 	}
 
-	type Task {
+	type Project {
 		id: ID!
 		name: String!
 		completed: Boolean!
-		user: User
 	}
 
 	schema {
@@ -33,26 +32,18 @@ const typeDefs = gql`
 
 const resolvers = {
 	Query: {
-		users: () => {
-			return users;
+		students: () => {
+			return students;
 		},
-		tasks: () => {
-			console.log(tasks);
-			return tasks;
+		projects: () => {
+			console.log(projects);
+			return projects;
 		},
 	},
-	Task: {
-		user: (parent) => {
-			// we can destucture but left in for teaching purposes
-			console.log('In Task.user');
-			console.log('Task.user > parent.userId', parent.userId);
-			const user = users.find((user) => user.id === parent.userId);
-			console.log('user is', user);
-			return user;
-		},
+	Project: {
 		name: () => {
-			console.log(`---> Task.name returning TEST TASK ${Math.floor(Math.random() * 100000 + 100000)}`);
-			return `TEST TASK - ${Math.floor(Math.random() * 100000 + 100000)}`;
+			console.log(`---> Project.name returning TEST Project ${Math.floor(Math.random() * 100000 + 100000)}`);
+			return `TEST Project - ${Math.floor(Math.random() * 100000 + 100000)}`;
 		},
 	},
 };
@@ -63,7 +54,7 @@ const server = new ApolloServer({ typeDefs, resolvers });
 server.listen({ port: PORT }).then(({ url }) => console.log(`Server running at port ${url}`));
 
 // {
-//   tasks{
+//   projects{
 //     id
 //     name
 //     completed

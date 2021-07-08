@@ -1,14 +1,13 @@
 const URL = 'http://localhost:5000/graphql';
 
-const newTask = {
-	name: 'NEW TASK',
+const newProject = {
+	name: 'NEW PROJECT',
 	completed: false,
-	userId: 1,
 };
 
-fetchMessage(newTask).then((data) => {
+fetchMessage(newProject).then((data) => {
 	console.log(data);
-	document.querySelector('output').innerHTML = `New Course added with id: <b>${data.TaskCreated.id}</b> `;
+	document.querySelector('output').innerHTML = `New Course added with id: <b>${data.ProjectCreated.id}</b> `;
 });
 // if id used, need $id, it is not just an empty parameter with any reference.
 // replacing $id as $y does not work in client
@@ -21,15 +20,16 @@ async function fetchMessage(newCourse) {
 		},
 		body: JSON.stringify({
 			query: `
-			mutation CreateTask($input: CreateTaskInput!){
-				TaskCreated: createTask(input:$input){
-					id
-					name	
-					completed
+				mutation CreateProject($input: CreateProjectInput) {
+					ProjectCreated: createProject(input: $input) {
+						id
+						name
+						completed
+					}
 				}
-			}
+
      `,
-			variables: { input: newTask },
+			variables: { input: newProject },
 		}),
 	});
 
