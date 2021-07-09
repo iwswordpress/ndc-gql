@@ -16,7 +16,11 @@ Move resolvers to own folder.
 
 ## SERVER03
 
-We do schema stitching.
+We do schema stitchingmerging using a simple strategy.
+
+For more involved ways with tools:
+
+https://www.graphql-tools.com/docs/schema-merging
 
 There can only be one root Query.
 

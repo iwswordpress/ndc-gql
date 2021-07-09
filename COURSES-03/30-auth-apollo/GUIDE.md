@@ -31,6 +31,8 @@ There is a library that uses function programming to provide a more functional s
 
 https://github.com/lucasconstantino/graphql-resolvers/
 
+As well as https://www.graphql-tools.com/docs/resolvers-composition
+
 ```
 cont auth = f(g(x))
 
