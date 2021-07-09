@@ -2,6 +2,8 @@ const { ApolloServer, gql } = require('apollo-server');
 const { students } = require('./data/students');
 const { projects } = require('./data/projects');
 
+const { rnd } = require('./util');
+
 const dotEnv = require('dotenv');
 
 dotEnv.config();
@@ -75,7 +77,7 @@ const resolvers = {
 		createProject: (parent, args) => {
 			console.log('input', args.input);
 			const input = args.input;
-			const project = { ...input, id: Math.floor(Math.random() * 10000) };
+			const project = { ...input, id: rnd(100000) };
 			projects.push(project);
 			return project;
 		},

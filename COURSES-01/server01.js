@@ -6,7 +6,7 @@ dotEnv.config();
 
 const typeDefs = gql`
 	type Query {
-		test: String!
+			test(x: Int): String!
 		getError: ID! # used to show errors still give 200 status code
 		# details: Int
 		# hobbies: [Int]
@@ -25,7 +25,7 @@ const typeDefs = gql`
 
 const resolvers = {
 	Query: {
-		test: () => `Hello World! ${Math.floor(Math.random() * 100000 + 100000)}`,
+		test: (parent, args, context, info) => `Hello World! ${Math.floor(Math.random() * args.x + args.x)}`,
 		// details: (parent, args, context, info) => {
 		// 	return Math.floor(Math.random() * 100);
 		// },
