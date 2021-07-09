@@ -81,7 +81,7 @@
 	],
 	"staff": [
 		{
-			"id": "100",
+			"id": "51",
 			"firstName": "Sally",
 			"lastName": "Burton",
 			"email": "sally@test.com",
@@ -89,7 +89,7 @@
 			"role": "ADMIN"
 		},
 		{
-			"id": "101",
+			"id": "52",
 			"firstName": "Harry",
 			"lastName": "Smith",
 			"email": "harry@test.com",
@@ -97,7 +97,7 @@
 			"role": "MANAGER"
 		},
 		{
-			"id": "101",
+			"id": "53",
 			"firstName": "Jill",
 			"lastName": "Penfold",
 			"email": "jill@test.com",
@@ -105,8 +105,8 @@
 			"role": "STAFF"
 		},
 		{
-			"id": "103",
-			"firstName": "Kate",
+			"id": "54",
+			"firstName": "Kerry",
 			"lastName": "Lewis",
 			"email": "kate@test.com",
 			"password": 123456,
