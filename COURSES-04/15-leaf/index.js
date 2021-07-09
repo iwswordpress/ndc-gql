@@ -53,7 +53,7 @@ const resolvers = {
 const server = new ApolloServer({
 	typeDefs,
 	resolvers,
-	// context can be just an object without fn
+	// context can be just an object without fn but won't be run on each request.
 	context: () => {
 		isLoggedIn: true;
 	},

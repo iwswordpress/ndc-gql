@@ -6,8 +6,8 @@
 	"scripts": {
 		"start": "nodemon index.js",
 		"dev01": "nodemon index01.js",
-		"dev02": "nodemon index02.js"
-
+		"dev02": "nodemon index02.js",
+		"dev03": "nodemon index03.js"
 	},
 	"dependencies": {
 		"apollo-server": "^2.3.1",
