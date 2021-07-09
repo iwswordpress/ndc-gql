@@ -1,10 +1,12 @@
 const { ApolloServer, gql } = require('apollo-server');
+const rnd = require('./util/rnd');
 
-const rnd = () => Math.floor(Math.random() * 100 + 1);
-
+console.log(rnd());
 const typeDefs = gql`
 	type Query {
 		greet(firstName: String!): String!
+		# greet(firstName: String): String
+		getQuery(sort: String, order: String, limit: Int): String
 		# details: Int
 		# hobbies: [Int]
 		# me: Me
@@ -23,7 +25,11 @@ const resolvers = {
 	Query: {
 		greet: (parent, args, context, info) => {
 			console.log(args.firstName);
-			return `Hello ${args.firstName}`;
+			return `Hello ${args.firstName} ${rnd()}`;
+		},
+		getQuery: (parent, args, context, info) => {
+			console.log(args.sort, args.order);
+			return `Do query with sort=${args.sort}, order=${args.order} and limit=${args.limit} ---> return dataset`;
 		},
 		// details: (parent, args, context, info) => {
 		// 	return Math.floor(Math.random() * 100);
