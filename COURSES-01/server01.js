@@ -6,7 +6,7 @@ dotEnv.config();
 
 const typeDefs = gql`
 	type Query {
-			test(x: Int): String!
+		test(x: Int): String!
 		getError: ID! # used to show errors still give 200 status code
 		# details: Int
 		# hobbies: [Int]
@@ -16,7 +16,7 @@ const typeDefs = gql`
 	# 	id: ID!
 	# 	stack: String!
 	# }
-	}
+	# }
 	# schema is included by default but shows why query is a reserved work in playground
 	schema {
 		query: Query

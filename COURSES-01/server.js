@@ -6,11 +6,11 @@ dotEnv.config();
 
 const typeDefs = gql`
 	type Query {
-		test(x: Int): String!
+		test: String!
+		testNum(x: Int): String!
 		getError: ID! # used to show errors still give 200 status code
 	}
 
-	# schema is included by default but shows why query is a reserved work in playground
 	schema {
 		query: Query
 	}
@@ -18,7 +18,8 @@ const typeDefs = gql`
 
 const resolvers = {
 	Query: {
-		test: (parent, args, context, info) => `Hello World! ${Math.floor(Math.random() * args.x + args.x)}`,
+		test: () => 'Hello NDC',
+		testNum: (parent, args, context, info) => `Hello World! ${Math.floor(Math.random() * args.x + args.x)}`,
 	},
 };
 
