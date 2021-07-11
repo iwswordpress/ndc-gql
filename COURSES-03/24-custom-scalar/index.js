@@ -9,10 +9,15 @@ const typeDefs = gql`
 		Use the custom scalar DateTime
 		"""
 		getTime: DateTime
+		getTimeString: String
 		# change to String to see effect of custom scalar type
 	}
 `;
-
+// Run this query
+// query demoCustomScalar{
+//   withCustomScalar:getTime
+//   withString:getTimeString
+// }
 const resolvers = {
 	DateTime: new GraphQLScalarType({
 		name: 'DateTime',
@@ -24,6 +29,7 @@ const resolvers = {
 
 	Query: {
 		getTime: () => new Date(),
+		getTimeString: () => new Date(),
 		// new Date() will return integer "1625670968724" but our custom scalar converts this to ISO Date
 	},
 };
