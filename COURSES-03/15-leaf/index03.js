@@ -112,4 +112,7 @@ const server = new ApolloServer({
 	},
 });
 // defaults to port 4000
-server.listen({ port: 5000 }).then(({ url }) => console.log(`Server running at port ${url}`));
+server.listen({ port: 5000 }).then(({ url }) => {
+	console.log(`Index03 running at port ${url}`);
+	console.log(`Need JSON SERVER dev03 running...`);
+});

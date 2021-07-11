@@ -1,5 +1,8 @@
 const { ApolloServer, gql } = require('apollo-server');
 
+// A cat has an carer.
+// We are not attaching a cat to a carer for this demo as we are looking at Resolving Types
+// A carer has a dog.
 const typeDefs = gql`
 	type Query {
 		cat(name: String!): Cat!
@@ -18,13 +21,13 @@ const typeDefs = gql`
 	}
 `;
 // We have the following OBJECT values in our schema:
-// Query.cat
-// Query.carer
+// Query.cat - there is a resolver.
+// Query.carer - there is a resolver.
 // Carer.Cat
 // Cat.Carer
 // all the others resolve to SCALAR
-// We will need to create resolvers for thes.
-// Without them we will get nulls.
+// We will need to create resolvers for these.
+// Without them we will get nulls for details of carer unless hard coded as in this example.
 
 const resolvers = {
 	Query: {

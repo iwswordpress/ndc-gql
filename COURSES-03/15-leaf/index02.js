@@ -19,13 +19,13 @@ const typeDefs = gql`
 `;
 
 // We have the following OBJECT values in our schema:
-// Query.cat
-// Query.carer
-// Carer.cat
-// Cat.carer
+// Query.cat - there is a resolver.
+// Query.carer - there is a resolver.
+// Carer.Cat
+// Cat.Carer
 // all the others resolve to SCALAR
-// We will need to create resolvers for thes.
-// Without them we will get nulls.
+// We will need to create resolvers for these.
+// Without them we will get nulls for details of carer unless hard coded as in this example.
 
 const resolvers = {
 	Query: {
@@ -72,34 +72,34 @@ const resolvers = {
 			return { carerName: 'Query.cat.carer', dog: 'Query.cat.carer.dog' };
 		},
 	},
-	Carer: {
-		carerName: (parent, args, ctx) => {
-			console.log('In Carer > carerName');
-			// console.log('Carer > carerName > ctx isLoggedIn ', ctx.isLoggedIn);
-			// console.log('Carer > carerName > parent', parent);
-			const catName = `Carer.carerName`;
-			return catName;
-		},
-		cat: () => {
-			console.log('In Carer > cata');
-			return {
-				catName: 'Carer.cat',
-				age: 0,
-				carer: { carerName: 'Carer.cat.carer' },
-			};
-		},
-		dog: () => {
-			console.log('In Carer > caDogName');
-			return 'Carer.dog';
-		},
-	},
+	// Carer: {
+	// 	carerName: (parent, args, ctx) => {
+	// 		console.log('In Carer > carerName');
+	// 		// console.log('Carer > carerName > ctx isLoggedIn ', ctx.isLoggedIn);
+	// 		// console.log('Carer > carerName > parent', parent);
+	// 		const catName = `Carer.carerName`;
+	// 		return catName;
+	// 	},
+	// 	cat: () => {
+	// 		console.log('In Carer > cata');
+	// 		return {
+	// 			catName: 'Carer.cat',
+	// 			age: 0,
+	// 			carer: { carerName: 'Carer.cat.carer' },
+	// 		};
+	// 	},
+	// 	dog: () => {
+	// 		console.log('In Carer > caDogName');
+	// 		return 'Carer.dog';
+	// 	},
+	// },
 };
 
 const server = new ApolloServer({
 	typeDefs,
 	resolvers,
 	context: (ctx) => {
-		console.log('ctx', ctx);
+		//	console.log('ctx', ctx.req);
 
 		return { isLoggedIn: true };
 	},
