@@ -7,6 +7,12 @@ Introductions and setting up context for day.
 
 How would we create our own API service?
 
+## COURSE-01
+
+## COURSE-02
+
+## COURSE-04
+
 10 Hello-World MODULE
 
 -  Show POST, html page.
@@ -32,7 +38,11 @@ How would we create our own API service?
 
 25 Subscriptions
 
-27 Object Type (FYI)
+26 Errors
+
+27 Middleware
+
+29 Object Type (FYI)
 
 -  A look at the older way but still useful for deeper dev work.
 

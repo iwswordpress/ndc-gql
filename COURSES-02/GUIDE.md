@@ -1,6 +1,12 @@
 ## TOP
 
-[SERVER09](#SERVER09)
+Schema and Resolver modularisation
+
+https://www.apollographql.com/blog/backend/schema-design/modularizing-your-graphql-schema-code/
+
+https://www.graphql-tools.com/docs/schema-stitching/#basic-example
+
+![gql](_images/merge-schema.png)
 
 ## SERVER01
 
@@ -71,7 +77,7 @@ Use Query Variables tab.
 
 In client HTML, the alias TaskCreated is used.
 
-![gql](/_images/06-query-variables-tab.png)
+![gql](_images/variables-tab.png)
 
 _06-add-task.html has client version._
 

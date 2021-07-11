@@ -84,4 +84,4 @@ const resolvers = {
 const PORT = process.env.PORT || 5000;
 const server = new ApolloServer({ typeDefs, resolvers });
 
-server.listen({ port: PORT }).then(({ url }) => console.log(`Server06 running at port ${url}`));
+server.listen({ port: PORT }).then(({ url }) => console.log(`Server01 running at port ${url}`));

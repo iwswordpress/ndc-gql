@@ -1,0 +1,44 @@
+"""
+Description for field shown in DOCS in playground
+Supports **multi-line** description for your [API](http://example.com)!
+https://www.apollographql.com/docs/apollo-server/api/apollo-server/#class-apolloserver
+"""
+type Query {
+	tutor(id: ID!): Tutor # inline comment
+	tutors: [Tutor]
+	course(id: ID!): Course
+	courses: [Course]
+	student(id: ID!): Student
+	students: [Student]
+}
+"""
+Details for Course type  in Playground go here...
+"""
+type Course {
+	id: ID!
+	tutorId: String
+	title: String
+	tech: String
+}
+"""
+Details for Tutor type  in Playground go here...
+"""
+type Tutor {
+	id: ID!
+	firstName: String!
+	lastName: String!
+	email: String!
+}
+
+"""
+Details for Student type  in Playground go here...
+"""
+type Student {
+	id: ID!
+	firstName: String!
+	lastName: String!
+	email: String!
+	age: Int!
+	isGraduate: Boolean
+	courses: [Int!]!
+}

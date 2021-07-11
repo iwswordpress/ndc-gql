@@ -1,0 +1,24 @@
+{
+	"name": "howto",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "nodemon index.js",
+		"dev01": "nodemon --ext js,graphql index01.js",
+		"dev02": "nodemon --ext js,graphql index02.js",
+		"dev03": "nodemon --ext js,graphql index03.js",
+		"dev04": "nodemon --ext js,graphql index04.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"nodemon": "^2.0.12"
+	},
+	"dependencies": {
+		"apollo-server": "^2.25.2",
+		"graphql": "^15.5.1"
+	}
+}
