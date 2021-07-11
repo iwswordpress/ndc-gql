@@ -13,8 +13,8 @@ const Query = {
 const Mutation = {
 	addMessage: (_root, { input }, { userId }) => {
 		const msg = `${input} from ctx.usereId: ${userId} ---> ${Math.floor(Math.random() * 20000 + 10000)}`;
-		pubSub.publish(MESSAGE_ADDED, { messageAdded: msg });
-		return msg;
+		pubSub.publish(MESSAGE_ADDED, { messageAdded: `PUBSUB: ${msg}` }); // need to send payload
+		return `MUTATION: ${msg}`; // displays in mutation playground
 	},
 };
 
