@@ -3,27 +3,32 @@
 https://www.apollographql.com/docs/apollo-server/schema/unions-interfaces/
 
 ![gql](../_images/22-unions.png)
+Result = Book | Video
+
+Unions are collections of related objects but with very different schemas.
+
+We may want to do a query across many of these objects, for example search for any Books or Videos that have GraphQL in their title.
+
+Union: A collection of related but different objects
+
+Interface: A collection of similar objects with most of their properties the same but some different ones too.
 
 ```
-	type Query {
-		search(contains: String): [Result]
-	}
-# in similar category but have different fields.
-
-	union Result = Book | Author
-```
-
-```query {
-  Books:search(contains: "test") {
-    __typename
+query {
+  Books: search(contains: "GraphQL") {
     ... on Book {
+      __typename
       bookTitle
+      page
+      price
     }
   }
-   Author:search(contains: "test") {
-    __typename
-    ... on  Author{
-      authorName
+  Videos: search(contains: "test") {
+    ... on Video {
+      __typename
+      videoTitle
+      length
+      isFree
     }
   }
 }

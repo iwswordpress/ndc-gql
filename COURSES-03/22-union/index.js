@@ -1,14 +1,18 @@
 const { ApolloServer, gql } = require('apollo-server');
 
 const typeDefs = gql`
-	union Result = Book | Author
+	union Result = Book | Video
 
 	type Book {
 		bookTitle: String
+		page: Int
+		price: Int
 	}
 
-	type Author {
-		authorName: String
+	type Video {
+		videoTitle: String
+		length: Int
+		isFree: Boolean
 	}
 
 	type Query {
@@ -22,8 +26,8 @@ const typeDefs = gql`
 const resolvers = {
 	Result: {
 		__resolveType(obj, context, info) {
-			if (obj.authorName) {
-				return 'Author';
+			if (obj.videoTitle) {
+				return 'Video';
 			}
 
 			if (obj.bookTitle) {
@@ -36,10 +40,10 @@ const resolvers = {
 	Query: {
 		search: (_, args) => {
 			// From data response
-			const bookTitle = args.contains + ' ' + Math.floor(Math.random() * 100) + ' - title of book';
-			const authorName = args.contains + ' ' + Math.floor(Math.random() * 100) + ' - name of author';
+			const bookResults = { bookTitle: 'GraphQL Apollo', page: 33, price: Math.floor(Math.random() * 100) };
+			const videoResults = { videoTitle: 'GraphQL Server', length: Math.floor(Math.random() * 100), isFree: true };
 
-			const data = [{ bookTitle }, { authorName }];
+			const data = [bookResults, videoResults];
 
 			return data;
 		},

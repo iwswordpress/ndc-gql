@@ -2,6 +2,10 @@
 
 https://www.apollographql.com/docs/apollo-server/schema/unions-interfaces/
 
+Union: A collection of related but different objects
+
+Interface: A collection of similar objects with most of their properties the same but some different ones too.
+
 Interfaces allow us to group result into one query.
 
 We have to copy all interface fields in the extended type.
