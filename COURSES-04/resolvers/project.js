@@ -10,6 +10,15 @@ module.exports = {
 		project: (_, { id }) => {
 			return projects.find((project) => project.id === id);
 		},
+		search: (_, args) => {
+			// From data response
+			const bookTitle = args.contains + ' ' + Math.floor(Math.random() * 100) + ' - title of book';
+			const authorName = args.contains + ' ' + Math.floor(Math.random() * 100) + ' - name of author';
+
+			const data = [{ bookTitle }, { authorName }];
+
+			return data;
+		},
 	},
 	Mutation: {
 		createProject: (_, { input }) => {
@@ -21,6 +30,19 @@ module.exports = {
 	Project: {
 		user: ({ userId }) => {
 			return users.find((user) => user.id === userId);
+		},
+	},
+	Result: {
+		__resolveType(obj, context, info) {
+			if (obj.authorName) {
+				return 'Author';
+			}
+
+			if (obj.bookTitle) {
+				return 'Book';
+			}
+
+			return null;
 		},
 	},
 };

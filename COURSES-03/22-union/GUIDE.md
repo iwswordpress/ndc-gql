@@ -2,7 +2,7 @@
 
 https://www.apollographql.com/docs/apollo-server/schema/unions-interfaces/
 
-![gql](/_images/22-unions.png)
+![gql](../_images/22-unions.png)
 
 ```
 	type Query {
@@ -11,6 +11,23 @@ https://www.apollographql.com/docs/apollo-server/schema/unions-interfaces/
 # in similar category but have different fields.
 
 	union Result = Book | Author
+```
+
+```query {
+  Books:search(contains: "test") {
+    __typename
+    ... on Book {
+      bookTitle
+    }
+  }
+   Author:search(contains: "test") {
+    __typename
+    ... on  Author{
+      authorName
+    }
+  }
+}
+
 ```
 
 ...on === 'if Book then show...'

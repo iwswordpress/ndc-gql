@@ -4,6 +4,7 @@ module.exports = gql`
 	extend type Query {
 		projects: [Project!]
 		project(id: ID!): Project
+		search(contains: String): [Result]
 	}
 
 	input createProjectInput {
@@ -21,5 +22,15 @@ module.exports = gql`
 		name: String!
 		completed: Boolean!
 		user: User!
+	}
+
+	union Result = Book | Author
+
+	type Book {
+		bookTitle: String
+	}
+
+	type Author {
+		authorName: String
 	}
 `;
