@@ -1,7 +1,4 @@
 const userResolver = require('./user');
-const taskResolver = require('./task');
+const projectResolver = require('./project');
 
-module.exports = [
-  userResolver,
-  taskResolver
-];
+module.exports = [userResolver, projectResolver];

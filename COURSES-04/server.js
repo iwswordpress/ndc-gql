@@ -18,8 +18,8 @@ app.use(cors());
 app.use(express.json());
 
 const apolloServer = new ApolloServer({
-  typeDefs,
-  resolvers
+	typeDefs,
+	resolvers,
 });
 
 apolloServer.applyMiddleware({ app, path: '/graphql' });
@@ -27,10 +27,9 @@ apolloServer.applyMiddleware({ app, path: '/graphql' });
 const PORT = process.env.PORT || 3000;
 
 app.use('/', (req, res, next) => {
-  res.send({ message: 'Hello' });
-})
+	res.send({ message: 'Hello' });
+});
 
 app.listen(PORT, () => {
-  console.log(`Server listening on PORT: ${PORT}`);
-  console.log(`Graphql Endpoint: ${apolloServer.graphqlPath}`);
+	console.log(`Server listening on PORT: http://localhost:${PORT}/graphql`);
 });
