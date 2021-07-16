@@ -2,32 +2,30 @@ const { gql } = require('apollo-server-express');
 
 module.exports = gql`
 	extend type Query {
-		users: [User!]
-		user(id: ID!): User
-		animals: [Animal]
+		users: [Person]
 	}
 
-	type User {
+	enum PersonType {
+		STAFF
+		TUTOR
+		STUDENT
+	}
+	interface Person {
 		id: ID!
-		name: String!
-		email: String!
-		projects: [Project!]
-	}
-	enum AllowedColor {
-		RED
-		GREEN
-		BLUE
-	}
-	interface Animal {
-		species: String
+		role: String
+		firstName: String
 	}
 	#  caps for learning purpose not how it is done
-	type Tiger implements Animal {
-		species: String
-		stripeCount: Int
+	type Student implements Person {
+		id: ID!
+		role: String
+		firstName: String
+		year: Int
 	}
-	type Lion implements Animal {
-		species: String
-		color: AllowedColor # we constrain color type
+	type Staff implements Person {
+		id: ID!
+		role: String
+		firstName: String
+		dept: String
 	}
 `;

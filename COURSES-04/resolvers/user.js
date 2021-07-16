@@ -1,29 +1,31 @@
-const { users, projects } = require('../constants');
-
 module.exports = {
 	Query: {
-		users: () => users,
-		user: (_, { id }) => users.find((user) => user.id === id),
-		animals: () => {
-			console.log('Query > animals and giving typs of species');
+		users: () => {
+			console.log('Query > users and giving typs of users');
 
 			return [
 				{
-					species: 'Tiger',
-					stripeCount: 22,
+					id: 22,
+					role: 'Student',
+					firstname: 'Sally',
+					year: 22,
 				},
-				{ species: 'Lion', color: 'RED' },
+				{
+					id: 23,
+					role: 'Student',
+					firstname: 'James',
+					year: 25,
+				},
+				{ id: 33, role: 'Staff', firstname: 'John', dept: 'IT' },
+				{ id: 34, role: 'Staff', firstname: 'Peter', dept: 'HR' },
 			];
 		},
 	},
-	Mutation: {},
-	User: {
-		projects: ({ id }) => projects.filter((project) => project.userId === id),
-	},
-	Animal: {
-		__resolveType(animal, context, info) {
-			console.log(`__resolving Animal type as ---> ${animal.species}`);
-			return animal.species;
+
+	Person: {
+		__resolveType(person, context, info) {
+			console.log(`__resolving Person type as ---> ${person.role}`);
+			return person.role;
 		},
 	},
 };
