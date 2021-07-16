@@ -10,22 +10,23 @@ const typeDefs = gql`
 	interface Person {
 		id: ID!
 		species: String
-		role: PersonType # we constrain color type
+		role: String
 		firstName: String
 	}
 	#  caps for learning purpose not how it is done
-	type Tiger implements Person {
+	type Student implements Person {
 		id: ID!
 		species: String
-		stripeCount: Int
-		role: PersonType # we constrain color type
+		role: String
 		firstName: String
+		year: Int
 	}
-	type Lion implements Person {
+	type Staff implements Person {
 		id: ID!
 		species: String
-		role: PersonType # we constrain color type
+		role: String
 		firstName: String
+		dept: String
 	}
 
 	type Query {
@@ -46,23 +47,20 @@ const resolvers = {
 			return [
 				{
 					id: 22,
-					species: 'Tiger',
-					stripeCount: 22,
+					species: 'Student',
+					role: 'STUDENT',
+					firstname: 'Sally',
+					year: 22,
 				},
-				{ id: 33, species: 'Lion', role: 'STAFF' },
+				{ id: 33, species: 'Staff', role: 'STAFF', firstname: 'John', dept: 'IT' },
 			];
 		},
 	},
-	// We need this extra resolver function to let GQL know which type of Animal it is working with
-	/*
-THIS WILL BE ERROR WITHOUT 
- "message": "Abstract type Animal must resolve to an Object type at runtime for field Query.animals with value { species: \"Tiger\", stripeCount: 22 }, received \"undefined\". Either the Animal type should provide a \"resolveType\" function or each possible type should provide an \"isTypeOf\" function.",
 
-	*/
 	Person: {
-		__resolveType(animal, context, info) {
-			console.log(`__resolving Animal type as ---> ${animal.species}`);
-			return animal.species;
+		__resolveType(person, context, info) {
+			console.log(`__resolving Person type as ---> ${person.species}`);
+			return person.species;
 		},
 	},
 };
@@ -75,3 +73,27 @@ const server = new ApolloServer({
 server.listen({ port: 5000 }).then(({ url }) => {
 	console.log(`🚀 Server ready at ${url}`);
 });
+/*
+query {
+  Students: users {
+    ... on Student {
+      __typename
+      id
+      firstName
+      role
+      species
+      year
+    }
+  }
+  Staff: users {
+    ... on Staff {
+      __typename
+      id
+      firstName
+      role
+      species
+      dept
+    }
+  }
+}
+*/
