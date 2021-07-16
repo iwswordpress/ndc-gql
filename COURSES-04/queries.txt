@@ -1,0 +1,21 @@
+query {
+   users {
+    ... on Student {
+      __typename
+      id
+      firstName
+      role
+      year
+      gradStatus
+    }
+    ... on Staff {
+      __typename
+      id
+      firstName
+      role
+      dept
+    }
+  }
+}
+
+
