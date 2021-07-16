@@ -1,31 +1,53 @@
 ## TOP
 
-[SERVER09](#SERVER09)
-
 ## SERVER01
 
-Set up inital test() and view in html page.
-
-See response in NETWORK TAB.
-
-Use getError() to show we still get 200. If there is error on way to API then on emay get 400s etc.
-
-Only one anonymous function per request so use aliases.
-
-CTRL + ENTER in one query will fire that.
+-  Send back null for hello and it works.
+-  Remove all resolvers and it works.
+-  test(x: Int) has optional argument. use test(x: Int!) and see difference with no argument
+-  See response in NETWORK TAB - always 200 unless client side error.
+-  Use getError() to show we still get 200. If there is error on way to API then on emay get 400s etc.
+-  CTRL + ENTER in one query will fire that...or else play button will show two queries...
 
 ```
-query two { # two is named query
-  result: test # return named result not test
+query MyName {
+  result: test(x: 22)
+}
+query MyName2 {
+  result: test(x: 22)
 }
 ```
 
-One can rename tabs which default to query.
+-  One can change shape of returned data with aliases at field level:
 
-Settings:
+```
+query {
+  me {
+    id
+    skills: stack
+  }
+}
+```
 
+![gql](/_images/null-list.png)
+
+-  Difference of lists and ! with data...['a','b', null], null, []etc
+-  use of Me return type and how that works.
+-  'api' shows how we can use GraphQL as wrapper around our API. (In Auth we will see how we can pass on headers to API to do Auth).
+
+## Settings:
+
+-  One can rename tabs which default to query.
 -  Polling by default every 2 seconds.
 -  One can change format etc.
+
+## Introspection
+
+-  See introspection.md for queries. GraphQL designed to be self-explaining.
+
+## Client HTML example
+
+-  We will see this later
 
 [TOP](#TOP)
 
@@ -37,7 +59,7 @@ Set up Students and Projects.
 
 Return all projects and students.
 
-Breaks when wanting user sub query.
+Breaks when wanting user sub query. We need to have a foreigh key type appraach. Note we could resolve all the data in the resolver but that would cause overfetching when the query does not ask for user details rather. It is best to let each field and type do their own resolving.
 
 [TOP](#TOP)
 
