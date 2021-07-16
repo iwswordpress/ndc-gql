@@ -16,14 +16,12 @@ const typeDefs = gql`
 	#  caps for learning purpose not how it is done
 	type Student implements Person {
 		id: ID!
-
 		role: String
 		firstName: String
 		year: Int
 	}
 	type Staff implements Person {
 		id: ID!
-
 		role: String
 		firstName: String
 		dept: String
