@@ -10,6 +10,11 @@ const typeDefs = gql`
 		Tutor
 		Staff
 	}
+	enum GradStatus {
+		UNDERGRAD
+		GRAD
+		POSTGRAD
+	}
 	interface Person {
 		id: ID!
 		role: PersonType
@@ -21,7 +26,7 @@ const typeDefs = gql`
 		role: PersonType
 		firstName: String
 		year: Int
-		status: String
+		gradStatus: GradStatus
 	}
 	type Staff implements Person {
 		id: ID!
