@@ -9,21 +9,21 @@ const typeDefs = gql`
 	}
 	interface Person {
 		id: ID!
-		species: String
+
 		role: String
 		firstName: String
 	}
 	#  caps for learning purpose not how it is done
 	type Student implements Person {
 		id: ID!
-		species: String
+
 		role: String
 		firstName: String
 		year: Int
 	}
 	type Staff implements Person {
 		id: ID!
-		species: String
+
 		role: String
 		firstName: String
 		dept: String
@@ -47,12 +47,18 @@ const resolvers = {
 			return [
 				{
 					id: 22,
-					species: 'Student',
-					role: 'STUDENT',
+					role: 'Student',
 					firstname: 'Sally',
 					year: 22,
 				},
-				{ id: 33, species: 'Staff', role: 'STAFF', firstname: 'John', dept: 'IT' },
+				{
+					id: 23,
+					role: 'Student',
+					firstname: 'James',
+					year: 25,
+				},
+				{ id: 33, role: 'Staff', firstname: 'John', dept: 'IT' },
+				{ id: 34, role: 'Staff', firstname: 'Peter', dept: 'HR' },
 			];
 		},
 	},
@@ -60,7 +66,7 @@ const resolvers = {
 	Person: {
 		__resolveType(person, context, info) {
 			console.log(`__resolving Person type as ---> ${person.species}`);
-			return person.species;
+			return person.role;
 		},
 	},
 };
@@ -81,19 +87,17 @@ query {
       id
       firstName
       role
-      species
+
       year
     }
-  }
-  Staff: users {
     ... on Staff {
       __typename
       id
       firstName
       role
-      species
       dept
     }
   }
 }
+
 */
