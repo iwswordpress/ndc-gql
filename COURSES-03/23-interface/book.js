@@ -51,7 +51,7 @@ const resolvers = {
 	},
 	Query: {
 		schoolBooks: () => {
-			return [tb, tb];
+			return [tb, cb];
 		},
 	},
 };
