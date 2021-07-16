@@ -6,25 +6,26 @@ const typeDefs = gql`
 	}
 
 	enum PersonType {
-		STAFF
-		TUTOR
-		STUDENT
+		Student
+		Tutor
+		Staff
 	}
 	interface Person {
 		id: ID!
-		role: String
+		role: PersonType
 		firstName: String
 	}
 	#  caps for learning purpose not how it is done
 	type Student implements Person {
 		id: ID!
-		role: String
+		role: PersonType
 		firstName: String
 		year: Int
+		status: String
 	}
 	type Staff implements Person {
 		id: ID!
-		role: String
+		role: PersonType
 		firstName: String
 		dept: String
 	}

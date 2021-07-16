@@ -3,25 +3,31 @@ const { ApolloServer, gql } = require('apollo-server');
 const typeDefs = gql`
 	#  introducing enum - constraint on possilbe values
 	enum PersonType {
-		STAFF
-		TUTOR
-		STUDENT
+		Student
+		Tutor
+		Staff
+	}
+	enum GradStatus {
+		UNDERGRAD
+		GRAD
+		POSTGRAD
 	}
 	interface Person {
 		id: ID!
-		role: String
+		role: PersonType
 		firstName: String
 	}
 	#  caps for learning purpose not how it is done
 	type Student implements Person {
 		id: ID!
-		role: String
+		role: PersonType
 		firstName: String
 		year: Int
+		gradStatus: GradStatus
 	}
 	type Staff implements Person {
 		id: ID!
-		role: String
+		role: PersonType
 		firstName: String
 		dept: String
 	}
@@ -47,12 +53,14 @@ const resolvers = {
 					role: 'Student',
 					firstname: 'Sally',
 					year: 22,
+					gradStatus: 'GRAD', // needs to be String not ENUM value
 				},
 				{
 					id: 23,
 					role: 'Student',
 					firstname: 'James',
 					year: 25,
+					gradStatus: 'POSTGRAD',
 				},
 				{ id: 33, role: 'Staff', firstname: 'John', dept: 'IT' },
 				{ id: 34, role: 'Staff', firstname: 'Peter', dept: 'HR' },

@@ -29,3 +29,23 @@ module.exports = {
 		},
 	},
 };
+/*
+query {
+   users {
+    ... on Student {
+      __typename
+      id
+      firstName
+      role
+
+      year
+    }
+    ... on Staff {
+      __typename
+      id
+      firstName
+      role
+      dept
+    }
+  }
+}*/
