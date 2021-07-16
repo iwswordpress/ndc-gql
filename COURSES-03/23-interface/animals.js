@@ -2,34 +2,26 @@ const { ApolloServer, gql } = require('apollo-server');
 
 const typeDefs = gql`
 	#  introducing enum - constraint on possilbe values
-	enum PersonType {
-		STAFF
-		TUTOR
-		STUDENT
+	enum AllowedColor {
+		RED
+		GREEN
+		BLUE
 	}
-	interface Person {
-		id: ID!
+	interface Animal {
 		species: String
-		role: PersonType # we constrain color type
-		firstName: String
 	}
 	#  caps for learning purpose not how it is done
-	type Tiger implements Person {
-		id: ID!
+	type Tiger implements Animal {
 		species: String
 		stripeCount: Int
-		role: PersonType # we constrain color type
-		firstName: String
 	}
-	type Lion implements Person {
-		id: ID!
+	type Lion implements Animal {
 		species: String
-		role: PersonType # we constrain color type
-		firstName: String
+		color: AllowedColor # we constrain color type
 	}
 
 	type Query {
-		users: [Person]
+		animals: [Animal]
 	}
 
 	# schema is included by default but shows why query is a reserved work in playground
@@ -40,16 +32,15 @@ const typeDefs = gql`
 const resolvers = {
 	// This is where the usual return of data goes...
 	Query: {
-		users: () => {
+		animals: () => {
 			console.log('Query > animals and giving typs of species');
 
 			return [
 				{
-					id: 22,
 					species: 'Tiger',
 					stripeCount: 22,
 				},
-				{ id: 33, species: 'Lion', role: 'STAFF' },
+				{ species: 'Lion', color: 'RED' },
 			];
 		},
 	},
@@ -59,7 +50,7 @@ THIS WILL BE ERROR WITHOUT
  "message": "Abstract type Animal must resolve to an Object type at runtime for field Query.animals with value { species: \"Tiger\", stripeCount: 22 }, received \"undefined\". Either the Animal type should provide a \"resolveType\" function or each possible type should provide an \"isTypeOf\" function.",
 
 	*/
-	Person: {
+	Animal: {
 		__resolveType(animal, context, info) {
 			console.log(`__resolving Animal type as ---> ${animal.species}`);
 			return animal.species;
