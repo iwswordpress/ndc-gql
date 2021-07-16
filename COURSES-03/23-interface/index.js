@@ -9,7 +9,6 @@ const typeDefs = gql`
 	}
 	interface Person {
 		id: ID!
-
 		role: String
 		firstName: String
 	}

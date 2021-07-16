@@ -1,6 +1,12 @@
 ## 23-interface
 
+### We need each type ot have at least one different field so that the Person type can be resolved to Staff or Student...
+
+### Opportunity for fragments
+
 https://www.apollographql.com/docs/apollo-server/schema/unions-interfaces/
+
+![gql](../_images/23-interface-query.png)
 
 Union: A collection of related but different objects
 
@@ -23,6 +29,7 @@ It is an appropriate introduction of ENUMs:
 		BLUE
 	}
 ```
+
 
 When passing in as values in queries, us RED not 'RED'.
 

@@ -10,7 +10,7 @@ const typeDefs = gql`
 		"""
 		getTime: DateTime
 		getTimeString: String
-		# change to String to see effect of custom scalar type
+		
 	}
 `;
 // Run this query
