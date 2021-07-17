@@ -2,15 +2,15 @@
 
 Schema and Resolver modularisation
 
-https://www.apollographql.com/blog/backend/schema-design/modularizing-your-graphql-schema-code/
+We use two different methods for local schema merging.
 
-https://www.graphql-tools.com/docs/schema-stitching/#basic-example
+The first in root uses 'extend'.
 
-![gql](_images/merge-schema.png)
+The second in the mergeSchemas folder uses @graphql-tools/merge - https://www.graphql-tools.com/docs/schema-merging
 
 ## SERVER01
 
-This is server06 from V1
+This is server06 from COURSES-01
 
 [TOP](#TOP)
 
@@ -22,15 +22,12 @@ Move resolvers to own folder.
 
 ## SERVER03
 
-We do schema stitching/merging using a simple strategy.
-
-For more involved ways with tools:
-
-https://www.graphql-tools.com/docs/schema-merging
+We do schema merging using a simple strategy.
 
 There can only be one root Query.
 
 We can extend type User but we can not have an empty base or extend type, so we use a placeholder \_: String to prevent error.
+
 [TOP](#TOP)
 
 ## SERVER04

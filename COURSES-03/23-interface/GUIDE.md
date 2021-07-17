@@ -34,9 +34,18 @@ It is an appropriate introduction of ENUMs:
 		POSTGRAD
 	}
 ```
+Enumeration types:
 
+Also called Enums, enumeration types are a special kind of scalar that is restricted to a particular set of allowed values. This allows you to:
 
-When passing in as values in queries, us GRAD not 'GRAD' but return value from resolver needs to be 'GRAD'.
+- Validate that any arguments of this type are one of the allowed values
+- Communicate through the type system that a field will always be one of a finite set of values
+
+When passing in as values in hard coded 'graphql' queries, use GRAD not 'GRAD' but return value from resolver needs to be 'GRAD'.
+
+??? When passing in via Query tab or in client code, 'GRAD' will be needed. ?????
+
+Query
 
 We can use this to resolve Interface types if the names match up but it is really about being able to differentiate between types of interfaces.
 
