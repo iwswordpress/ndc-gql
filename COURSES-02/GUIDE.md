@@ -22,7 +22,7 @@ Move resolvers to own folder.
 
 ## SERVER03
 
-We do schema stitchingmerging using a simple strategy.
+We do schema stitching/merging using a simple strategy.
 
 For more involved ways with tools:
 
@@ -56,7 +56,7 @@ getTaskById query
 Same for users. If one has a function in Schema.Query but not defined in resolves the app won't crash until that function is called.
 
 ids are serialized to string type.
-
+npm run dev02
 [TOP](#TOP)
 
 ## SERVER05
