@@ -111,6 +111,8 @@ Same for students. If one has a function in Schema.Query but not defined in reso
 
 ids are serialized to string type.
 
+client > 04-get-project-by-id.html to see HTML client view.
+
 [TOP](#TOP)
 
 ## SERVER05
