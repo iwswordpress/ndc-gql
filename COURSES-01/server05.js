@@ -5,7 +5,9 @@ const { projects } = require('./data/projects');
 const dotEnv = require('dotenv');
 
 dotEnv.config();
-
+function rnd(x) {
+	return Math.floor(Math.random() * x + x);
+}
 const typeDefs = gql`
 	type Query {
 		students: [Student!]

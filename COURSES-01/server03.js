@@ -40,12 +40,12 @@ const resolvers = {
 			return projects;
 		},
 	},
-	Project: {
-		name: () => {
-			console.log(`---> Project.name returning TEST Project ${Math.floor(Math.random() * 100000 + 100000)}`);
-			return `TEST Project - ${Math.floor(Math.random() * 100000 + 100000)}`;
-		},
-	},
+	// Project: {
+	// 	name: () => {
+	// 		console.log(`---> Project.name returning TEST Project ${Math.floor(Math.random() * 100000 + 100000)}`);
+	// 		return `TEST Project - ${Math.floor(Math.random() * 100000 + 100000)}`;
+	// 	},
+	// },
 };
 
 const PORT = process.env.PORT || 5000;

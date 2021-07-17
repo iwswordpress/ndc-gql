@@ -65,21 +65,43 @@ Breaks when wanting user sub query. We need to have a foreigh key type appraach.
 
 ## SERVER03
 
-We can overwrite project.name with a resolver for name
+```
+{
+  projects {
+    id
+    name
+    completed
+  }
+}
+```
+
+We can overwrite project.name with a resolver for name - uncomment out:
+
+```
+Project: {
+		name: () => {
+			console.log(`---> Project.name returning TEST Project ${Math.floor(Math.random() * 100000 + 100000)}`);
+			return `TEST Project - ${Math.floor(Math.random() * 100000 + 100000)}`;
+		},
+	},
+```
 
 [TOP](#TOP)
 
 ## SERVER04
 
-getProjectById query
+We can now resolve child projects when we carry ouy the following query:
 
 ```
 {
-  getProjectById(id: 1) {
+  students {
     id
     name
-    completed
-
+    projects {
+      id
+      name
+      completed
+    }
   }
 }
 

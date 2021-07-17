@@ -5,3 +5,19 @@ query{
   One:hello
   Two:hello
 }
+
+
+===============================================================
+mutation AddProject($input:CreateProjectInput){
+  createProject(input:$input){
+    __typename
+    id
+    name
+    completed
+  }
+}
+QUERY VARIABLES TAB
+{
+  "input": {"name": "NEW PORJECT","completed": false}
+}
+===============================================================
