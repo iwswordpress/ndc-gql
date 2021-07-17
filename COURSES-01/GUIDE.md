@@ -103,7 +103,7 @@ Use Query Variables tab.
 
 In client HTML, the alias ProjectCreated is used.
 
-![gql](/_images/05-query-variables-tab.png)
+![gql](_images/05-query-variables-tab.png)
 
 _05-add-project.html has client version._
 

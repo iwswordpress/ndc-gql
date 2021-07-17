@@ -2,8 +2,6 @@ const { ApolloServer, gql } = require('apollo-server');
 const { students } = require('./data/students');
 const { projects } = require('./data/projects');
 
-const { rnd } = require('./util');
-
 const dotEnv = require('dotenv');
 
 dotEnv.config();
