@@ -30,11 +30,12 @@ We can extend type User but we can not have an empty base or extend type, so we 
 
 [TOP](#TOP)
 
-## SERVER04
+## SERVER04 in mergbeSchemas folder
 
 This is in the mergeSchemas folder.
 
 It does not have resolvers but is an example of how we can use @graphql-tools/merge to merge schemas.
 
 Go into folder and run node server04
+
 [TOP](#TOP)
