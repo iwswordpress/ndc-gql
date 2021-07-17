@@ -131,6 +131,8 @@ In client HTML, the alias ProjectCreated is used.
 
 _05-add-project.html has client version._
 
+Lets go to COURSE-03 for 15-leaf where we will go through this parent-child relationship again and in more detail.
+
 [TOP](#TOP)
 
 [TOP](#TOP)
