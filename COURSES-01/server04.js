@@ -52,12 +52,6 @@ const resolvers = {
 		},
 	},
 
-	Project: {
-		// name: () => {
-		// 	console.log(`---> Task.name returning TEST TASK ${Math.floor(Math.random() * 100000 + 100000)}`);
-		// 	return `TEST TASK - ${Math.floor(Math.random() * 100000 + 100000)}`;
-		// },
-	},
 	Student: {
 		projects: (parent) => {
 			console.log('In Student.user');

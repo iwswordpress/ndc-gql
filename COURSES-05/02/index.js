@@ -46,6 +46,22 @@ const db = {
 			hours: 25,
 		},
 	],
+	tutors: [
+		{
+			id: '1',
+			firstName: 'John',
+			lastName: 'Doe',
+			email: 'john@test.com',
+			password: 123456,
+		},
+		{
+			id: '2',
+			firstName: 'Jane',
+			lastName: 'Doe',
+			email: 'jane@test.com',
+			password: 123456,
+		},
+	],
 };
 
 // create the schema
@@ -57,15 +73,22 @@ const schema = gql(`
 	}
  type Course {
      id: ID!
-     tutorId: String!
+     tutorId: Tutor!
      title: String!
      tech: TechType!
      hours: Int!
+  }
+  type Tutor {
+    id: ID!
+    firstName: String!
+    lastName: String!
+    email: String!
   }
   type Query {
     courseByTech(tech:TechType!): [Course]
     courseById(id:ID!): Course
 		courseAPI:Course
+    tutorById(id: ID!): Tutor
   }
   type Mutation {
     insertCourse( tutorId: ID!, title: String!,hours: Int!, tech:TechType!): [Course]!
@@ -86,12 +109,20 @@ const resolvers = {
 		courseAPI: async (parent, args, context, info) => {
 			return await context.dataSources.courseDataAPI.getCourse();
 		},
+		tutorById: (parent, args, context, info) => {
+			return db.tutors.filter((tutor) => tutor.id === args.id)[0];
+		},
 	},
 	Course: {
 		title: (parent, args, context, info) => {
 			return db.courses.filter((course) => course.title === parent.title)[0].title;
 		},
+		tutorId: (course, args, ctx, info) => {
+			// console.log(`Course parent having tutor:Tutor resolved`, course);
+			return { id: '11111', firstName: 'A', lastName: 'Tutor', email: 'x@test.com' };
+		},
 	},
+
 	Mutation: {
 		insertCourse: (_, { title, tutorId, hours, tech }) => {
 			db.courses.push({
@@ -110,7 +141,7 @@ const dbConnection = () => {
 	return new Promise((resolve) => {
 		setTimeout(() => {
 			resolve(db);
-		}, 2000);
+		}, 200);
 	});
 };
 

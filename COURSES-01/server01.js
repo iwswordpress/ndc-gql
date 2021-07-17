@@ -6,7 +6,7 @@ dotEnv.config();
 
 const typeDefs = gql`
 	type Query {
-		hello: String #  comment
+		hello: String # comment
 		test(x: Int!): String!
 		"""
 		This is field level comment in docs - better example in server02 as there are more root types.
@@ -33,12 +33,12 @@ const typeDefs = gql`
 const resolvers = {
 	Query: {
 		test: (parent, args, context, info) => `Hello World! ${Math.floor(Math.random() * args.x + args.x)}`,
-		hello: () => null, // change to return a string
+		hello: () => 'null', // change to return a string
 		// details: (parent, args, context, info) => {
 		// 	return Math.floor(Math.random() * 100);
 		// },
 		// api: (parent, args, context, info) => {
-		// 	return [rnd(), rnd()];
+		// 	return ['a'];
 		// },
 		// me: (parent, args, context, info) => {
 		// 	return { id: 1, stack: 'JS' };

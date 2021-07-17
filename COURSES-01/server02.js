@@ -19,13 +19,7 @@ const typeDefs = gql`
 		id comments here
 		"""
 		id: ID! # general comment
-		"""
-		name comments here
-		"""
 		name: String!
-		"""
-		email comments here
-		"""
 		email: String!
 		projects: [Project!]
 	}
@@ -34,7 +28,6 @@ const typeDefs = gql`
 		id: ID!
 		name: String!
 		completed: Boolean!
-		student: Student!
 	}
 
 	schema {

@@ -73,6 +73,12 @@ const resolvers = {
 			return allProjects;
 		},
 	},
+	Project: {
+		name: () => {
+			console.log(`---> Task.name returning TEST TASK ${Math.floor(Math.random() * 100000 + 100000)}`);
+			return `TEST TASK - ${Math.floor(Math.random() * 100000 + 100000)}`;
+		},
+	},
 	Mutation: {
 		createProject: (parent, args) => {
 			console.log('input', args.input);
