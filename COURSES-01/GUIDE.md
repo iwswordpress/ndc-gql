@@ -85,7 +85,7 @@ getProjectById query
 
 ```
 
-Same for students. If one has a function in Schema.Query but not defined in resolves the app won't crash until that function is called.
+Same for students. If one has a function in Schema.Query but not defined in resolvers the app won't crash until that function is called.
 
 ids are serialized to string type.
 
@@ -103,9 +103,9 @@ Use Query Variables tab.
 
 In client HTML, the alias ProjectCreated is used.
 
-![gql](/_images/06-query-variables-tab.png)
+![gql](/_images/05-query-variables-tab.png)
 
-_06-add-task.html has client version._
+_05-add-project.html has client version._
 
 [TOP](#TOP)
 
