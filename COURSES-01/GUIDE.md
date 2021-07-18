@@ -29,7 +29,7 @@ query {
 }
 ```
 
-![gql](/_images/null-list.png)
+![gql](_images/null-list.png)
 
 -  Difference of lists and ! with data...['a','b', null], null, []etc
 -  use of Me return type and how that works.
