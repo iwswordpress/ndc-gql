@@ -1,0 +1,30 @@
+{
+  partsById(id: 2) {
+    id
+    name
+    cars {
+      brand
+      color
+      parts {
+        id
+        name
+        cars{
+          id
+          doors
+        }
+      }
+    }
+  }
+}
+
+{
+  partsById(id: 1) {
+    id
+    name
+    cars {
+      brand(upper:true)
+      color
+      
+    }
+  }
+}
