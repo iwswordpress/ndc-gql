@@ -17,7 +17,7 @@ module.exports = {
 				console.log('Query.currentUser.args', args);
 				console.log('Query.currentUser.ctx', ctx);
 
-				return { id: args.id, firstName: ctx.user.firstName, role: ctx.user.role, token: ctx.user.token };
+				return { id: ctx.user.id, firstName: ctx.user.firstName, role: ctx.user.role, token: ctx.user.token };
 			}),
 		),
 	},

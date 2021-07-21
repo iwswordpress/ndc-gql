@@ -1,4 +1,4 @@
-const { ApolloServer, AuthenticationError } = require('apollo-server');
+const { ApolloServer } = require('apollo-server');
 const typeDefs = require('./typedefs');
 const resolvers = require('./resolvers');
 
@@ -15,8 +15,8 @@ const server = new ApolloServer({
 			user: {
 				id: 1,
 				firstName: 'maurice',
-				token: 'TOKEN-MAURICE',
-				role: 'GUEST',
+				token: 'TOKEN-LARRY',
+				role: 'ADMIN',
 				customNDCHeader: req.headers.ndc,
 			},
 		};

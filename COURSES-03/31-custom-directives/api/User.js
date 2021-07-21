@@ -1,33 +1,28 @@
 const users = [
 	{
 		id: 1,
-		token: 'token-for-maurice',
-		firstName: 'Maurice',
+		token: 'token-for-larry',
+		firstName: 'Larry',
 		lastName: 'Moss',
-		email: 'maurice@moss.com',
+		email: 'larry@site.com',
 		password: 'abcdefg',
 		role: 'ADMIN',
 	},
 	{
 		id: 2,
-		token: 'token-for-roy',
-		firstName: 'Roy',
+		token: 'token-for-rita',
+		firstName: 'Rita',
 		lastName: 'Trenneman',
-		email: 'roy@trenneman.com',
-		password: 'imroy',
+		email: 'rita@site.com',
+		password: '123456',
 		role: 'USER',
 	},
 	{
 		id: 2,
 		token: 'token-for-jen',
 		firstName: 'Jen',
-		lastName: 'Barber',
-		email: 'jen@barber.com',
-		password: 'qwerty',
+		email: 'jen@site.com',
+		password: '123456',
 		role: 'GUEST',
 	},
 ];
-
-module.exports = {
-	getUserByToken: (token) => users.find((user) => user.token === token),
-};
