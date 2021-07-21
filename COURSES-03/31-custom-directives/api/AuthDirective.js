@@ -6,12 +6,12 @@ class AuthDirective extends SchemaDirectiveVisitor {
 		const requiredRole = this.args.requires;
 		const originalResolve = field.resolve || defaultFieldResolver;
 
-		field.resolve = async function (...args) {
-			// ...args === parent, args, ctx, info
+		field.resolve = async function (parent, args, context, info) {
+			// ...args can be used and then queryId = args[1 ].id and context = args[2]
+			// then in apply bind we can just pass args rather than [parent, args. context, info]
 			let data;
-			const queryId = args[1].id;
+			const queryId = args.id;
 			console.log('queryId', queryId);
-			const context = args[2];
 
 			const id = context.user.id || 0;
 			const firstName = context.user.firstName || {};
@@ -45,7 +45,7 @@ class AuthDirective extends SchemaDirectiveVisitor {
 			}
 			if (!isCurrentUser || !isAuthorrized) {
 				console.log(`${id} ${firstName} is current owner.`);
-				data = await originalResolve.apply(this, args);
+				data = await originalResolve.apply(this, [parent, args, context, info]);
 			}
 
 			return data;

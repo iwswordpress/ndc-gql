@@ -1,7 +1,7 @@
 const resolvers = {
 	Query: {
 		currentUser: (parent, args, ctx) => {
-			console.log('REOSLVERS--------------');
+			console.log('RESOLVERS--------------');
 			console.log('Query.currentUser.parent', parent);
 			console.log('Query.currentUser.args', args);
 			console.log('Query.currentUser.ctx', ctx);
