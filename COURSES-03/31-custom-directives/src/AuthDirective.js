@@ -3,8 +3,8 @@ const { defaultFieldResolver } = require('graphql');
 
 class AuthDirective extends SchemaDirectiveVisitor {
 	visitFieldDefinition(field) {
-		const requiredRole = this.args.requires;
-		const originalResolve = field.resolve || defaultFieldResolver;
+		const requiredRole = this.args.requires; // this is passed in Schema: currentUser(id: Int): User @auth(requires: ADMIN)
+		const originalResolve = field.resolve || defaultFieldResolver; // just in case there is no resolver
 
 		field.resolve = async function (parent, args, context, info) {
 			// ...args can be used and then queryId = args[1 ].id and context = args[2]
@@ -33,6 +33,7 @@ class AuthDirective extends SchemaDirectiveVisitor {
 				customNDCHeader,
 			);
 			if (context.user.token.substring(0, 5) == 'TOKEN') {
+				// token = 'TOKEN-NAME' so a demo way of seeing if user is AUTHENTICATED
 				console.log('+++++ AUTHENTICATION +++++');
 				console.log(`ID: ${id} - ${firstName} has a valid TOKEN...`);
 				data = await originalResolve.apply(this, [parent, args, context, info]);

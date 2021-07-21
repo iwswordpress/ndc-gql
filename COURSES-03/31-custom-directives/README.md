@@ -1,6 +1,6 @@
-Inspired by [this blog post](https://jkettmann.com/authorization-with-graphql-and-custom-directives).
-
 ## How to install and run the project
+
+https://www.npmjs.com/package/graphql-custom-directives
 
 Custom header to pass on...
 
