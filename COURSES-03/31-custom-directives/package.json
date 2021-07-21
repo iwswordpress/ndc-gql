@@ -1,0 +1,36 @@
+{
+  "name": "authorization-with-graphql-and-custom-directives",
+  "version": "0.1.0",
+  "description": "Example repository accompanying a tutorial about access-control with GraphQL and directives",
+  "keywords": [
+    "graphql",
+    "auth",
+    "authorization",
+    "directive",
+    "access-control"
+  ],
+  "author": {
+    "name": "Johannes Kettmann",
+    "email": "johannes@jkettmann.com",
+    "url": "https://jkettmann.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jkettmann/authorization-with-graphql-and-custom-directives.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "7.5.5",
+    "@babel/preset-env": "^7.6.0",
+    "apollo-server": "^2.9.2",
+    "babel-loader": "8.0.6",
+    "graphql": "^14.5.4",
+    "nodemon": "^1.19.1"
+  },
+  "scripts": {
+    "start": "nodemon --watch ./api --exec \"babel-node --inspect --presets=@babel/env ./api/index.js\""
+  },
+  "devDependencies": {
+    "@babel/node": "^7.5.5"
+  }
+}
