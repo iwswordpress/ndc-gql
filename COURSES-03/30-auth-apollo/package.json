@@ -1,0 +1,17 @@
+{
+	"name": "30-auth-apollo",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"scripts": {
+		"start": "node src/index.js",
+		"dev": "nodemon src/index.js"
+	},
+	"dependencies": {
+		"apollo-server": "^2.9.6",
+		"graphql": "^14.5.4"
+	},
+	"devDependencies": {
+		"nodemon": "^1.19.4"
+	}
+}

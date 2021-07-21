@@ -1,8 +1,7 @@
-https://www.youtube.com/watch?v=5ydCPvrWRmg
-
-
+GraphQL middleware library - https://www.youtube.com/watch?v=5ydCPvrWRmg
 
 We will see this in 30-auth-apollo
+
 ```
 const authenticated = (next) => (root, args, context, info) => {
 	if (!context.user) {
