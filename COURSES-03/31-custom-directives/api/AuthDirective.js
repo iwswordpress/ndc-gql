@@ -1,36 +1,56 @@
-import { AuthenticationError, SchemaDirectiveVisitor } from 'apollo-server';
-import { defaultFieldResolver } from 'graphql';
-
-const assertOwner = (typename, user, data) => {
-  if (typename === 'Message' && user.id !== data.receiverId) {
-    throw new AuthenticationError('You need to be the receiver of the message');
-  }
-}
+const { AuthenticationError, SchemaDirectiveVisitor } = require('apollo-server');
+const { defaultFieldResolver } = require('graphql');
 
 class AuthDirective extends SchemaDirectiveVisitor {
-  visitFieldDefinition(field) {
-    const requiredRole = this.args.requires;
-    const originalResolve = field.resolve || defaultFieldResolver;
+	visitFieldDefinition(field) {
+		const requiredRole = this.args.requires;
+		const originalResolve = field.resolve || defaultFieldResolver;
 
-    field.resolve = async function(...args) {
-      const context = args[2];
-      const user = context.user || {};
-      const requiresOwner = requiredRole === 'OWNER';
-      const isUnauthorized = !requiresOwner && user.role !== requiredRole;
+		field.resolve = async function (...args) {
+			// ...args === parent, args, ctx, info
+			let data;
+			const queryId = args[1].id;
+			console.log('queryId', queryId);
+			const context = args[2];
 
-      if (isUnauthorized) {
-        throw new AuthenticationError(`You need following role: ${requiredRole}`);
-      }
+			const id = context.user.id || 0;
+			const firstName = context.user.firstName || {};
+			const role = context.user.role || {};
+			const token = context.user.token || {};
+			const customNDCHeader = context.user.customNDCHeader;
+			const isCurrentUser = context.id === queryId;
+			console.log('CUSTOM DIRECTIVES----------------');
+			console.log(
+				'AUTH DIRECTIVE > USER:',
+				'\nid',
+				id,
+				'\nfirstName',
+				firstName,
+				'\nrole',
+				role,
+				'\ntoken',
+				token,
+				'\nCustomNDCHeader',
+				customNDCHeader,
+				'\nisCurrentUser',
 
-      const data = await originalResolve.apply(this, args);
+				isCurrentUser,
+			);
 
-      if (requiresOwner) {
-        assertOwner(field.type.name, user, data);
-      }
+			const isAuthorized = role === 'ADMIN';
+			if (!isAuthorized) {
+				throw new AuthenticationError(`You need following role: ${requiredRole}`);
+			} else {
+				console.log(`${firstName} with role of ${role} is AUTHORIZED`);
+			}
+			if (!isCurrentUser || !isAuthorrized) {
+				console.log(`${id} ${firstName} is current owner.`);
+				data = await originalResolve.apply(this, args);
+			}
 
-      return data;
-    }
-  }
+			return data;
+		};
+	}
 }
 
-export default AuthDirective;
+module.exports = AuthDirective;

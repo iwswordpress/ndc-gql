@@ -1,10 +1,14 @@
 const resolvers = {
-  User: {
-    message: (user, args, context) => context.Message.getById(args.id)
-  },
-  Query: {
-    currentUser: (parent, args, context) => context.user
-  },
+	Query: {
+		currentUser: (parent, args, ctx) => {
+			console.log('REOSLVERS--------------');
+			console.log('Query.currentUser.parent', parent);
+			console.log('Query.currentUser.args', args);
+			console.log('Query.currentUser.ctx', ctx);
+
+			return { id: args.id, firstName: ctx.user.firstName, role: ctx.user.role, token: ctx.user.token };
+		},
+	},
 };
 
-export default resolvers;
+module.exports = resolvers;

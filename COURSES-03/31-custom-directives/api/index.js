@@ -1,21 +1,21 @@
-import { ApolloServer } from 'apollo-server';
-import User from './User';
-import Message from './Message';
-import typeDefs from './typeDefs';
-import resolvers from './resolvers';
-import AuhtDirective from './AuthDirective';
+const { ApolloServer } = require('apollo-server');
+const typeDefs = require('./typeDefs');
+const resolvers = require('./resolvers');
+const AuthDirective = require('./AuthDirective');
 
 const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-  schemaDirectives: {
-    auth: AuhtDirective,
-  },
-  context: ({ req }) => {
-    const token = req.headers.authorization;
-    const currentUser = User.getUserByToken(token);
-    return { user: currentUser, User, Message }
-  },
+	typeDefs,
+	resolvers,
+	schemaDirectives: {
+		auth: AuthDirective,
+	},
+	context: ({ req }) => {
+		console.log('index.js > HEADERS > NDC', req.headers.ndc);
+		console.log('index.js ', req.body.query);
+		return {
+			user: { id: 1, firstName: 'maurice', token: 'TOKEN-MAURICE', role: 'ADMIN', customNDCHeader: req.headers.ndc },
+		};
+	},
 });
 
-server.listen().then(({ url }) => console.log(`🚀 Server ready at ${url}`));
+server.listen({ port: 5000 }).then(({ url }) => console.log(`🚀 Server ready at ${url}`));
