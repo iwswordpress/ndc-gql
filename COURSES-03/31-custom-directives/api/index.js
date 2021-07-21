@@ -16,7 +16,7 @@ const server = new ApolloServer({
 		console.log('index.js > query sent ', req.body.query);
 		// DO AUTH...return credentials...
 		return {
-			user: { id: 1, firstName: 'maurice', token: 'TOKEN-MAURICE', role: 'ADMIN', customNDCHeader: req.headers.ndc },
+			user: { id: 1, firstName: 'Larry', token: 'TOKEN-LARRY', role: 'ADMIN', customNDCHeader: req.headers.ndc },
 		};
 	},
 });
