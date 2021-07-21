@@ -14,7 +14,7 @@ const server = new ApolloServer({
 		return {
 			user: {
 				id: 1,
-				firstName: 'maurice',
+				firstName: 'Larry',
 				token: 'TOKEN-LARRY',
 				role: 'ADMIN',
 				customNDCHeader: req.headers.ndc,
