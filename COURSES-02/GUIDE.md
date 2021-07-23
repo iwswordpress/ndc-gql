@@ -30,7 +30,9 @@ We can extend type User but we can not have an empty base or extend type, so we 
 
 [TOP](#TOP)
 
-## SERVER04 in mergbeSchemas folder
+## SERVER04 in mergeSchemas folder
+
+https://www.graphql-tools.com/docs/schema-merging
 
 This is in the mergeSchemas folder.
 
