@@ -1,0 +1,9 @@
+query{
+  cat(name: "TIM"){
+    catName
+    age
+    carer{
+      carerName
+    }
+  }
+}

@@ -91,7 +91,7 @@ const resolvers = {
 			};
 		},
 		dog: () => {
-			console.log('In Carer > caDogName');
+			console.log('In Carer > dogName');
 			return 'Carer.dog';
 		},
 	},
@@ -114,5 +114,5 @@ const server = new ApolloServer({
 // defaults to port 4000
 server.listen({ port: 5000 }).then(({ url }) => {
 	console.log(`Index03 running at port ${url}`);
-	console.log(`Need JSON SERVER dev03 running...`);
+	console.log(`Need JSON SERVER running...`);
 });

@@ -5,15 +5,15 @@ console.log(rnd());
 const typeDefs = gql`
 	type Query {
 		greet(firstName: String!): String!
-		# greet(firstName: String): String
 		getQuery(sort: String, order: String, limit: Int): String
-		# details: Int
+	
 		# hobbies: [Int]
 		# me: Me
 	}
 	# type Me {
 	# 	id: ID!
 	# 	stack: String!
+	#  --- add more fields
 	# }
 	# schema is included by default but shows why query is a reserved work in playground
 	schema {
@@ -31,16 +31,7 @@ const resolvers = {
 			console.log(args.sort, args.order);
 			return `Do query with sort=${args.sort}, order=${args.order} and limit=${args.limit} ---> return dataset`;
 		},
-		// details: (parent, args, context, info) => {
-		// 	return Math.floor(Math.random() * 100);
-		// },
-		// hobbies: (parent, args, context, info) => {
-		// 	return [rnd(), rnd()];
-		// },
-		// me: (parent, args, context, info) => {
 
-		// 	return { id: 1, stack: 'JS' };
-		// },
 	},
 };
 

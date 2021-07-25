@@ -53,7 +53,7 @@ By adding the above, when GQL sees that on a Course the tutor: Tutor, it can the
 
 Remember to export all new definitions like this along with Query and Mutation.
 
-![gql](/_images/25-02-query-variable.png)
+![gql](../../_images/25-02-query-variable.png)
 
 We have an example of a client posting this to the server. To help understanding what variables are what we use non id names where they are not required by the schema.
 

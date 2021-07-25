@@ -46,6 +46,8 @@ const resolvers = {
 	// 		return `TEST Project - ${Math.floor(Math.random() * 100000 + 100000)}`;
 	// 	},
 	// },
+
+	// EX do same for Student but return uppercase name
 };
 
 const PORT = process.env.PORT || 5000;

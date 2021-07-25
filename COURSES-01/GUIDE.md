@@ -47,7 +47,13 @@ query {
 
 ## Client HTML example
 
--  We will see this later
+-  We will see this later.
+
+## Server01 Exercises
+
+-  Make Me have more fields.
+
+-  Return various list types.
 
 [TOP](#TOP)
 
@@ -85,6 +91,10 @@ Project: {
 		},
 	},
 ```
+
+## Server03 Exercise
+
+-  make student name uppercase
 
 [TOP](#TOP)
 
@@ -126,6 +136,10 @@ Add mutation: Mutation to schema.
 Use Query Variables tab.
 
 In client HTML, the alias ProjectCreated is used.
+
+## Server05 Exercise
+
+-  add a student in same way as we added a project but use all fields as mandatory except projects.
 
 ![gql](_images/05-query-variables-tab.png)
 

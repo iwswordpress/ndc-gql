@@ -58,4 +58,4 @@ const server = new ApolloServer({
 	},
 });
 // defaults to port 4000
-server.listen({ port: 5000 }).then(({ url }) => console.log(`Server running at port ${url}`));
+server.listen({ port: 5000 }).then(({ url }) => console.log(`Index01 running at port ${url}`));

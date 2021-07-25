@@ -46,6 +46,11 @@ const resolvers = {
 	},
 };
 
+// Exercises
+// Add more fields (location, job, etc) to Me and adjust resolver.
+// In schema for api, ensure that a list must be returned, it can be empty and have nulls.
+// In schema for api, ensure that a list must be returned, it can be empty but if not it must be of String type.
+
 const PORT = process.env.PORT || 5000;
 const server = new ApolloServer({ typeDefs, resolvers });
 console.log(typeDefs);
