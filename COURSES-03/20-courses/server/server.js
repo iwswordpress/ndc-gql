@@ -30,5 +30,5 @@ app.post('/login', (req, res) => {
 const PORT = 5000;
 app.listen(PORT, () => {
 	console.info(`Server started on http://localhost:${PORT}/graphql`);
-	console.log('START JSON SERVER dev:courses!');
+	console.log('START JSON SERVER!');
 });

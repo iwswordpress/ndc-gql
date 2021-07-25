@@ -56,7 +56,7 @@ const schema = gql(`
 	}
 	type Part {
 		id: ID!
-		name: String
+		name(custom: Boolean): String
 		cars: [Car]
 	}
 
@@ -96,7 +96,12 @@ const resolvers = {
 	Part: {
 		name: (parent, args, context, info) => {
 			console.log('Part > name', parent.id);
+			console.log('Part > name:custom', args.custom);
 			if (parts.filter((part) => part.id == parent.id)[0]) {
+				if (args.custom) {
+					return 'CUSTOM MSG: ' + parts.filter((part) => part.id == parent.id)[0].name;
+				} else {
+				}
 				return parts.filter((part) => part.id == parent.id)[0].name;
 			}
 			return null;

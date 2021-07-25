@@ -3,7 +3,7 @@ const { ApolloServer, gql } = require('apollo-server');
 const cars = [
 	{
 		id: 1,
-		brand: 'VW',
+		brand: 'Renault',
 		color: 'Red',
 		doors: 4,
 		type: 'ESTATE',
@@ -48,23 +48,24 @@ const schema = gql(`
 	}
 	type Car {
 		id: ID!
-		brand: String!
+		brand(upper: Boolean): String!
 		color: String!
 		doors: Int!
 		type: CarTypes!
 		parts:[Part]
 	}
+
 	type Part {
 		id: ID!
 		name: String
 		cars: [Car]
 	}
 
-  
   type Query {
     carsByType(type:CarTypes!): [Car]
     carsById(id:ID!): Car
     partsById(id:ID!): Part
+    cars: [Car]
   }
   type Mutation {
     insertCar(brand: String!, color: String!, doors: Int!, type:CarTypes!): [Car]!
@@ -87,10 +88,16 @@ const resolvers = {
 			console.log(args);
 			return args;
 		},
+		cars: (parent, args, context, info) => {
+			console.log(parent);
+			console.log(args);
+			return cars;
+		},
 	},
 	Part: {
 		name: (parent, args, context, info) => {
 			console.log('Part > name', parent.id);
+			console.log('Part > name:custom', args.custom);
 			if (parts.filter((part) => part.id == parent.id)[0]) {
 				return parts.filter((part) => part.id == parent.id)[0].name;
 			}
@@ -104,7 +111,13 @@ const resolvers = {
 	Car: {
 		brand: (parent, args, context, info) => {
 			console.log('Car > brand', parent.id);
-			return cars.filter((car) => car.id == parent.id)[0].brand;
+			console.log('Car > brand:upper', args.upper);
+			const reqBrand = cars.filter((car) => car.id == parent.id)[0].brand;
+			if (args.upper) {
+				return reqBrand.toUpperCase();
+			} else {
+				return reqBrand.toLowerCase();
+			}
 		},
 		type: (parent, args, context, info) => {
 			console.log('Car > type', parent.id);
@@ -131,5 +144,5 @@ const server = new ApolloServer({
 });
 
 server.listen({ port: 5000 }).then(({ url }) => {
-	console.log(`🚀  Server ready at ${url}`);
+	console.log(`🚀  INDEX02 ready at ${url}`);
 });

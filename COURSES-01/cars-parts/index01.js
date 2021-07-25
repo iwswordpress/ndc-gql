@@ -131,5 +131,5 @@ const server = new ApolloServer({
 });
 
 server.listen({ port: 5000 }).then(({ url }) => {
-	console.log(`🚀  Server ready at ${url}`);
+	console.log(`🚀  INDEX01 ready at ${url}`);
 });

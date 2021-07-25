@@ -23,12 +23,6 @@
 			"tutorId": 1,
 			"title": "AWS",
 			"tech": "API"
-		},
-		{
-			"id": 1001,
-			"tutorId": 2,
-			"title": "New Course",
-			"tech": "API"
 		}
 	],
 	"tutors": [
