@@ -45,6 +45,26 @@ When passing in as values in hard coded 'graphql' queries, use GRAD not 'GRAD' b
 
 ??? When passing in via Query tab or in client code, 'GRAD' will be needed. ?????
 
+One can resolve ENUMs to a different value...
+
+https://www.apollographql.com/docs/apollo-server/schema/schema/#the-mutation-type
+
+```
+const resolvers = {
+  AllowedColor: {
+    RED: '#f00',
+    GREEN: '#0f0',
+    BLUE: '#00f',
+  },
+  Query: {
+    favoriteColor: () => '#f00',
+    avatar: (parent, args) => {
+      // args.borderColor is '#f00', '#0f0', or '#00f'
+    },
+  }
+};
+
+```
 Query
 
 We can use this to resolve Interface types if the names match up but it is really about being able to differentiate between types of interfaces.

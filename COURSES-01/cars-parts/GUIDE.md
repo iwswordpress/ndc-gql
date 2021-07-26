@@ -20,7 +20,7 @@ One can keep drilling and lead to a DDOS attack. We will look at how we can prev
 
 ### INDEX02 - customising output
 
-We can also add field level variables. These are not input type variables as in mutations.
+We can also add field level variables.
 
 These must be added in the schema and then resolves as one wishes in the resolver using the args to see what has been requested.
 
