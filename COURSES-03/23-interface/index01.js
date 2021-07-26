@@ -1,8 +1,6 @@
 const { ApolloServer, gql } = require('apollo-server');
 
 const typeDefs = gql`
-	#  introducing enum - constraint on possilbe values
-
 	enum GradStatus {
 		UNDERGRAD
 		GRAD
@@ -78,7 +76,7 @@ const server = new ApolloServer({
 });
 
 server.listen({ port: 5000 }).then(({ url }) => {
-	console.log(`🚀 Server ready at ${url}`);
+	console.log(`🚀 Running index01 on ${url}...`);
 });
 /*
 query {

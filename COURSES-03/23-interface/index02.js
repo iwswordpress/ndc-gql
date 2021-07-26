@@ -70,8 +70,8 @@ const resolvers = {
 
 	Person: {
 		__resolveType(person, context, info) {
-			console.log(`__resolving Person type as ---> ${person.species}`);
-			return person.role;
+			console.log(`__resolving Person type as ---> ${person.role}`);
+			return person.role; // must === interface type as GQL uses this to resolve types.
 		},
 	},
 };
@@ -82,7 +82,7 @@ const server = new ApolloServer({
 });
 
 server.listen({ port: 5000 }).then(({ url }) => {
-	console.log(`🚀 Server ready at ${url}`);
+	console.log(`🚀 Running index02 on ${url}...`);
 });
 /*
 query {
@@ -92,7 +92,6 @@ query {
       id
       firstName
       role
-
       year
     }
     ... on Staff {
