@@ -1,12 +1,4 @@
 
-
-Aliases:
-query{
-  One:hello
-  Two:hello
-}
-
-
 ===============================================================
 mutation AddProject($input:CreateProjectInput){
   createProject(input:$input){

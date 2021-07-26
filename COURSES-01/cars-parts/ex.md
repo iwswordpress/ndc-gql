@@ -4,6 +4,8 @@ We can do the same for Parts:name as follows...
 
 ![gql](../_images/cars-parts-custom-exercise.png)
 
+If a variabel of custom: true is passed then add 'CUSTOM MSG:'
+
 ```
 	Part: {
 		name: (parent, args, context, info) => {

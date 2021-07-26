@@ -1,4 +1,18 @@
-## TOP
+## TOC
+
+-  Server00 - Base set up with hello()
+-  Server01 - a lab to try out schema and resolvers and get to know playground.
+-  Server02 - use some in memory data for students and projects. show HTML query.
+-  Server03 - enable Projects type in Students type to be resolved.
+-  Server04 - enable Students type in Porjects type to be resolved.
+-  cars-parts - used to show resolving.
+-  Server05 - Mutation (CRUD) for a project and use in HTML query.
+
+## SERVER00
+
+A base version to show minimal requirements before we use Server01 as a LAB.
+
+[TOP](#TOC)
 
 ## SERVER01
 
@@ -64,7 +78,7 @@ query {
 
 -  Return various list types.
 
-[TOP](#TOP)
+[TOP](#TOC)
 
 ## SERVER02
 
@@ -92,7 +106,7 @@ query Students{
 }
 ```
 
-[TOP](#TOP)
+[TOP](#TOC)
 
 ## SERVER03
 
@@ -121,7 +135,7 @@ Project: {
 
 -  make student name uppercase
 
-[TOP](#TOP)
+[TOP](#TOC)
 
 ## SERVER04
 
@@ -148,7 +162,15 @@ ids are serialized to string type.
 
 client > 04-get-project-by-id.html to see HTML client view.
 
-[TOP](#TOP)
+[TOP](#TOC)
+
+## cars-parts
+
+We can see the generic linked resolution for many to many relationships as well as see how DDOS could occur.
+
+There is an exercise to pass a variable inthe Parts type to add a custommessage.
+
+[TOP](#TOC)
 
 ## SERVER05
 
@@ -174,9 +196,9 @@ lets go to cars-parts
 
 Lets go to COURSE-03 for 15-leaf where we will go through this parent-child relationship again and in more detail.
 
-[TOP](#TOP)
+[TOP](#TOC)
 
-[TOP](#TOP)
+[TOP](#TOC)
 
 ## SERVER07
 
