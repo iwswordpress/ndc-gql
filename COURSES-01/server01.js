@@ -1,24 +1,26 @@
 const { ApolloServer, gql } = require('apollo-server');
-
+const fetch = require('node-fetch');
 const dotEnv = require('dotenv');
 
 dotEnv.config();
 
 const typeDefs = gql`
 	type Query {
-		hello: String # comment
-		test(x: Int!): String!
 		"""
 		This is field level comment in docs - better example in server02 as there are more root types.
 		"""
-		getError: ID! # used to show errors still give 200 status code
+		hello: String! # comment
+		# test(x: Int!): String!
+		# getError: ID! # used to show errors still give 200 status code
 		# details: Int
 		# api: [String]
 		# api: [String!]
 		# api: [String]!
 		# api: [String!]!
 		# me: Me
+		# me(firstName: String): Me
 	}
+
 	# type Me {
 	# 	id: ID!
 	# 	stack: String!
@@ -32,16 +34,29 @@ const typeDefs = gql`
 
 const resolvers = {
 	Query: {
-		test: (parent, args, context, info) => `Hello World! ${Math.floor(Math.random() * args.x + args.x)}`,
-		hello: () => 'null', // change to return a string
+		hello: () => null, // change to return a string
+		//test: (parent, args, context, info) => `Hello World! ${Math.floor(Math.random() * args.x + args.x)}`,
 		// details: (parent, args, context, info) => {
 		// 	return Math.floor(Math.random() * 100);
 		// },
 		// api: (parent, args, context, info) => {
 		// 	return ['a'];
 		// },
+		// api: async (parent, args, context, info) => {
+		// 	const course = await fetch(`https://randomuser.me/api`);
+		// 	const result = await course.json();
+		// 	console.log(result.results[0].name.first);
+		// 	const firstName = result.results[0].name.first;
+		// 	console.log(`firstName: ${firstName}`);
+		// 	return [firstName];
+		// },
 		// me: (parent, args, context, info) => {
-		// 	return { id: 1, stack: 'JS' };
+		// 	console.log(args.firstName);
+		// 	return { id: 1, stack: `JS` };
+		// },
+		// me: (parent, args, context, info) => {
+		// 	console.log(args.firstName);
+		// 	return { id: 1, stack: `${args.firstName}'s main skill is JS` };
 		// },
 	},
 };
@@ -53,5 +68,5 @@ const resolvers = {
 
 const PORT = process.env.PORT || 5000;
 const server = new ApolloServer({ typeDefs, resolvers });
-console.log(typeDefs);
-server.listen({ port: PORT }).then(({ url }) => console.log(`Server running at port ${url}`));
+// console.log(typeDefs);
+server.listen({ port: PORT }).then(({ url }) => console.log(`Server01 running at port ${url}`));

@@ -48,20 +48,4 @@ When passing in as values in hard coded 'graphql' queries, use GRAD not 'GRAD' b
 Query
 
 We can use this to resolve Interface types if the names match up but it is really about being able to differentiate between types of interfaces.
-
-In books.js we can also resolve by looking at a particular property of each type as follows:
-
-```
-	Book: {
-		__resolveType(book, context, info) {
-			if (book.courses) {
-				return 'TEXTBOOK';
-			}
-			if (book.colors) {
-				return 'COLORINGBOOK';
-			}
-			return null; // GraphQLError is thrown
-		},
-	},
-	```
 ````

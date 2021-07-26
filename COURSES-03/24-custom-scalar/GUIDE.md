@@ -1,5 +1,7 @@
 ## 24-custom-scalar
 
+https://www.apollographql.com/docs/apollo-server/schema/custom-scalars/
+
 ![gql](../_images/24-custom-scalar.png)
 
 ```

@@ -2,21 +2,33 @@
 
 ## SERVER01
 
--  Send back null for hello and it works.
+Server01.js is our basic set up. We use ApolloServer, a .env file to store port and supply the two essential parts for GQL - a schema and set of resolvers.
+
+Let's look at the playground at http://localhost:5000/
+
+-  Send back null for hello and it works. Difference if required is used.
+-  See response in NETWORK TAB - always 200 even if GQL returns error, shown by sending null when String!
 -  Remove all resolvers and it works.
 -  test(x: Int) has optional argument. use test(x: Int!) and see difference with no argument
--  See response in NETWORK TAB - always 200 unless client side error.
 -  Use getError() to show we still get 200. If there is error on way to API then on emay get 400s etc.
+
+![gql](_images/01-many-queries.png)
+
 -  CTRL + ENTER in one query will fire that...or else play button will show two queries...
+-  use of aliases to shape data returned.
 
 ```
-query MyName {
-  result: test(x: 22)
+query Q1{
+  first:hello
+  second:hello
 }
-query MyName2 {
-  result: test(x: 22)
+query Q2{
+  third:hello
+  fourth:hello
 }
 ```
+
+Add in ME
 
 -  One can change shape of returned data with aliases at field level:
 
@@ -24,9 +36,10 @@ query MyName2 {
 query {
   me {
     id
-    skills: stack
+    mainSkill:stack
   }
 }
+
 ```
 
 ![gql](_images/null-list.png)
@@ -40,10 +53,6 @@ query {
 -  One can rename tabs which default to query.
 -  Polling by default every 2 seconds.
 -  One can change format etc.
-
-## Introspection
-
--  See introspection.md for queries. GraphQL designed to be self-explaining.
 
 ## Client HTML example
 
@@ -59,13 +68,29 @@ query {
 
 ## SERVER02
 
-Use of comments and how to insert those comments into docs.
+Use of comments and how to insert those comments into docs at Type and Field level.
 
 Set up Students and Projects.
 
 Return all projects and students.
 
 Breaks when wanting user sub query. We need to have a foreigh key type appraach. Note we could resolve all the data in the resolver but that would cause overfetching when the query does not ask for user details rather. It is best to let each field and type do their own resolving.
+
+We can have a linked query but if the fields in Project are required it will error. Remove ! on Project type and it will not break.
+
+```
+query Students{
+  students{
+    id
+    firstName:name
+    projects{
+      id
+      name
+      completed
+    }
+  }
+}
+```
 
 [TOP](#TOP)
 
@@ -100,7 +125,7 @@ Project: {
 
 ## SERVER04
 
-We can now resolve child projects when we carry ouy the following query:
+We can now resolve child projects when we carry out the following query:
 
 ```
 {
