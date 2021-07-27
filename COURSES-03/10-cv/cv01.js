@@ -2,7 +2,7 @@ const { ApolloServer, gql } = require('apollo-server');
 
 const typeDefs = gql`
 	type Query {
-		cv(name: String!): CV!
+		getCV(name: String!): CV!
 	}
 
 	type Me {
@@ -25,7 +25,7 @@ const typeDefs = gql`
 		personal: Me
 		professional: [Skill]
 	}
-	# schema is included by default but shows why query is a reserved work in playground
+	# schema is included by default but shows why query is a reserved word in playground
 	schema {
 		query: Query
 	}
@@ -33,11 +33,13 @@ const typeDefs = gql`
 
 const resolvers = {
 	Query: {
-		cv: (parent, args, context, info) => {
+		getCV: (parent, args, context, info) => {
 			console.log(`CV for ${args.name}`);
+			const myName = 'My name is ' + args.name;
+
 			return {
 				personal: {
-					name: 'Craig',
+					name: myName,
 					location: 'Brighton',
 				},
 				professional: [
@@ -51,4 +53,21 @@ const resolvers = {
 
 const server = new ApolloServer({ typeDefs, resolvers });
 
-server.listen({ port: 5000 }).then(({ url }) => console.log(`lab.js running at port ${url}`));
+server.listen({ port: 5000 }).then(({ url }) => console.log(`cv01.js running at port ${url}`));
+/*
+query GetCV{
+  getCV(name: "Craig"){
+    personal{
+      __typename
+      name
+      location
+    }
+    professional{
+      __typename
+      skillName
+      years
+      level
+    }
+  }
+}
+*/

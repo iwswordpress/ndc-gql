@@ -2,6 +2,10 @@
 
 https://www.apollographql.com/docs/apollo-server/schema/custom-scalars/
 
+https://www.graphql-tools.com/docs/scalars
+
+These can also be use for validation - https://www.graphql-tools.com/docs/scalars#validations
+
 ![gql](../_images/24-custom-scalar.png)
 
 ```

@@ -1,5 +1,5 @@
 query{
-  cat(name: "TIM"){
+  cat(name: "Tigger"){
     catName
     age
     carer{

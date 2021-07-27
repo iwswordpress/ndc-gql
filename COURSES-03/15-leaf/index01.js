@@ -28,10 +28,18 @@ const typeDefs = gql`
 // all the others resolve to SCALAR
 // We will need to create resolvers for these.
 // Without them we will get nulls for details of carer unless hard coded as in this example.
-
+function showAST(info) {
+	console.log('======== AST ========');
+	console.log('[parentType]', info.parentType);
+	console.log('[fieldName]', info.fieldName);
+	console.log('[returnType]', info.returnType);
+	console.log('=====================');
+}
 const resolvers = {
 	Query: {
 		cat: (parent, args, ctx, info) => {
+			console.log('---> In Query > cat');
+			showAST(info);
 			console.log('Query > cat > parent: ', parent);
 			console.log('Query > cat > args.name: ', args.name);
 			console.log('Query > cat > ctx: ', ctx.isLoggedIn);
@@ -40,6 +48,8 @@ const resolvers = {
 			// return {  };
 		},
 		carer: (parent, args, ctx, info) => {
+			console.log('---> In Query > carer');
+			showAST(info);
 			console.log('Query > owner > parent: ', parent);
 			console.log('Query > owner > args.name: ', args.name);
 			console.log('Query > owner > ctx: ', ctx.isLoggedIn);

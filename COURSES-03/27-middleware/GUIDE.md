@@ -10,4 +10,21 @@ const authenticated = (next) => (root, args, context, info) => {
 
 	return next(root, args, context, info);
 };
+
+```
+
+We can then wrap a resolver - we will see this in action in 30-auth-apollo.
+
+```
+	Query: {
+		meAuth: authenticated((parent, args, ctx) => {
+			console.log('RESOLVERS > meAuth--------------');
+			console.log('Query.currentUser.parent', parent);
+			console.log('Query.currentUser.args', args);
+			console.log('Query.currentUser.ctx', ctx);
+
+			return { id: ctx.user.id, firstName: ctx.user.firstName, role: ctx.user.role, token: ctx.user.token };
+		}),
+	}
+
 ```

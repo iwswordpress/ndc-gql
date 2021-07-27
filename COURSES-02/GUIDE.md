@@ -1,5 +1,10 @@
 ## TOP
 
+-  server01.js - import server06 from COURSES-01.
+-  server02.js - refactor resolvers.
+-  server03.js - schema merging using 'extend'
+-  server04.js - in mergeSchemas folder, uses '@graphql-tools/merge' to merge schemkas.
+
 Schema and Resolver modularisation
 
 We use two different methods for local schema merging.

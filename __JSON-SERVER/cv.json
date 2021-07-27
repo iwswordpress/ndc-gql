@@ -1,0 +1,8 @@
+{
+	"teamMembers": [
+		{ "id": 101, "team": "FrontEndDev", "firstName": "Sarah", "ui": ["css", "html", "Vue", "Svelte"] },
+		{ "id": 102, "team": "BackEndDev", "firstName": "Dan", "db": ["SQL", "Mongo"] },
+		{ "id": 103, "team": "BackEndDev", "firstName": "Diana", "db": ["SQL", "Mongo", "Postgress"] },
+		{ "id": 104, "team": "FrontEndDev", "firstName": "Henry", "ui": ["css", "html", "React"] }
+	]
+}

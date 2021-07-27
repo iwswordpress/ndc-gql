@@ -27,11 +27,19 @@ const typeDefs = gql`
 // all the others resolve to SCALAR
 // We will need to create resolvers for these.
 // Without them we will get nulls for details of carer unless hard coded as in this example.
+function showAST(info) {
+	console.log('======== AST ========');
+	console.log('[parentType]', info.parentType);
+	console.log('[fieldName]', info.fieldName);
+	console.log('[returnType]', info.returnType);
+	console.log('=====================');
+}
 
 const resolvers = {
 	Query: {
 		cat: (parent, args, ctx, info) => {
-			console.log('In Query > cat');
+			console.log('---> In Query > cat');
+			showAST(info);
 			// console.log('Query > cat > parent: ', parent);
 			// console.log('Query > cat > args.name: ', args.name);
 			// console.log('Query > cat > ctx: ', ctx.isLoggedIn);
@@ -40,7 +48,7 @@ const resolvers = {
 			// return {  };
 		},
 		carer: (parent, args, ctx, info) => {
-			console.log('In Query > carer');
+			console.log('---> In Query > carer');
 			// console.log('Query > owner > parent: ', parent);
 			// console.log('Query > owner > args.name: ', args.name);
 			// console.log('Query > owner > ctx: ', ctx.isLoggedIn);
@@ -52,8 +60,9 @@ const resolvers = {
 		},
 	},
 	Cat: {
-		catName: (parent, args, ctx) => {
-			console.log('In Cat > catName');
+		catName: (parent, args, ctx, info) => {
+			console.log('---> In Cat > catName');
+			showAST(info);
 			// console.log('Cat > catName > ctx isLoggedIn ', ctx.isLoggedIn);
 			// console.log('Cat > catName > parent', parent);
 			const catName = `Cat.catName`;
@@ -66,8 +75,9 @@ const resolvers = {
 
 			return Math.floor(Math.random() * 5000 + 1000);
 		},
-		carer: (parent, args, ctx) => {
-			console.log('In Cat > carer');
+		carer: (parent, args, ctx, info) => {
+			console.log('---> In Cat > carer');
+			showAST(info);
 			// console.log('Cat > carerName > ctx isLoggedIn ', ctx.isLoggedIn);
 			// console.log('Cat > carerName > parent', parent);
 			return { carerName: 'Query.cat.carer', dog: 'Query.cat.carer.dog' };
@@ -105,4 +115,4 @@ const server = new ApolloServer({
 	},
 });
 // defaults to port 4000
-server.listen({ port: 5000 }).then(({ url }) => console.log(`Index03 running at port ${url}`));
+server.listen({ port: 5000 }).then(({ url }) => console.log(`Index02 running at port ${url}`));

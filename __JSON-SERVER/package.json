@@ -4,7 +4,8 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start": "json-server --watch -p 4010 courses.json"
+		"start": "json-server --watch -p 4010 courses.json",
+		"dev:cv": "json-server --watch -p 5001 cv.json"
 	},
 	"author": "",
 	"license": "ISC",

@@ -1,8 +1,10 @@
-TLDR;
-
-![gql](/_images/15-schema.png)
+-  index01.js - no child resolution
+-  index02.js - resolves Cat with Carer commented out
+-  index03.js - resolves Cat and Carer with introduction to use of CONTEXT.
 
 In our schema we have the following 'objects':
+
+![gql](../_images/15-schema.png)
 
 -  Query.cat
 -  Query.carer
@@ -48,4 +50,4 @@ As a GRAPH, all nodes are connected and GQL knows the whole graph/tree.
 
 ![gql](../_images/15-index02-console.png)
 
-## index03 has context set up
+## index03 has CAT and CARER resolution as well as intro to CONTEXT.

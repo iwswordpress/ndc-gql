@@ -3,6 +3,7 @@
 https://www.apollographql.com/docs/apollo-server/schema/unions-interfaces/
 
 ![gql](../_images/22-unions.png)
+
 Result = Book | Video
 
 Unions are collections of related objects but with very different schemas.
