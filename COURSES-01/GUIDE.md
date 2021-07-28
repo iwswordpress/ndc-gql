@@ -6,8 +6,8 @@
 -  Server03 - enable Projects type in Students type to be resolved.
 -  Server04 - enable queries by id for students and projects but not able to resolve linked types.
 -  cars-parts - used to show resolving.
--  Server05 - Resolves query of students and projects. Use of Query Variables Tab.
--  Server06 - Mutation (CRUD) for a project and use in HTML query.
+-  Server05 - Basic add project mutation
+-  Server06 - Mutation (CRUD) for a project wint input type and use in HTML query.
 
 ## SERVER00
 

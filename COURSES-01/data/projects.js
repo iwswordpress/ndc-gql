@@ -11,7 +11,7 @@ module.exports.projects = [
 	},
 	{
 		id: 3,
-		name: 'NODE',
+		name: 'CSS',
 		completed: false,
 	},
 	{
@@ -21,14 +21,13 @@ module.exports.projects = [
 	},
 	{
 		id: 5,
-		name: 'JS',
+		name: 'MongoDB',
 		completed: false,
 	},
 	{
 		id: 6,
-		name: 'JS',
+		name: 'Firebase',
 		completed: false,
-		userId: 2,
 	},
 	{
 		id: 7,
