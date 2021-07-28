@@ -1,6 +1,6 @@
--  index01.js - no child resolution
+-  index01.js - no child resolution. Use of AST analysis.
 -  index02.js - resolves Cat with Carer commented out
--  index03.js - resolves Cat and Carer with introduction to use of CONTEXT.
+-  index03.js - resolves Cat and Carer with introduction to use of CONTEXT with AJAX to JSON-SERVER.
 
 In our schema we have the following 'objects':
 
