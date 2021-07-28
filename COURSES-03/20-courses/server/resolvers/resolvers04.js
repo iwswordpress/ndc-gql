@@ -1,5 +1,4 @@
-
-
+const fetch = require('node-fetch');
 const JSON_URL = 'http://localhost:4010';
 const Query = {
 	courses: async () => {
