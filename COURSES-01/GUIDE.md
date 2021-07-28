@@ -3,7 +3,7 @@
 -  Server00 - Base set up with hello()
 -  Server01 - a lab to try out schema and resolvers and get to know playground.
 -  Server02 - use some in memory data for students and projects. show HTML query.
--  Server03 - enable Projects type in Students type to be resolved.
+-  Server03 - enable Projects type in Students type to be resolved but not a real database structure.
 -  Server04 - enable queries by id for students and projects but not able to resolve linked types.
 -  cars-parts - used to show resolving.
 -  Server05 - Basic add project mutation

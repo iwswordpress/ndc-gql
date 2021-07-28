@@ -10,6 +10,8 @@ const typeDefs = gql`
 	type Query {
 		users: [User!]
 		tasks: [Task!]
+		getTaskById(id: ID!): Task
+		getUserById(id: ID!): User!
 	}
 
 	type User {
@@ -40,6 +42,16 @@ const resolvers = {
 			console.log(tasks);
 			return tasks;
 		},
+		getTaskById: (parent, args) => {
+			console.log('id is serialized to --->', typeof args.id);
+			const task = tasks.find((task) => task.id == args.id);
+			return task;
+		},
+		getUserById: (parent, args) => {
+			console.log('id is serialized to --->', typeof args.id);
+			const user = users.find((user) => user.id == args.id);
+			return user;
+		},
 	},
 	Task: {
 		user: (parent) => {
@@ -50,28 +62,37 @@ const resolvers = {
 			console.log('user is', user);
 			return user;
 		},
-		// demos how field level resolvers overwrite top level resolver.
-		name: () => {
-			console.log(`---> Task.name returning TEST TASK ${Math.floor(Math.random() * 100000 + 100000)}`);
-			return `TEST TASK - ${Math.floor(Math.random() * 100000 + 100000)}`;
-		},
 	},
 };
 
 const PORT = process.env.PORT || 5000;
 const server = new ApolloServer({ typeDefs, resolvers });
 
-server.listen({ port: PORT }).then(({ url }) => console.log(`Server running at port ${url}`));
+server.listen({ port: PORT }).then(({ url }) => console.log(`Server04 running at port ${url}`));
 
-// {
-//   tasks{
-//     id
-//     name
-//     completed
-//     user{
-//       id
-//       name
-//       email
-//     }
-//   }
-// }
+/*
+
+query GetTaskById {
+  getTaskById(id: 2) {
+    id
+    name
+    completed
+  }
+}
+
+==================================
+
+query GetTaskById($id: ID!) {
+  getTaskById(id: $id) {
+    id
+    name
+    completed
+  }
+}
+
+with Query Variable Tab...
+
+{
+  "id": 1
+}
+*/

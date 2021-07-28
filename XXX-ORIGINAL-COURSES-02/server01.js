@@ -65,9 +65,9 @@ const resolvers = {
 	Student: {
 		projects: (parent) => {
 			console.log('In Student.user');
-			console.log('Student.projects > parent.userId', parent.id);
-			const allProjects = projects.filter((project) => project.id === parent.id);
-
+			console.log('Student.projects > parent.userId = studentId', parent.id);
+			const allProjects = students[parent.id].projects;
+			console.log(`Student ${parent.id} projects`, allProjects);
 			return allProjects;
 		},
 	},

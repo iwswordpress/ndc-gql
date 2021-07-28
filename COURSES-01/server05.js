@@ -60,15 +60,6 @@ const resolvers = {
 		},
 	},
 
-	Student: {
-		projects: (parent) => {
-			console.log('In Student.user');
-			console.log('Student.projects > parent.userId', parent.id);
-			const allProjects = projects.filter((project) => project.id === parent.id);
-
-			return allProjects;
-		},
-	},
 	Project: {
 		name: () => {
 			console.log(`---> Project.name returning TEST PROJECT ${Math.floor(Math.random() * 100000 + 100000)}`);

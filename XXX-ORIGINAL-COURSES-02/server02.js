@@ -1,6 +1,5 @@
 const { ApolloServer, gql } = require('apollo-server');
-const { users } = require('./data/users');
-const { tasks } = require('./data/tasks');
+const resolvers = require('./resolvers');
 
 const dotEnv = require('dotenv');
 
@@ -8,39 +7,38 @@ dotEnv.config();
 
 const typeDefs = gql`
 	type Query {
-		users: [User!]
-		tasks: [Task!]
+		students: [Student!]
+		projects: [Project!]
+		getProjectById(id: ID!): Project
+		getStudentById(id: ID!): Student!
 	}
 
-	type User {
-		id: ID! # general comment
+	type Student {
+		id: ID!
 		name: String!
 		email: String!
-		tasks: [Task!]
+		projects: [Project!]
 	}
 
-	type Task {
+	type Project {
 		id: ID!
 		name: String!
 		completed: Boolean!
-		user: User!
 	}
 
+	type Mutation {
+		createProject(input: CreateProjectInput): Project!
+	}
+
+	input CreateProjectInput {
+		name: String!
+		completed: Boolean!
+	}
 	schema {
 		query: Query
+		mutation: Mutation
 	}
 `;
-
-const resolvers = {
-	Query: {
-		users: () => {
-			return users;
-		},
-		tasks: () => {
-			return tasks;
-		},
-	},
-};
 
 const PORT = process.env.PORT || 5000;
 const server = new ApolloServer({ typeDefs, resolvers });

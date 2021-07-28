@@ -31,7 +31,7 @@ const typeDefs = gql`
 	}
 
 	${STUDENT}
-	
+
 	${PROJECTS}
 
 	schema {
@@ -54,3 +54,20 @@ const PORT = process.env.PORT || 5000;
 const server = new ApolloServer({ typeDefs, resolvers });
 
 server.listen({ port: PORT }).then(({ url }) => console.log(`Server running at port ${url}`));
+
+/*
+
+query {
+  students {
+    id
+    name
+    email
+  }
+  projects{
+    id
+    name
+    completed
+  }
+}
+
+*/

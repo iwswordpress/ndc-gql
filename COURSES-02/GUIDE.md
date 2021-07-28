@@ -1,48 +1,124 @@
 ## TOP
 
--  server01.js - import server06 from COURSES-01.
--  server02.js - refactor resolvers.
--  server03.js - schema merging using 'extend'
--  server04.js - in mergeSchemas folder, uses '@graphql-tools/merge' to merge schemkas.
-
-Schema and Resolver modularisation
-
-We use two different methods for local schema merging.
-
-The first in root uses 'extend'.
-
-The second in the mergeSchemas folder uses @graphql-tools/merge - https://www.graphql-tools.com/docs/schema-merging
+[SERVER09](#SERVER09)
 
 ## SERVER01
 
-This is server06 from COURSES-01
+Set up inital test() and view in html page.
+
+See response in NETWORK TAB.
+
+Use getError() to show we still get 200. If there is error on way to API then on emay get 400s etc.
+
+Only one anonymous function per request so use aliases.
+
+CTRL + ENTER in one query will fire that.
+
+```
+query two { # two is named query
+  result: test # return named result not test
+}
+```
+
+One can rename tabs which default to query.
+
+Settings:
+
+-  Polling by default every 2 seconds.
+-  One can change format etc.
 
 [TOP](#TOP)
 
 ## SERVER02
 
-Move resolvers to own folder.
+Use of comments and how to insert those comments into docs.
+
+Set up Users and Tasks.
+
+Return all tasks and users.
+
+Breaks when wanting user sub query.
 
 [TOP](#TOP)
 
 ## SERVER03
 
-We do schema merging using a simple strategy.
+```
+{ # now works as we have field resolvers
+  tasks {
+    id
+    name
+    user {
+      id
+      name
+      email
+    }
+  }
+}
+```
 
-There can only be one root Query.
+add Task.name to see how we can overwrite previous Task.name
 
-We can extend type User but we can not have an empty base or extend type, so we use a placeholder \_: String to prevent error.
+Note order of all tasks then resolve name then resolve subquery.
 
 [TOP](#TOP)
 
-## SERVER04 in mergeSchemas folder
+## SERVER04
 
-https://www.graphql-tools.com/docs/schema-merging
+getTaskById query
 
-This is in the mergeSchemas folder.
+```
+{
+  getTaskById(id: 1) {
+    id
+    name
+    completed
+    user{
+      id
+      name
+      email
+    }
+  }
+}
 
-It does not have resolvers but is an example of how we can use @graphql-tools/merge to merge schemas.
+```
 
-Go into folder and run node server04
+Same for users. If one has a function in Schema.Query but not defined in resolves the app won't crash until that function is called.
+
+ids are serialized to string type.
+
+[TOP](#TOP)
+
+## SERVER05
+
+Create Users list with tasks.
+
+[TOP](#TOP)
+
+## SERVER06
+
+Add createTask Mutation and create type input.
+
+New task store in memory not file.
+
+Add mutation: Mutation to schema.
+
+Use Query Variables tab.
+
+In client HTML, the alias TaskCreated is used.
+
+![gql](/_images/06-query-variables-tab.png)
+
+_06-add-task.html has client version._
+
+[TOP](#TOP)
+
+[TOP](#TOP)
+
+## SERVER07
+
+## SERVER08
+
+## SERVER09
 
 [TOP](#TOP)

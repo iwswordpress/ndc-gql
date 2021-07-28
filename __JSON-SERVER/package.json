@@ -5,7 +5,8 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "json-server --watch -p 4010 courses.json",
-		"dev:cv": "json-server --watch -p 5001 cv.json"
+		"dev:cv": "json-server --watch -p 5001 cv.json",
+		"dev:tasks": "json-server --watch -p 4011 tasks.json"
 	},
 	"author": "",
 	"license": "ISC",
