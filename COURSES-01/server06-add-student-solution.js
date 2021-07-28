@@ -8,6 +8,9 @@ dotEnv.config();
 function rnd(x) {
 	return Math.floor(Math.random() * x + x);
 }
+
+// see _images/06-add-student-solution.png
+
 const typeDefs = gql`
 	type Query {
 		students: [Student!]
@@ -31,11 +34,16 @@ const typeDefs = gql`
 
 	type Mutation {
 		createProject(input: CreateProjectInput): Project!
+		createStudent(input: CreateStudentInput): Student!
 	}
 
 	input CreateProjectInput {
 		name: String!
 		completed: Boolean!
+	}
+	input CreateStudentInput {
+		name: String!
+		email: String!
 	}
 	schema {
 		query: Query
@@ -75,8 +83,7 @@ const resolvers = {
 	},
 	Project: {
 		name: () => {
-			console.log(`---> Task.name returning TEST TASK ${Math.floor(Math.random() * 100000 + 100000)}`);
-			return `TEST TASK - ${Math.floor(Math.random() * 100000 + 100000)}`;
+			return `PROJECT - ${Math.floor(Math.random() * 100000 + 100000)}`;
 		},
 	},
 	Mutation: {
@@ -87,29 +94,16 @@ const resolvers = {
 			projects.push(project);
 			return project;
 		},
+		createStudent: (parent, args) => {
+			console.log('input', args.input);
+			const input = args.input;
+			const student = { ...input, id: rnd(100000) };
+			students.push(student);
+			return student;
+		},
 	},
 };
 const PORT = process.env.PORT || 5000;
 const server = new ApolloServer({ typeDefs, resolvers });
 
-server.listen({ port: PORT }).then(({ url }) => console.log(`Server05 running at port ${url}`));
-
-/*
-
--- add a new project
-mutation {
-  createProject(input: { name: "new", completed: false }) {
-    id
-    name
-    completed
-  }
-}
--- get all projects (in mmeory not file)
-query {
-  projects {
-    id
-    name
-  }
-}
-
-*/
+server.listen({ port: PORT }).then(({ url }) => console.log(`Server06-add-student-solution running at port ${url}`));
