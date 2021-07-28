@@ -1,12 +1,13 @@
+// connect to GraphQL
 const URL = 'http://localhost:5000/graphql';
 
-fetchMessage(4).then((data) => {
+getProjectById(2).then((data) => {
 	console.log(data.getProjectById);
 	document.querySelector('output').textContent = data.getProjectById.name;
 });
 // if id used, need $id, it is not just an empty parameter with any reference.
 // replacing $id as $y does not work in client
-async function fetchMessage(x) {
+async function getProjectById(x) {
 	// use something other for clarity
 	console.log('x =', x);
 	const response = await fetch(URL, {
@@ -25,7 +26,7 @@ async function fetchMessage(x) {
 
      `,
 			variables: { id: x }, // x used to keep clarity on ids. Must use id: $id
-			// { "id": 3 } is query varaible inplayground. No $
+			// { "id": 3 } is query variable inplayground. No $
 		}),
 	});
 

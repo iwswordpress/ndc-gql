@@ -4,9 +4,10 @@
 -  Server01 - a lab to try out schema and resolvers and get to know playground.
 -  Server02 - use some in memory data for students and projects. show HTML query.
 -  Server03 - enable Projects type in Students type to be resolved.
--  Server04 - enable Students type in Porjects type to be resolved.
+-  Server04 - enable Students type in Projects type to be resolved using parent. Query Variables.
 -  cars-parts - used to show resolving.
 -  Server05 - Mutation (CRUD) for a project and use in HTML query.
+-  Server06 - Use of input type - to do
 
 ## SERVER00
 
@@ -122,6 +123,8 @@ query Students{
 
 We can overwrite project.name with a resolver for name - uncomment out:
 
+If we request id it will return null unless we have id: ID! in which case a non-null error will be returned.
+
 ```
 Project: {
 		name: () => {
@@ -130,14 +133,6 @@ Project: {
 		},
 	},
 ```
-
-## Server03 Exercise
-
--  make student name uppercase
-
-[TOP](#TOC)
-
-## SERVER04
 
 We can now resolve child projects when we carry out the following query:
 
@@ -156,13 +151,26 @@ We can now resolve child projects when we carry out the following query:
 
 ```
 
+[TOP](#TOC)
+
+## SERVER04
+
 Same for students. If one has a function in Schema.Query but not defined in resolvers the app won't crash until that function is called.
 
 ids are serialized to string type.
 
+![gql](_images/04-get-project-by-id-hard-coded.png)
+
 client > 04-get-project-by-id.html to see HTML client view.
 
+We can now pass in variables via Query Variables rather than hard coding them.
+
+![gql](_images/04-get-project-by-id.png)
+
 [TOP](#TOC)
+lets go to cars-parts
+
+Lets go to COURSE-03 for 15-leaf where we will go through this parent-child relationship again and in more detail.
 
 ## cars-parts
 
@@ -192,11 +200,11 @@ In client HTML, the alias ProjectCreated is used.
 
 _05-add-project.html has client version._
 
-lets go to cars-parts
-
-Lets go to COURSE-03 for 15-leaf where we will go through this parent-child relationship again and in more detail.
-
 [TOP](#TOC)
+
+## SERVER06
+
+Use of input type - to do
 
 [TOP](#TOC)
 

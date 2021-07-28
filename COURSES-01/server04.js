@@ -57,7 +57,6 @@ const resolvers = {
 			console.log('In Student.user');
 			console.log('Student.projects > parent.userId', parent.id);
 			const allProjects = projects.filter((project) => project.id === parent.id);
-
 			return allProjects;
 		},
 	},
@@ -65,5 +64,5 @@ const resolvers = {
 
 const PORT = process.env.PORT || 5000;
 const server = new ApolloServer({ typeDefs, resolvers });
-console.log(typeDefs);
-server.listen({ port: PORT }).then(({ url }) => console.log(`Server running at port ${url}`));
+
+server.listen({ port: PORT }).then(({ url }) => console.log(`Server04 running at port ${url}`));

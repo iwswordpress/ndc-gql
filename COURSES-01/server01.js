@@ -12,11 +12,12 @@ const typeDefs = gql`
 		hello: String! # comment
 		# test(x: Int!): String!
 		# getError: ID! # used to show errors still give 200 status code
-		# details: Int
-		# api: [String]
-		# api: [String!]
-		# api: [String]!
-		# api: [String!]!
+		# getNum: Int
+		# list: [String]
+		# list: [String!]
+		# list: [String]!
+		# list: [String!]!
+		# restAPI: String
 		# me: Me
 		# me(firstName: String): Me
 	}
@@ -36,13 +37,16 @@ const resolvers = {
 	Query: {
 		hello: () => null, // change to return a string
 		//test: (parent, args, context, info) => `Hello World! ${Math.floor(Math.random() * args.x + args.x)}`,
-		// details: (parent, args, context, info) => {
+		//
+		// getNum: (parent, args, context, info) => {
 		// 	return Math.floor(Math.random() * 100);
 		// },
-		// api: (parent, args, context, info) => {
+		//
+		// list: (parent, args, context, info) => {
 		// 	return ['a'];
 		// },
-		// api: async (parent, args, context, info) => {
+		//
+		// restAPI: async (parent, args, context, info) => {
 		// 	const course = await fetch(`https://randomuser.me/api`);
 		// 	const result = await course.json();
 		// 	console.log(result.results[0].name.first);
@@ -50,10 +54,12 @@ const resolvers = {
 		// 	console.log(`firstName: ${firstName}`);
 		// 	return [firstName];
 		// },
+		//
 		// me: (parent, args, context, info) => {
 		// 	console.log(args.firstName);
 		// 	return { id: 1, stack: `JS` };
 		// },
+		//
 		// me: (parent, args, context, info) => {
 		// 	console.log(args.firstName);
 		// 	return { id: 1, stack: `${args.firstName}'s main skill is JS` };
@@ -63,8 +69,9 @@ const resolvers = {
 
 // Exercises
 // Add more fields (location, job, etc) to Me and adjust resolver.
-// In schema for api, ensure that a list must be returned, it can be empty and have nulls.
-// In schema for api, ensure that a list must be returned, it can be empty but if not it must be of String type.
+// In schema for list, ensure that a list must be returned, it can be empty and have nulls.
+// In schema for list, ensure that a list must be returned, it can be empty but if not it must be of String type.
+// Use restAPI that uses a REST API
 
 const PORT = process.env.PORT || 5000;
 const server = new ApolloServer({ typeDefs, resolvers });

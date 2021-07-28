@@ -20,9 +20,9 @@ const typeDefs = gql`
 	}
 
 	type Project {
-		id: ID!
-		name: String!
-		completed: Boolean!
+		id: ID
+		name: String
+		completed: Boolean
 	}
 
 	schema {
@@ -40,20 +40,25 @@ const resolvers = {
 			return projects;
 		},
 	},
-	// Project: {
-	// 	name: () => {
-	// 		console.log(`---> Project.name returning TEST Project ${Math.floor(Math.random() * 100000 + 100000)}`);
-	// 		return `TEST Project - ${Math.floor(Math.random() * 100000 + 100000)}`;
-	// 	},
-	// },
+	Project: {
+		// id: () => {
+		// 	return 100;
+		// },
+		name: () => {
+			console.log(`---> Project.name returning TEST Project ${Math.floor(Math.random() * 100000 + 100000)}`);
+			return `TEST Project - ${Math.floor(Math.random() * 100000 + 100000)}`;
+		},
+	},
 
-	// EX do same for Student but return uppercase name
+	// EXERCISES
+	// make id: ID! and see what happens
+	// uncomment Project.id
 };
 
 const PORT = process.env.PORT || 5000;
 const server = new ApolloServer({ typeDefs, resolvers });
 
-server.listen({ port: PORT }).then(({ url }) => console.log(`Server running at port ${url}`));
+server.listen({ port: PORT }).then(({ url }) => console.log(`Server03 running at port ${url}`));
 
 // {
 //   projects{

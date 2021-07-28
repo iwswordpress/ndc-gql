@@ -93,23 +93,3 @@ const PORT = process.env.PORT || 5000;
 const server = new ApolloServer({ typeDefs, resolvers });
 
 server.listen({ port: PORT }).then(({ url }) => console.log(`Server05 running at port ${url}`));
-
-/*
-
--- add a new project
-mutation {
-  createProject(input: { name: "new", completed: false }) {
-    id
-    name
-    completed
-  }
-}
--- get all projects (in mmeory not file)
-query {
-  projects {
-    id
-    name
-  }
-}
-
-*/

@@ -12,6 +12,7 @@ const typeDefs = gql`
 		"""
 		hello: String # comment
 	}
+	# EXERCISES...
 	# schema is included by default but shows why query is a reserved work in playground
 	# rename Query to Q...?
 	# comment out schema {}...?
@@ -31,5 +32,5 @@ const resolvers = {
 
 const PORT = process.env.PORT || 5000;
 const server = new ApolloServer({ typeDefs, resolvers });
-// console.log(typeDefs);
+
 server.listen({ port: PORT }).then(({ url }) => console.log(`Server01 running at port ${url}`));
