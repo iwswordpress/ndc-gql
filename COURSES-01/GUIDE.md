@@ -89,7 +89,7 @@ Set up Students and Projects.
 
 Return all projects and students.
 
-Breaks when wanting user sub query. We need to have a foreigh key type appraach. Note we could resolve all the data in the resolver but that would cause overfetching when the query does not ask for user details rather. It is best to let each field and type do their own resolving.
+Breaks when wanting user sub query. We need to have a foreign key type appraach. Note we could resolve all the data in the resolver but that would cause overfetching when the query does not ask for user details rather. It is best to let each field and type do their own resolving.
 
 We can have a linked query but if the fields in Project are required it will error. Remove ! on Project type and it will not break.
 
@@ -111,28 +111,60 @@ query Students{
 
 ## SERVER03
 
+As it stands, GraphQL cannot resolve Student.projects.
+
 ```
-{
-  projects {
+query{
+  students{
     id
     name
-    completed
+    email
+    projects{
+      id
+    }
   }
 }
 ```
+
+will cause error
+
+If we replace Student > projects to [Int] then it can output this scalar type.
+
+```
+query{
+  students{
+    id
+    name
+    email
+    projects
+  }
+}
+```
+
+will give back a list which is a scalar type.
+
+If we add in the root level Project with Student > projects as [Project] then it will return what we put into the resolver.
+
+We are not querying Projects to get data at this stage but learning how resolvers work.
 
 We can overwrite project.name with a resolver for name - uncomment out:
 
 If we request id it will return null unless we have id: ID! in which case a non-null error will be returned.
 
 ```
-Project: {
+	Project: {
+		id: () => {
+			return 100;
+		},
 		name: () => {
 			console.log(`---> Project.name returning TEST Project ${Math.floor(Math.random() * 100000 + 100000)}`);
 			return `TEST Project - ${Math.floor(Math.random() * 100000 + 100000)}`;
 		},
+		completed: () => true,
 	},
 ```
+
+If any of these fields do not have a resolver then null is returned unless the type Project has it as a required field.
 
 We can now resolve child projects when we carry out the following query:
 
@@ -167,16 +199,6 @@ We can now pass in variables via Query Variables rather than hard coding them.
 
 ![gql](_images/04-get-project-by-id.png)
 
-[TOP](#TOC)
-
-## SERVER05
-
-Resolves query of students and projects. Use of Query Variables Tab.
-
-![gql](_images/05-using-query-variables.png)
-
-lets go to cars-parts to explore this parent-child resolution.
-
 ## cars-parts
 
 We can see the generic linked resolution for many to many relationships as well as see how DDOS could occur.
@@ -185,9 +207,23 @@ There is an exercise to pass a variable inthe Parts type to add a custommessage.
 
 We will see this again with more detail in COURSE-03 for 15-leaf where we will go through this parent-child relationship again and in more detail.
 
+[TOP](#TOC)
+
+## SERVER05
+
+A basic way of creating a new project.
+
+![gql](_images/05-basic-mutation.png)
+
+Mutations with input type.
+
 ## SERVER06
 
+We remove resolver > Project as this is not part of the lesson and was used to demonstrate something that is not consistent with the project.
+
 Add createProject Mutation and create type input.
+
+Change the return type from string to type Project.
 
 New project store in memory not file.
 
@@ -198,7 +234,7 @@ Use Query Variables tab.
 In client HTML, the alias ProjectCreated is used.
 We now create a Mutation which can accept input values and create mutations on the server - create, update or delete depending on the resolver.
 
-![gql](_images/06-add-project-query-direct.png)
+![gql](_images/06-add-project-query-input-type.png)
 
 Whilst we could do this with a query, it is good practice to call it a mutation in the same way in REST we can do mutations with GET.
 

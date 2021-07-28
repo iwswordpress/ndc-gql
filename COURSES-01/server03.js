@@ -17,6 +17,7 @@ const typeDefs = gql`
 		name: String!
 		email: String!
 		projects: [Project!]
+		# projects: [Int!]
 	}
 
 	type Project {
@@ -41,18 +42,19 @@ const resolvers = {
 		},
 	},
 	Project: {
-		// id: () => {
-		// 	return 100;
-		// },
+		id: () => {
+			return 100;
+		},
 		name: () => {
 			console.log(`---> Project.name returning TEST Project ${Math.floor(Math.random() * 100000 + 100000)}`);
 			return `TEST Project - ${Math.floor(Math.random() * 100000 + 100000)}`;
 		},
+		completed: () => true,
 	},
 
 	// EXERCISES
-	// make id: ID! and see what happens
-	// uncomment Project.id
+	// Remove Project in resolver and see what happens - you will need to change the type Student.projects to return a list not an object.
+	// Remove resolver . Project.id and see what happens. If type Project.id is required, what difference does it make.
 };
 
 const PORT = process.env.PORT || 5000;
@@ -60,15 +62,15 @@ const server = new ApolloServer({ typeDefs, resolvers });
 
 server.listen({ port: PORT }).then(({ url }) => console.log(`Server03 running at port ${url}`));
 
-// {
-//   projects{
+// query{
+//   students{
 //     id
 //     name
-//     completed
-//     user{
+//     email
+//     projects{
 //       id
 //       name
-//       email
+//       completed
 //     }
 //   }
 // }

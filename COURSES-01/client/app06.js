@@ -1,17 +1,19 @@
 const URL = 'http://localhost:5000/graphql';
 
 const newProject = {
-	name: 'NEW PROJECT',
+	name: 'Second new project',
 	completed: false,
 };
 
-fetchMessage(newProject).then((data) => {
+createProject(newProject).then((data) => {
 	console.log(data);
-	document.querySelector('output').innerHTML = `New Course added with id: <b>${data.ProjectCreated.id}</b> `;
+	document.querySelector(
+		'output',
+	).innerHTML = `'<b>${data.ProjectCreated.name}'</b> added with id: <b>${data.ProjectCreated.id}</b> `;
 });
 // if id used, need $id, it is not just an empty parameter with any reference.
 // replacing $id as $y does not work in client
-async function fetchMessage(newCourse) {
+async function createProject(newCourse) {
 	// use something other for clarity
 	const response = await fetch(URL, {
 		method: 'POST',
@@ -27,7 +29,6 @@ async function fetchMessage(newCourse) {
 						completed
 					}
 				}
-
      `,
 			variables: { input: newProject },
 		}),
