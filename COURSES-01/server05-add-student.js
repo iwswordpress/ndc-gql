@@ -73,21 +73,6 @@ const resolvers = {
 			return allProjects;
 		},
 	},
-	Project: {
-		name: () => {
-			console.log(`---> Task.name returning TEST TASK ${Math.floor(Math.random() * 100000 + 100000)}`);
-			return `TEST TASK - ${Math.floor(Math.random() * 100000 + 100000)}`;
-		},
-	},
-	Mutation: {
-		createProject: (parent, args) => {
-			console.log('input', args.input);
-			const input = args.input;
-			const project = { ...input, id: rnd(100000) };
-			projects.push(project);
-			return project;
-		},
-	},
 };
 const PORT = process.env.PORT || 5000;
 const server = new ApolloServer({ typeDefs, resolvers });

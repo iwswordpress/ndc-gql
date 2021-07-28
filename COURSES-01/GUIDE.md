@@ -4,10 +4,10 @@
 -  Server01 - a lab to try out schema and resolvers and get to know playground.
 -  Server02 - use some in memory data for students and projects. show HTML query.
 -  Server03 - enable Projects type in Students type to be resolved.
--  Server04 - enable Students type in Projects type to be resolved using parent. Query Variables.
+-  Server04 - enable queries by id for students and projects but not able to resolve linked types.
 -  cars-parts - used to show resolving.
--  Server05 - Mutation (CRUD) for a project and use in HTML query.
--  Server06 - Use of input type - to do
+-  Server05 - Resolves query of students and projects. Use of Query Variables Tab.
+-  Server06 - Mutation (CRUD) for a project and use in HTML query.
 
 ## SERVER00
 
@@ -168,9 +168,14 @@ We can now pass in variables via Query Variables rather than hard coding them.
 ![gql](_images/04-get-project-by-id.png)
 
 [TOP](#TOC)
-lets go to cars-parts
 
-Lets go to COURSE-03 for 15-leaf where we will go through this parent-child relationship again and in more detail.
+## SERVER05
+
+Resolves query of students and projects. Use of Query Variables Tab.
+
+![gql](_images/05-using-query-variables.png)
+
+lets go to cars-parts to explore this parent-child resolution.
 
 ## cars-parts
 
@@ -178,9 +183,9 @@ We can see the generic linked resolution for many to many relationships as well 
 
 There is an exercise to pass a variable inthe Parts type to add a custommessage.
 
-[TOP](#TOC)
+We will see this again with more detail in COURSE-03 for 15-leaf where we will go through this parent-child relationship again and in more detail.
 
-## SERVER05
+## SERVER06
 
 Add createProject Mutation and create type input.
 
@@ -191,27 +196,28 @@ Add mutation: Mutation to schema.
 Use Query Variables tab.
 
 In client HTML, the alias ProjectCreated is used.
+We now create a Mutation which can accept input values and create mutations on the server - create, update or delete depending on the resolver.
 
-## Server05 Exercise
+![gql](_images/06-add-project-query-direct.png)
 
--  add a student in same way as we added a project but use all fields as mandatory except projects.
+Whilst we could do this with a query, it is good practice to call it a mutation in the same way in REST we can do mutations with GET.
 
-![gql](_images/05-query-variables-tab.png)
+_06-add-project.html has client version._
 
-_05-add-project.html has client version._
+Note, queries run in parallel, mutations run sequenitallys...
 
-[TOP](#TOC)
-
-## SERVER06
-
-Use of input type - to do
+![gql](_images/06-queries-vs-mutations.png)
 
 [TOP](#TOC)
 
-## SERVER07
+In COURSE-01, we have seen:
 
-## SERVER08
+-  how to use a SCHEMA and RESOLVER to implement GraphQL.
+-  how to resolve linked types (student and projects).
+-  we have been able to do queries by id.
+-  we have done mutations to send data to GraphQL and the resolver can then do CRUD.
+-  we have seen how to make client requests for queries or mutatations with custom data.
 
-## SERVER09
+Thus, we have implemented a CRUD GraphQL server doing all that our REST API would do.
 
 [TOP](#TOP)

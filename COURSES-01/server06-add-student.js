@@ -74,14 +74,19 @@ const resolvers = {
 		},
 	},
 	Project: {
-		id: () => {
-			return Math.floor(Math.random() * 100000 + 100000);
-		},
 		name: () => {
 			console.log(`---> Task.name returning TEST TASK ${Math.floor(Math.random() * 100000 + 100000)}`);
 			return `TEST TASK - ${Math.floor(Math.random() * 100000 + 100000)}`;
 		},
-		completed: () => (Math.random() > 0.5 ? true : false),
+	},
+	Mutation: {
+		createProject: (parent, args) => {
+			console.log('input', args.input);
+			const input = args.input;
+			const project = { ...input, id: rnd(100000) };
+			projects.push(project);
+			return project;
+		},
 	},
 };
 const PORT = process.env.PORT || 5000;
@@ -90,16 +95,20 @@ const server = new ApolloServer({ typeDefs, resolvers });
 server.listen({ port: PORT }).then(({ url }) => console.log(`Server05 running at port ${url}`));
 
 /*
-query{
-  getStudentById(id: 2){
+
+-- add a new project
+mutation {
+  createProject(input: { name: "new", completed: false }) {
     id
-    email
     name
-    projects{
-      id
-      name
-      completed
-    }
+    completed
+  }
+}
+-- get all projects (in mmeory not file)
+query {
+  projects {
+    id
+    name
   }
 }
 

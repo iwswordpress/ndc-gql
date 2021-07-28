@@ -51,15 +51,6 @@ const resolvers = {
 			return student;
 		},
 	},
-
-	Student: {
-		projects: (parent) => {
-			console.log('In Student.user');
-			console.log('Student.projects > parent.userId', parent.id);
-			const allProjects = projects.filter((project) => project.id === parent.id);
-			return allProjects;
-		},
-	},
 };
 
 const PORT = process.env.PORT || 5000;
