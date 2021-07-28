@@ -1,7 +1,7 @@
 module.exports.students = [
 	{
 		id: 1,
-		name: 'sally',
+		name: 'SALLY',
 		email: 'sally@test.com',
 		projects: [1, 2, 5, 7],
 	},
