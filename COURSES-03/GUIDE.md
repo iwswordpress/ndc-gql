@@ -27,4 +27,6 @@ We can extend type User but we can not have an empty base or extend type, so we 
 
 As gql use template literals we can use template variables in the gql template literal to put parts of the schema in variables that can be imported from other files.
 
-[TOP](#TOP)
+## MERGE SCHEMAS
+
+This is taken from graphql-tools docs - https://www.graphql-tools.com/docs/schema-merging#merging-type-definitions

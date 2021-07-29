@@ -55,6 +55,7 @@ const server = new ApolloServer({ typeDefs, resolvers });
 
 server.listen({ port: 5000 }).then(({ url }) => console.log(`cv01.js running at port ${url}`));
 /*
+
 query GetCV{
   getCV(name: "Craig"){
     personal{
@@ -70,4 +71,5 @@ query GetCV{
     }
   }
 }
+
 */
