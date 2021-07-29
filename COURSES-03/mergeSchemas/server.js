@@ -4,7 +4,6 @@ const dotEnv = require('dotenv');
 
 dotEnv.config();
 
-// const resolvers = require('../resolvers');
 const resolvers = {};
 
 const typeDefs = require('./mergeTypes');
