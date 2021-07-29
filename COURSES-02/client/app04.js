@@ -1,12 +1,12 @@
 const URL = 'http://localhost:5000/graphql';
 
-fetchMessage(101).then((data) => {
-	console.log(data.course);
-	document.querySelector('output').textContent = data.course.title;
+getTaskById(2).then((data) => {
+	console.log(data);
+	document.querySelector('output').textContent = data.getTaskById.TaskName;
 });
 // if id used, need $id, it is not just an empty parameter with any reference.
 // replacing $id as $y does not work in client
-async function fetchMessage(x) {
+async function getTaskById(x) {
 	// use something other for clarity
 	const response = await fetch(URL, {
 		method: 'POST',
@@ -15,10 +15,11 @@ async function fetchMessage(x) {
 		},
 		body: JSON.stringify({
 			query: `
-					query CourseQuery($id: ID!){
-					course(id:$id) { 
+				query GetTaskById($id: ID!) {
+					getTaskById(id: $id) {
 						id
-						title
+						TaskName:name
+						completed
 					}
 				}
      `,

@@ -1,11 +1,24 @@
 const { ApolloServer, gql } = require('apollo-server');
+const fetch = require('node-fetch');
+const JSON_URL = 'http://localhost:4011';
+
 const { users } = require('./data/users');
-const { tasks } = require('./data/tasks');
+
+let tasks = [];
+async function getAllTasks() {
+	const data = await fetch(`${JSON_URL}/tasks`);
+	const allTasks = await data.json();
+	tasks = allTasks;
+	// console.log(tasks);
+}
+getAllTasks();
 
 const dotEnv = require('dotenv');
 
 dotEnv.config();
 
+// We can see order of resolving as top level done first then child query.
+// !!! N+1 problem...
 const typeDefs = gql`
 	type Query {
 		users: [User!]
@@ -30,15 +43,15 @@ const typeDefs = gql`
 
 	type Mutation {
 		createTask(input: CreateTaskInput): Task!
+		# One can pass in an object in mutation - (input: {id:1, name:"new", completed: false})
+		# but this can become combersome.
+		# Inputs are good practice and naming them xxxxInput signals their use and avoids confusion.
 	}
 
 	input CreateTaskInput {
 		name: String!
-		completed: Boolean = false # input value can be omitted in mutation
+		completed: Boolean!
 		userId: Int!
-		# One can pass in an object in mutation - (input: {id:1, name:"new", completed: false})
-		# but this can become combersome.
-		# Inputs are good practice and naming them xxxxInput signals their use and avoids confusion.
 	}
 	schema {
 		query: Query
@@ -98,27 +111,21 @@ const resolvers = {
 const PORT = process.env.PORT || 5000;
 const server = new ApolloServer({ typeDefs, resolvers });
 
-server.listen({ port: PORT }).then(({ url }) => console.log(`Server06 running at port ${url}`));
+server.listen({ port: PORT }).then(({ url }) => console.log(`Server07 running at port ${url}`));
 
 /*
 
-mutation CreateTask($input: CreateTaskInput) {
-  createTask(input: $input){
+query {
+  tasks {
     id
     name
     completed
-    user{
+    user {
       id
       name
       email
     }
   }
-}
-
-Query Variables Tab
-
-{
-  "input": {"name": "TEST","completed": false ,"userId": 1}
 }
 
 */

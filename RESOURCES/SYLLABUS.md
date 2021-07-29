@@ -1,20 +1,28 @@
-What is GraphQL? Advantages/Disadvantages.
+## COURSE-01
 
-Fundamental concept of each field has its own function and we create sentences and paragraphs.
-What is GRAPH and what is QL?
+Exploration of GraphQL concepts with make and breaking.
 
-Hello-World to show fundamentals and NETWORK view.
-GraphiQL
-Postman
-Client side requests
+## COURSE-02
 
-JOBS example
-Models and Schema
-Resolvers
-ENUMS - INTERFACES - UNIONS - FRAGMENTS
-Query - Nesting, LIMIT etc
-Mutations - variables, query variables and headers tab.
-Subscriptions
-Directives
-Authentication and Authorization
-Eco system.
+-  Build out Task/User where Users can have many tasks and a task belongs to a user.
+
+-  Create CRUD app and include some client HTML examples
+
+## COURSE-03
+
+-  Refactor COURSE-02 to show a more modular approach.
+
+-  Use several types of schema merging from different files
+
+## COURSE-04
+
+Move on to more advanced topics:
+
+-  More work on resolver chain.
+-  Unions, Interfaces, Custom Scalar types.
+-  Error handling and formatting.
+-  Authentication and Authorization techniques.
+-  Subscriptions.
+-  Custom directives.
+-  Caching.
+-  Security, DDOS.

@@ -57,3 +57,17 @@ const PORT = process.env.PORT || 5000;
 const server = new ApolloServer({ typeDefs, resolvers });
 
 server.listen({ port: PORT }).then(({ url }) => console.log(`Server04 running at port ${url}`));
+/*
+NB if we have id as query parameter, varaible must be $id not $x. It is not a generic placeholder.
+
+query ProjectQuery($id: ID!) { 
+  getProjectById(id: $id) {
+    id
+    name
+  }
+}
+
+{
+  "id": 1
+}
+*/

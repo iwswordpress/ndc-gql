@@ -4,44 +4,36 @@
 
 ## SERVER01
 
-Set up inital test() and view in html page.
-
-See response in NETWORK TAB.
-
-Use getError() to show we still get 200. If there is error on way to API then on emay get 400s etc.
-
-Only one anonymous function per request so use aliases.
-
-CTRL + ENTER in one query will fire that.
-
-```
-query two { # two is named query
-  result: test # return named result not test
-}
-```
-
-One can rename tabs which default to query.
-
-Settings:
-
--  Polling by default every 2 seconds.
--  One can change format etc.
-
 [TOP](#TOP)
 
 ## SERVER02
 
-Use of comments and how to insert those comments into docs.
-
 Set up Users and Tasks.
 
-Return all tasks and users.
+Return all tasks or all users.
 
-Breaks when wanting user sub query.
+Cannot resolve tasks when a child of users.
+
+```
+query GetAllUsersTasks {
+  allUsers: users {
+    id
+    name
+    email
+    tasks{
+      id
+      name
+      completed
+    }
+  }
+}
+```
 
 [TOP](#TOP)
 
 ## SERVER03
+
+We can now resolve Tasks
 
 ```
 { # now works as we have field resolvers
@@ -57,9 +49,15 @@ Breaks when wanting user sub query.
 }
 ```
 
-add Task.name to see how we can overwrite previous Task.name
+### LAB:
+
+Uncomment Task.name to see how we can overwrite previous Task.name
+
+Task.user can also be overwritten provide the shape is as per schema.
 
 Note order of all tasks then resolve name then resolve subquery.
+
+There is a resolving chain of Query > Tasks.
 
 [TOP](#TOP)
 
@@ -85,7 +83,9 @@ getTaskById query
 
 Same for users. If one has a function in Schema.Query but not defined in resolves the app won't crash until that function is called.
 
-ids are serialized to string type.
+ids are serialized to string type as shown in node terminal.
+
+in client > 04-get-task-by-id.html we can use query and variables as well as aliases.
 
 [TOP](#TOP)
 
@@ -97,7 +97,7 @@ Create Users list with tasks.
 
 ## SERVER06
 
-Add createTask Mutation and create type input.
+Add createTask Mutation and input
 
 New task store in memory not file.
 
@@ -107,18 +107,8 @@ Use Query Variables tab.
 
 In client HTML, the alias TaskCreated is used.
 
-![gql](/_images/06-query-variables-tab.png)
+![gql](./_images/06-query-variables-tab.png)
 
 _06-add-task.html has client version._
-
-[TOP](#TOP)
-
-[TOP](#TOP)
-
-## SERVER07
-
-## SERVER08
-
-## SERVER09
 
 [TOP](#TOP)

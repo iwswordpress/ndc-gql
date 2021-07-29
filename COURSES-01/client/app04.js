@@ -3,7 +3,8 @@ const URL = 'http://localhost:5000/graphql';
 
 getProjectById(2).then((data) => {
 	console.log(data.getProjectById);
-	document.querySelector('output').textContent = data.getProjectById.name;
+	document.querySelector('output').textContent = data.getProjectById.result;
+	// we use an alias in query.
 });
 // if id used, need $id, it is not just an empty parameter with any reference.
 // replacing $id as $y does not work in client
@@ -20,10 +21,9 @@ async function getProjectById(x) {
 				query ProjectQuery($id: ID!) {
 					getProjectById(id: $id) {
 						id
-						name
+						result:name 
 					}
 				}
-
      `,
 			variables: { id: x }, // x used to keep clarity on ids. Must use id: $id
 			// { "id": 3 } is query variable inplayground. No $
