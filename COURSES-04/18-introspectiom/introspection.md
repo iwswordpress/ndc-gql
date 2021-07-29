@@ -1,3 +1,7 @@
+These are best discovered in playgroun dwith CTRL+space...
+
+https://graphql.org/learn/introspection/
+
 ```
 
 query {
@@ -9,10 +13,12 @@ query {
   }
 }
 
-query myQuery {
-  __type(name:"testName"){
-    name {
-      fields {
+{
+  __schema {
+    queryType {
+      kind
+      name
+      fields{
         name
         description
       }
@@ -20,26 +26,23 @@ query myQuery {
   }
 }
 
-query  roots {
+{
   __schema {
-    queryType {
-      ...typeFields
-    }
-    mutationType {
-          ...typeFields
-        }
-     subscriptionType {
-      ...typeFields
-    }
-
-  }
-
-  fragment typeFields on __Type {
-    name
-    fields {
+    directives {
+      __typename
       name
+      description
+      locations
+      args {
+        name
+        type {
+          kind
+          name
+        }
+      }
     }
   }
 }
+
 
 ```

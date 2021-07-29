@@ -1,5 +1,11 @@
 # 40-caching
 
+https://www.youtube.com/watch?v=CV3puKM_G14 - debunks myths form REST advocates about GraphQL.
+
+https://www.w3.org/Protocols/rfc2616/rfc2616.html
+
+![gql](../_images/40-dont-cache-auth-headers.png)
+
 GraphQL aims to let each field resovler do its look up.
 
 The reason is that the client may not ask for some fields and if we did the complete look up at the Query type level this would be overfetching and unnecessary DB work.
