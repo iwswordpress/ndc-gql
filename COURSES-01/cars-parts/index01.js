@@ -72,10 +72,17 @@ const schema = gql(`
 `);
 
 // create the resolvers
+// const cacheStore = [];
+const cacheStore = [{ id: 1, result: 'JSON.stringified' }];
 
 const resolvers = {
 	Query: {
 		carsById: (parent, args, context, info) => {
+			if (cacheStore[0]) {
+				console.log('In Memory found...');
+			} else {
+				console.log('Do API and cache ...');
+			}
 			console.log(args);
 			return args;
 		},
