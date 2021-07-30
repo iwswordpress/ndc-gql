@@ -48,10 +48,10 @@ const schema = gql(`
 	}
 	type Car {
 		id: ID!
-		brand: String!
-		color: String!
-		doors: Int!
-		type: CarTypes!
+		brand: String # make non required for demo
+		color: String
+		doors: Int
+		type: CarTypes
 		parts:[Part]
 	}
 	type Part {
@@ -112,6 +112,7 @@ const resolvers = {
 		brand: (parent, args, context, info) => {
 			console.log('Car > brand', parent.id);
 			return cars.filter((car) => car.id == parent.id)[0].brand;
+			// return 'CUSTOM BRAND';
 		},
 		type: (parent, args, context, info) => {
 			console.log('Car > type', parent.id);

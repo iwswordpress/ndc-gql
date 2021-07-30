@@ -8,7 +8,7 @@ The first resolver just gives the args, i.e. id=2 and to resolve Car, it works i
 
 When it comes to parts, parts returns a list of Part types, so it has to go to Parts and resolve fields there.
 
-If one removes Cars > brand or replaces the return with some other text, it will appear in data returned.
+If one removes Cars > brand or replaces the return with some other text, it will appear in data returned. If we comment it out, provided the schema allows null, it will return null if requested.
 
 As brand is a required field, if the brand resolver is removed the query will error.
 
@@ -22,7 +22,7 @@ One can keep drilling and lead to a DDOS attack. We will look at how we can prev
 
 We can also add field level variables.
 
-These must be added in the schema and then resolves as one wishes in the resolver using the args to see what has been requested.
+These must be added in the schema and then resolved as one wishes in the resolver using the args to see what has been requested.
 
 We can make an optional upper variable on brand to return uppercase brand. We have made it optional so it does not need to be added in the query.
 
