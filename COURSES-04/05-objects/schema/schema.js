@@ -1,5 +1,4 @@
 const graphql = require('graphql');
-const _ = require('lodash');
 
 const { GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLID, GraphQLInt, GraphQLList } = graphql;
 // dummy data
@@ -24,7 +23,7 @@ const CourseType = new GraphQLObjectType({
 			type: TutorType,
 			resolve(parent, args) {
 				console.log('CourseType > tutor | parent is course', parent);
-				return _.find(tutors, { id: parent.id });
+				return tutors.find((tutor) => tutor.id == parent.tutorId);
 			},
 		},
 	}),
@@ -39,7 +38,7 @@ const TutorType = new GraphQLObjectType({
 		courses: {
 			type: new GraphQLList(CourseType),
 			resolve(parent, args) {
-				return _.filter(courses, { tutorId: parent.id });
+				return courses.filter((course) => course.tutorId == parent.id);
 			},
 		},
 	}),
@@ -52,14 +51,14 @@ const RootQuery = new GraphQLObjectType({
 			type: CourseType,
 			args: { id: { type: GraphQLID } },
 			resolve(parent, args) {
-				return _.find(courses, { id: args.id });
+				return courses.find((course) => course.id == parent.courseId);
 			},
 		},
 		tutor: {
 			type: TutorType,
 			args: { id: { type: GraphQLID } },
 			resolve(parent, args) {
-				return _.find(tutors, { id: args.id });
+				return tutors.find((tutor) => tutor.id == parent.tutorId);
 			},
 		},
 		courses: {
@@ -101,3 +100,45 @@ module.exports = new GraphQLSchema({
 	query: RootQuery,
 	mutation: Mutation,
 });
+
+/*
+
+{
+  courses {
+    id
+    name
+    tech
+    tutor {
+      id
+      name
+      age
+    }
+  }
+  tutors {
+    id
+    name
+    age
+    courses {
+      id
+      name
+      tech
+      tutor {
+        id
+        name
+        age
+        courses {
+          id
+          name
+          tech
+          tutor{
+            id
+            name
+            age
+          }
+        }
+      }
+    }
+  }
+}
+
+*/

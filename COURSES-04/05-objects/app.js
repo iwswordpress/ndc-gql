@@ -14,5 +14,5 @@ app.use(
 );
 
 app.listen(5000, () => {
-	console.log('now listening for requests on port 5000');
+	console.log('app.js listening for requests on port http://localhost:5000/graphql');
 });
