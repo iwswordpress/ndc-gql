@@ -18,6 +18,7 @@ const typeDefs = gql`
 		# list: [String]!
 		# list: [String!]!
 		# restAPI: String
+		# restAPI(id: Int): String
 		# me: Me
 		# me(firstName: String): Me
 	}
@@ -47,6 +48,7 @@ const resolvers = {
 		// },
 		//
 		// restAPI: async (parent, args, context, info) => {
+		//  console.log(args.id)
 		// 	const course = await fetch(`https://randomuser.me/api`);
 		// 	const result = await course.json();
 		// 	console.log(result.results[0].name.first);
