@@ -4,7 +4,8 @@ const { ApolloServer, gql } = require('apollo-server');
 const dotEnv = require('dotenv');
 
 dotEnv.config();
-
+// ES6 template literal using back tick next to 1 on keyboard
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates
 const typeDefs = gql`
 	type Query {
 		"""
@@ -18,7 +19,7 @@ const typeDefs = gql`
 	# comment out schema {}...?
 	# remove resolver hello...?
 	# use hello: String! and change resolver accordingly.
-	# look at DFev > Network tab... more detail in Server01.js
+	# look at Dev > Network tab... more detail in Server01.js
 	schema {
 		query: Query ## Query could be changed to anything else but not advised.
 	}
@@ -26,7 +27,7 @@ const typeDefs = gql`
 
 const resolvers = {
 	Query: {
-		hello: () => null, // change to return a string
+		hello: () => 'HELLO!', // change to return a string
 	},
 };
 
