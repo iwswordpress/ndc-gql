@@ -8,7 +8,7 @@ dotEnv.config();
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates
 
 const typeDefs = gql`
-	type Q {
+	type Query {
 		"""
 		This is field level comment in docs - better example in server02 as there are more root types.
 		"""
@@ -26,15 +26,13 @@ const typeDefs = gql`
 	# throw Error server side and note status code - 200
 
 	schema {
-		query: Q ## Query could be changed to anything else but not advised.
+		query: Query ## Query could be changed to anything else but not advised.
 	}
 `;
 
 const resolvers = {
-	Q: {
-		hello: () => {
-			throw Error('A server error');
-		}, // change to return a string
+	Query: {
+		hello: () => 'HELLO!',
 	},
 };
 
