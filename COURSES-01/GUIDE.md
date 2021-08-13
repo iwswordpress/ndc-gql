@@ -67,6 +67,10 @@ query {
 ![gql](_images/null-list.png)
 
 -  Difference of lists and ! with data...['a','b', null], null, []etc
+-  https://www.apollographql.com/docs/apollo-server/schema/schema/#nullability-and-lists
+-  If ! appears inside the square brackets, the returned list can't include items that are null.
+-  If ! appears outside the square brackets, the list itself can't be null.
+-  In any case, it's valid for a list field to return an empty list.
 -  use of Me return type and how that works.
 -  'api' shows how we can use GraphQL as wrapper around our API. (In Auth we will see how we can pass on headers to API to do Auth).
 
