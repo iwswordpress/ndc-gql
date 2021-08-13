@@ -13,6 +13,12 @@
 
 A base version to show minimal requirements before we use Server01 as a LAB.
 
+## Settings:
+
+-  One can rename tabs which default to query.
+-  Polling by default every 2 seconds.
+-  One can change format etc.
+
 [TOP](#TOC)
 
 ## SERVER01
@@ -26,6 +32,7 @@ Let's look at the playground at http://localhost:5000/
 -  Remove all resolvers and it works.
 -  test(x: Int) has optional argument. use test(x: Int!) and see difference with no argument
 -  Use getError() to show we still get 200. If there is error on way to API then on emay get 400s etc.
+-  lists and hello can have loose type coercion
 
 ![gql](_images/01-many-queries.png)
 
