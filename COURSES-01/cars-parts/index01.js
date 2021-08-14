@@ -88,7 +88,7 @@ const resolvers = {
 		},
 		carsByType: (parent, args, context, info) => {
 			console.log(args);
-			return args;
+			return cars; // NB we need to send an iterable back as error asking for this will occur
 		},
 		partsById: (parent, args, context, info) => {
 			console.log(args);
@@ -141,3 +141,61 @@ const server = new ApolloServer({
 server.listen({ port: 5000 }).then(({ url }) => {
 	console.log(`🚀  INDEX01 ready at ${url}`);
 });
+
+/*
+{
+  carsById(id: 1) {
+    id
+    brand
+    color
+    doors
+    parts {
+      id
+      name
+    }
+  }
+}
+
+{
+  carsByType(type: ESTATE) {
+    id
+    brand
+    color
+    doors
+    parts {
+      id
+      name
+    }
+  }
+}
+
+{
+  partsById(id: 1) {
+    id
+    name
+    cars {
+      brand
+      color
+    }
+  }
+}
+
+{
+  partsById(id: 2) {
+    id
+    name
+    cars {
+      brand
+      color
+      parts {
+        id
+        name
+        cars{
+          id
+          doors
+        }
+      }
+    }
+  }
+}
+*/

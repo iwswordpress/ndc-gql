@@ -42,7 +42,8 @@ const resolvers = {
 		},
 	},
 	Project: {
-		id: () => {
+		id: (parent, args) => {
+			console.log(args);
 			return 100;
 		},
 		name: () => {
@@ -62,15 +63,17 @@ const server = new ApolloServer({ typeDefs, resolvers });
 
 server.listen({ port: PORT }).then(({ url }) => console.log(`Server03 running at port ${url}`));
 
-// query{
-//   students{
-//     id
-//     name
-//     email
-//     projects{
-//       id
-//       name
-//       completed
-//     }
-//   }
-// }
+/*
+query{
+  students{
+    id
+    name
+    email
+    projects{
+      id
+      name
+      completed
+    }
+  }
+}
+*/

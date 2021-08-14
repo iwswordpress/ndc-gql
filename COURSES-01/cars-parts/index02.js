@@ -144,3 +144,18 @@ const server = new ApolloServer({
 server.listen({ port: 5000 }).then(({ url }) => {
 	console.log(`🚀  INDEX02 ready at ${url}`);
 });
+
+/*
+
+{
+  partsById(id: 1) {
+    id
+    name
+    cars {
+      brand(upper:true)
+      color
+    }
+  }
+}
+
+*/
