@@ -17,8 +17,9 @@ const typeDefs = gql`
 		# list: [Int!]!
 		# list: [Boolean!]!
 		# restAPI(id: Int): String
+		# restAPI2(id: Int): String
 		# me: Me
-		# me(firstName: String): Me
+		# me(firstName: String!): Me
 	}
 
 	# type Me {
@@ -44,7 +45,7 @@ const resolvers = {
 		// 	return ['a'];
 		// },
 		// restAPI: async (parent, args, context, info) => {
-		// 	console.log(args.id);
+		// 	console.log('args.id:', args.id);
 		// 	const course = await fetch(`https://randomuser.me/api`);
 		// 	const result = await course.json();
 		// 	console.log(result.results[0].name.first);
@@ -52,11 +53,18 @@ const resolvers = {
 		// 	console.log(`firstName: ${firstName}`);
 		// 	return firstName;
 		// },
+		// restAPI2: async (parent, args, context, info) => {
+		// 	console.log('args.id:', args.id);
+		// 	const course = await fetch(`https://jsonplaceholder.typicode.com/users/${args.id}`);
+		// 	const result = await course.json();
+		// 	const fullName = result.name;
+		// 	console.log(`fullName: ${fullName}`);
+		// 	return fullName;
+		// },
 		// me: (parent, args, context, info) => {
 		// 	console.log(args.firstName);
 		// 	return { id: 1, stack: `JS` };
 		// },
-		//
 		// me: (parent, args, context, info) => {
 		// 	console.log(args.firstName);
 		// 	return { id: 1, stack: `${args.firstName}'s main skill is JS` };

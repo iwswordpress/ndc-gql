@@ -74,6 +74,38 @@ query {
 -  use of Me return type and how that works.
 -  'api' shows how we can use GraphQL as wrapper around our API. (In Auth we will see how we can pass on headers to API to do Auth).
 
+## Nullability
+
+```
+type Query {
+  taskMainList: [Task!]
+  # More query root fields
+}
+```
+
+Root field nullability
+
+A general good practice in GraphQL schemas is to make the types of fields non-null,
+unless you have a reason to distinguish between null and empty. 
+
+A non-null type can still hold an empty value. For example, a non-null string can be empty, a non-null list
+can be an empty array, and a non-null object can be one with no properties.
+
+Only use nullable fields if you want to associate an actual semantic meaning with the
+absence of their values. 
+
+However, root fields are special because making them nullable has an important consequence. In GraphQL.js implementations, when an error is thrown in any field’s resolver, the built-in executor resolves that field with null.
+When an error is thrown in a resolver for a field that is defined as non-null, the executor propagates the nullability to the field’s parent instead. If that parent field is also non-null, the executor continues up the tree until it finds a nullable field.
+
+This means if the root taskMainList field were to be made non-null, then when an
+error is thrown in its resolver, the nullability will propagate to the Query type (its parent). So the entire data response for a query asking for 
+
+This is not ideal. One bad root field should not block the data response of other root
+fields
+
+In general,  all root fields should be nullable. The semantic meaning of this nullability is, in this case, “Something went wrong in the resolver of this root field, and we’re allowing it so that a response can
+still have partial data for other root fields.”
+
 ## Settings:
 
 -  One can rename tabs which default to query.
