@@ -1,0 +1,17 @@
+{
+	"name": "cars-parts",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index01.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev01": "nodemon index01.js",
+		"dev02": "nodemon index02.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"nodemon": "^2.0.12"
+	}
+}

@@ -32,7 +32,7 @@ const typeDefs = gql`
 	type Mutation {
 		createProject(input: CreateProjectInput): Project!
 	}
-
+	# input type allowed only in Mutations not Queries
 	input CreateProjectInput {
 		name: String!
 		completed: Boolean!

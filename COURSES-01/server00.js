@@ -7,6 +7,9 @@ dotEnv.config();
 // ES6 template literal using back tick next to 1 on keyboard
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates
 
+// We can write gql(`...`) which resembles our regular functions.
+// With () we lose IDE highlighting and the usual format for template tag functions is no bracket.
+
 const typeDefs = gql`
 	type Query {
 		"""

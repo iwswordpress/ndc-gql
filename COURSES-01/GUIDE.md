@@ -1,5 +1,19 @@
 ## TOC
 
+In COURSE-01,we will learn:
+
+-  how to use a SCHEMA and RESOLVER to implement GraphQL.
+-  custom settings for playground.
+-  aliases.
+-  started to resolve linked types (student and projects).
+-  do queries by id.
+-  use mutations to send data to GraphQL and the resolver can then do CRUD.
+-  make client requests for queries or mutatations with custom data.
+
+Thus, we have implemented a CRUD GraphQL server doing all that our REST API would do.
+
+Lessons
+
 -  Server00 - Base set up with hello()
 -  Server01 - a lab to try out schema and resolvers and get to know playground.
 -  Server02 - use some in memory data for students and projects. show HTML query.
@@ -7,7 +21,7 @@
 -  Server04 - enable queries by id for students and projects but not able to resolve linked types.
 -  cars-parts - used to show resolving.
 -  Server05 - Basic add project mutation
--  Server06 - Mutation (CRUD) for a project wint input type and use in HTML query.
+-  Server06 - Mutation (CRUD) for a project with input type and use in HTML query.
 
 ## SERVER00
 
@@ -86,24 +100,24 @@ type Query {
 Root field nullability
 
 A general good practice in GraphQL schemas is to make the types of fields non-null,
-unless you have a reason to distinguish between null and empty. 
+unless you have a reason to distinguish between null and empty.
 
 A non-null type can still hold an empty value. For example, a non-null string can be empty, a non-null list
 can be an empty array, and a non-null object can be one with no properties.
 
 Only use nullable fields if you want to associate an actual semantic meaning with the
-absence of their values. 
+absence of their values.
 
 However, root fields are special because making them nullable has an important consequence. In GraphQL.js implementations, when an error is thrown in any field’s resolver, the built-in executor resolves that field with null.
 When an error is thrown in a resolver for a field that is defined as non-null, the executor propagates the nullability to the field’s parent instead. If that parent field is also non-null, the executor continues up the tree until it finds a nullable field.
 
 This means if the root taskMainList field were to be made non-null, then when an
-error is thrown in its resolver, the nullability will propagate to the Query type (its parent). So the entire data response for a query asking for 
+error is thrown in its resolver, the nullability will propagate to the Query type (its parent). So the entire data response for a query asking for
 
 This is not ideal. One bad root field should not block the data response of other root
 fields
 
-In general,  all root fields should be nullable. The semantic meaning of this nullability is, in this case, “Something went wrong in the resolver of this root field, and we’re allowing it so that a response can
+In general, all root fields should be nullable. The semantic meaning of this nullability is, in this case, “Something went wrong in the resolver of this root field, and we’re allowing it so that a response can
 still have partial data for other root fields.”
 
 ## Settings:
@@ -283,20 +297,10 @@ Whilst we could do this with a query, it is good practice to call it a mutation 
 
 _06-add-project.html has client version._
 
-Note, queries run in parallel, mutations run sequenitallys...
+Note, queries run in parallel, mutations run sequenitally...
 
 ![gql](_images/06-queries-vs-mutations.png)
 
 [TOP](#TOC)
-
-In COURSE-01, we have seen:
-
--  how to use a SCHEMA and RESOLVER to implement GraphQL.
--  how to resolve linked types (student and projects).
--  we have been able to do queries by id.
--  we have done mutations to send data to GraphQL and the resolver can then do CRUD.
--  we have seen how to make client requests for queries or mutatations with custom data.
-
-Thus, we have implemented a CRUD GraphQL server doing all that our REST API would do.
 
 [TOP](#TOP)
