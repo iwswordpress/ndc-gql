@@ -103,11 +103,19 @@ const server = new ApolloServer({
 	context: async ({ req }) => {
 		// This is just as an intro to what we can do with context
 		// Get details from auth headers but omitted here...
-		const tutor = await fetch(`${JSON_SERVER}/staff/51`);
-		const data = await tutor.json();
-		console.log('tutor id', data.id);
-		const user = { userId: data.id, isLoggedIn: true, role: 'ADMIN' };
-		console.log('ctx.user', user);
+		// Needs to be a function rather than object so that it runs with every request.
+		let user;
+		try {
+			const tutor = await fetch(`${JSON_SERVER}/staff/51`);
+			const data = await tutor.json();
+			console.log('tutor id', data.id);
+			user = { userId: data.id, isLoggedIn: true, role: 'ADMIN' };
+			console.log('ctx.user', user);
+		} catch {
+			console.log('error getting user');
+			user = null;
+		}
+
 		return user;
 	},
 });

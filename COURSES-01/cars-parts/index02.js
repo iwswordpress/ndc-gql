@@ -111,6 +111,7 @@ const resolvers = {
 			console.log('Car > brand', parent.id);
 			console.log('Car > brand:upper', args.upper);
 			const reqBrand = cars.filter((car) => car.id == parent.id)[0].brand;
+			// if we have specified UPPER...
 			if (args.upper) {
 				return reqBrand.toUpperCase();
 			} else {
