@@ -6,6 +6,8 @@ When we run carsById, it returns a Car.
 
 The first resolver just gives the args, i.e. id=2 and to resolve Car, it works its way down the graph to Car and finds all the relavant fields.
 
+Use of fragment...
+
 When it comes to parts, parts returns a list of Part types, so it has to go to Parts and resolve fields there.
 
 If one removes Cars > brand or replaces the return with some other text, it will appear in data returned. If we comment it out, provided the schema allows null, it will return null if requested.
