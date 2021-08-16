@@ -76,9 +76,10 @@ const resolvers = {
 
 	Mutation: {
 		createProject: (parent, args) => {
-			console.log('input', args.input);
-			const input = args.input;
-			const project = { ...input, id: rnd(100000) };
+			const name = args.input.name;
+			const completed = args.input.completed;
+			// const project = { id: rnd(100000), name, completed };
+			const project = { ...args.input, id: rnd(100000) };
 			projects.push(project);
 			console.log('Added project is', project);
 			return project;
@@ -89,3 +90,18 @@ const PORT = process.env.PORT || 5000;
 const server = new ApolloServer({ typeDefs, resolvers });
 
 server.listen({ port: PORT }).then(({ url }) => console.log(`Server06 running at port ${url}`));
+
+/*
+
+mutation AddProject($input:CreateProjectInput){
+  createProject(input:$input){
+    id
+    name
+    completed
+  }
+}
+QUERY VARIABLES TAB
+{
+  "input": {"name": "TESTCASE 4", "completed": true}
+}
+*/

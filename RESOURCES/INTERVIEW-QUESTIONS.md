@@ -1,65 +1,4 @@
-
-### 1. What is GraphQL?
-
-<details><summary>Answer</summary>
-<p>
-
-yes, even hidden code blocks!
-
-```
-print(input){
-  return 'Hello'
-}
-```
-
-</p>
-</details>
-
-
-
----
-
-### 2. What databases can GQL work with?
-
-<details><summary>Answer</summary>
-<p>
-
-yes, even hidden code blocks!
-
-```
-print(input){
-  return 'Hello'
-}
-```
-
-</p>
-</details>
-
-
-
----
-
-### 3. What is a Graph?
-
-<details><summary>Answer</summary>
-<p>
-
-yes, even hidden code blocks!
-
-```
-print(input){
-  return 'Hello'
-}
-```
-
-</p>
-</details>
-
-
-
----
-
-### 4. What is a Schema?
+### A1. What is GraphQL?
 
 <details><summary>Answer</summary>
 <p>
@@ -77,7 +16,7 @@ print(input){
 
 ---
 
-### 5. What are resolvers?
+### A2. What databases can GQL work with?
 
 <details><summary>Answer</summary>
 <p>
@@ -95,7 +34,7 @@ print(input){
 
 ---
 
-### 6. What does default to null mean?
+### A3. What is a Graph?
 
 <details><summary>Answer</summary>
 <p>
@@ -113,7 +52,7 @@ print(input){
 
 ---
 
-### 7. What are the main root types?
+### A4. What is a Schema?
 
 <details><summary>Answer</summary>
 <p>
@@ -131,7 +70,7 @@ print(input){
 
 ---
 
-### 8. How do we resolve linked Types - parent > child?
+### A5. What are resolvers?
 
 <details><summary>Answer</summary>
 <p>
@@ -149,7 +88,7 @@ print(input){
 
 ---
 
-### 9. What are the four arguments passed down to resolvers?
+### A6. What does default to null mean?
 
 <details><summary>Answer</summary>
 <p>
@@ -167,7 +106,7 @@ print(input){
 
 ---
 
-### 10. How do we pass and retrieve arguments?
+### A7. What are the main root types?
 
 <details><summary>Answer</summary>
 <p>
@@ -185,7 +124,7 @@ print(input){
 
 ---
 
-### 11. How can we use context?
+### A8. What does ! mean in schemas?
 
 <details><summary>Answer</summary>
 <p>
@@ -203,7 +142,7 @@ print(input){
 
 ---
 
-### 12. How do we pass and retrieve arguments?
+### A9. Is the ID type just for integers?
 
 <details><summary>Answer</summary>
 <p>
@@ -221,7 +160,7 @@ print(input){
 
 ---
 
-### 13. How do we pass and retrieve arguments?
+### A10. What do [Item!]! and [Item]! mean?
 
 <details><summary>Answer</summary>
 <p>
@@ -239,7 +178,7 @@ print(input){
 
 ---
 
-### 14. How do we pass and retrieve arguments?
+### A11. How do we resolve linked Types - parent > child?
 
 <details><summary>Answer</summary>
 <p>
@@ -257,7 +196,7 @@ print(input){
 
 ---
 
-### 15. How do we pass and retrieve arguments?
+### A12. What are the four arguments passed down to resolvers?
 
 <details><summary>Answer</summary>
 <p>
@@ -275,7 +214,7 @@ print(input){
 
 ---
 
-### 16. How do we pass and retrieve arguments?
+### A13. What response code does our client get with GQL?
 
 <details><summary>Answer</summary>
 <p>
@@ -293,7 +232,7 @@ print(input){
 
 ---
 
-### 17. How do we pass and retrieve arguments?
+### B1. How can we use context?
 
 <details><summary>Answer</summary>
 <p>
@@ -311,7 +250,7 @@ print(input){
 
 ---
 
-### 18. How do we pass and retrieve arguments?
+### B2. How do we ensure the context is run for every request?
 
 <details><summary>Answer</summary>
 <p>
@@ -329,7 +268,7 @@ print(input){
 
 ---
 
-### 19. How do we pass and retrieve arguments?
+### B3. Can we access the request object in context to get headers?
 
 <details><summary>Answer</summary>
 <p>
@@ -347,7 +286,7 @@ print(input){
 
 ---
 
-### 20. How do we pass and retrieve arguments?
+### B4. Can we turn the playground off?
 
 <details><summary>Answer</summary>
 <p>
@@ -365,7 +304,7 @@ print(input){
 
 ---
 
-### 21. How do we pass and retrieve arguments?
+### B5. Can we define our own GQL endpoint?
 
 <details><summary>Answer</summary>
 <p>
@@ -383,7 +322,7 @@ print(input){
 
 ---
 
-### 22. How do we pass and retrieve arguments?
+### B6. Can/How do we modularise our schemas and resolvers?
 
 <details><summary>Answer</summary>
 <p>
@@ -401,7 +340,7 @@ print(input){
 
 ---
 
-### 23. How do we pass and retrieve arguments?
+### B7. What are Interfaces, Unions and Enums?
 
 <details><summary>Answer</summary>
 <p>
@@ -419,7 +358,7 @@ print(input){
 
 ---
 
-### 24. How do we pass and retrieve arguments?
+### B8. How do we include Authorization and Authentication?
 
 <details><summary>Answer</summary>
 <p>
@@ -437,7 +376,7 @@ print(input){
 
 ---
 
-### 25. How do we pass and retrieve arguments?
+### B9. How can we secure our GQL against DDOS etc?
 
 <details><summary>Answer</summary>
 <p>
@@ -455,7 +394,7 @@ print(input){
 
 ---
 
-### 26. How do we pass and retrieve arguments?
+### B10. Can we do caching with GQL?
 
 <details><summary>Answer</summary>
 <p>
@@ -473,7 +412,7 @@ print(input){
 
 ---
 
-### 27. How do we pass and retrieve arguments?
+### B11. What are Subscriptions?
 
 <details><summary>Answer</summary>
 <p>
@@ -491,7 +430,7 @@ print(input){
 
 ---
 
-### 28. How do we pass and retrieve arguments?
+### B12. What is introspection and can we turn it off?
 
 <details><summary>Answer</summary>
 <p>
@@ -509,7 +448,7 @@ print(input){
 
 ---
 
-### 29. How do we pass and retrieve arguments?
+### B13. What are custom directives?
 
 <details><summary>Answer</summary>
 <p>
@@ -527,7 +466,7 @@ print(input){
 
 ---
 
-### 30. How do we pass and retrieve arguments?
+### B14. Can we create our own Scalar Types?
 
 <details><summary>Answer</summary>
 <p>
@@ -545,7 +484,7 @@ print(input){
 
 ---
 
-### 31. How do we pass and retrieve arguments?
+### B15. Can we customise errors?
 
 <details><summary>Answer</summary>
 <p>
@@ -563,7 +502,7 @@ print(input){
 
 ---
 
-### 32. How do we pass and retrieve arguments?
+### B16. Can we turn off stack trace in production? Is it default?
 
 <details><summary>Answer</summary>
 <p>
@@ -581,7 +520,7 @@ print(input){
 
 ---
 
-### 33. How do we pass and retrieve arguments?
+### B17. Where is the GQL spec?
 
 <details><summary>Answer</summary>
 <p>
@@ -599,7 +538,7 @@ print(input){
 
 ---
 
-### 34. How do we pass and retrieve arguments?
+### B18. Does the GQL spec tell us how to do authentication?
 
 <details><summary>Answer</summary>
 <p>
@@ -617,7 +556,7 @@ print(input){
 
 ---
 
-### 35. How do we pass and retrieve arguments?
+### B19. Name some GQL libraries.
 
 <details><summary>Answer</summary>
 <p>
@@ -635,7 +574,7 @@ print(input){
 
 ---
 
-### 36. How do we pass and retrieve arguments?
+### B20. What is an AST and which argument contains it?
 
 <details><summary>Answer</summary>
 <p>
@@ -653,7 +592,7 @@ print(input){
 
 ---
 
-### 37. How do we pass and retrieve arguments?
+### B21. How can we send multiple queries that are identical?
 
 <details><summary>Answer</summary>
 <p>
@@ -670,239 +609,3 @@ print(input){
 </details>
 
 ---
-
-### 38. How do we pass and retrieve arguments?
-
-<details><summary>Answer</summary>
-<p>
-
-yes, even hidden code blocks!
-
-```
-print(input){
-  return 'Hello'
-}
-```
-
-</p>
-</details>
-
----
-
-### 39. How do we pass and retrieve arguments?
-
-<details><summary>Answer</summary>
-<p>
-
-yes, even hidden code blocks!
-
-```
-print(input){
-  return 'Hello'
-}
-```
-
-</p>
-</details>
-
----
-
-### 40. How do we pass and retrieve arguments?
-
-<details><summary>Answer</summary>
-<p>
-
-yes, even hidden code blocks!
-
-```
-print(input){
-  return 'Hello'
-}
-```
-
-</p>
-</details>
-
----
-
-### 41. How do we pass and retrieve arguments?
-
-<details><summary>Answer</summary>
-<p>
-
-yes, even hidden code blocks!
-
-```
-print(input){
-  return 'Hello'
-}
-```
-
-</p>
-</details>
-
----
-
-### 42. How do we pass and retrieve arguments?
-
-<details><summary>Answer</summary>
-<p>
-
-yes, even hidden code blocks!
-
-```
-print(input){
-  return 'Hello'
-}
-```
-
-</p>
-</details>
-
----
-
-### 43. How do we pass and retrieve arguments?
-
-<details><summary>Answer</summary>
-<p>
-
-yes, even hidden code blocks!
-
-```
-print(input){
-  return 'Hello'
-}
-```
-
-</p>
-</details>
-
----
-
-### 44. How do we pass and retrieve arguments?
-
-<details><summary>Answer</summary>
-<p>
-
-yes, even hidden code blocks!
-
-```
-print(input){
-  return 'Hello'
-}
-```
-
-</p>
-</details>
-
----
-
-### 45. How do we pass and retrieve arguments?
-
-<details><summary>Answer</summary>
-<p>
-
-yes, even hidden code blocks!
-
-```
-print(input){
-  return 'Hello'
-}
-```
-
-</p>
-</details>
-
----
-
-### 46. How do we pass and retrieve arguments?
-
-<details><summary>Answer</summary>
-<p>
-
-yes, even hidden code blocks!
-
-```
-print(input){
-  return 'Hello'
-}
-```
-
-</p>
-</details>
-
----
-
-### 47. How do we pass and retrieve arguments?
-
-<details><summary>Answer</summary>
-<p>
-
-yes, even hidden code blocks!
-
-```
-print(input){
-  return 'Hello'
-}
-```
-
-</p>
-</details>
-
----
-
-### 48. How do we pass and retrieve arguments?
-
-<details><summary>Answer</summary>
-<p>
-
-yes, even hidden code blocks!
-
-```
-print(input){
-  return 'Hello'
-}
-```
-
-</p>
-</details>
-
----
-
-### 48. How do we pass and retrieve arguments?
-
-<details><summary>Answer</summary>
-<p>
-
-yes, even hidden code blocks!
-
-```
-print(input){
-  return 'Hello'
-}
-```
-
-</p>
-</details>
-
----
-
-### 50. How do we pass and retrieve arguments?
-
-<details><summary>Answer</summary>
-<p>
-
-yes, even hidden code blocks!
-
-```
-print(input){
-  return 'Hello'
-}
-```
-
-</p>
-</details>
-
----
-
-

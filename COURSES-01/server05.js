@@ -5,9 +5,11 @@ const { projects } = require('./data/projects');
 const dotEnv = require('dotenv');
 
 dotEnv.config();
+
 function rnd(x) {
 	return Math.floor(Math.random() * x + x);
 }
+
 const typeDefs = gql`
 	type Query {
 		students: [Student!]
@@ -93,7 +95,7 @@ mutation {
     completed
   }
 }
--- get all projects (in mmeory not file)
+-- get all projects (in memory not file)
 query {
   projects {
     id
