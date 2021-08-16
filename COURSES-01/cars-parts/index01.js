@@ -170,6 +170,25 @@ server.listen({ port: 5000 }).then(({ url }) => {
 }
 
 {
+  carsById(id: 2) {
+    id
+    ...basics
+    type
+    parts {
+      id
+      name
+    }
+  }
+}
+
+fragment basics on Car {
+  brand
+  color
+  doors
+}
+
+
+{
   carsByType(type: ESTATE) {
     id
     brand
