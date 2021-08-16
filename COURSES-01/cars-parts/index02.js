@@ -79,9 +79,15 @@ const resolvers = {
 			console.log(args);
 			return args;
 		},
+
+		// we return a filtered array of cars that then gets its parts resolved
 		carsByType: (parent, args, context, info) => {
-			console.log(args);
-			return args;
+			console.log('TYPE:', args.type);
+			const carsByType = cars.filter((car) => {
+				return car.type == args.type;
+			});
+
+			return carsByType; // NB we need to send an iterable back as error asking for this will occur
 		},
 		partsById: (parent, args, context, info) => {
 			console.log(args);
