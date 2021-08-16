@@ -122,7 +122,7 @@ const resolvers = {
 		brand: (parent, args, context, info) => {
 			console.log('Car > brand: parentId', parent.id);
 			return cars.filter((car) => car.id == parent.id)[0].brand;
-			// return 'CUSTOM BRAND';
+			// return 'CUSTOM BRAND with parentId: ' + parent.id;
 		},
 		type: (parent, args, context, info) => {
 			console.log('Car > type: parentId', parent.id);
@@ -161,6 +161,7 @@ server.listen({ port: 5000 }).then(({ url }) => {
     brand
     color
     doors
+    type
     parts {
       id
       name
