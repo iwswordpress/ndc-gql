@@ -1,28 +1,28 @@
+We create several GraphQL Servers, each time implementing new features.
+
 ## COURSE-01
 
-Exploration of GraphQL concepts with make and breaking.
+Exploration of GraphQL concepts to make CRUD GraphQL Server with HTML client requests. This can also be used as a wrapper around existing REST APIs enabling a gradual transition to GraphQL.
 
 ## COURSE-02
 
--  Build out Task/User where Users can have many tasks and a task belongs to a user.
-
--  Create CRUD app and include some client HTML examples
+With another GraphQL Server, we add in some new features leading to COURSE-03. We connect to other APIs to enable our GraphQL Server to act as a central API point.
 
 ## COURSE-03
 
--  Refactor COURSE-02 to show a more modular approach.
-
--  Use several types of schema merging from different files
+We refactor the previous Server and start to use Schema Merging and code refactoring to enable greater modularity to our code.
 
 ## COURSE-04
 
-Move on to more advanced topics:
+We move on to more advanced topics:
 
--  More work on resolver chain.
--  Unions, Interfaces, Custom Scalar types.
+-  More work on the resolver chain.
+-  Unions, Interfaces, Enums and Custom Scalar types.
 -  Error handling and formatting.
 -  Authentication and Authorization techniques.
 -  Subscriptions.
 -  Custom directives.
 -  Caching.
 -  Security, DDOS.
+
+We use JavaScript minimally and the GraphQL concepts taught are transferrable to any code base.
