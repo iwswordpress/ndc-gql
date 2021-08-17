@@ -23,7 +23,7 @@ const typeDefs = gql`
 		id: ID!
 		name: String!
 		completed: Boolean!
-		user: User!
+		user: User
 	}
 
 	schema {

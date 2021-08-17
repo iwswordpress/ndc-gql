@@ -65,7 +65,7 @@ const resolvers = {
 	},
 	User: {
 		tasks: (parent) => {
-			console.log('In User.user');
+			console.log('In User.tasks');
 			console.log('User.tasks > parent.userId', parent.id);
 			const allTasks = tasks.filter((task) => task.userId === parent.id);
 			return allTasks;
