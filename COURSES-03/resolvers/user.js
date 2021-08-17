@@ -13,9 +13,7 @@ module.exports = {
 			return user;
 		},
 	},
-	Mutation: {
-		_: String,
-	},
+
 	User: {
 		tasks: (parent) => {
 			console.log('In User.user');
