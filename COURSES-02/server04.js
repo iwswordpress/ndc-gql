@@ -73,10 +73,14 @@ server.listen({ port: PORT }).then(({ url }) => console.log(`Server04 running at
 /*
 
 query GetTaskById {
-  getTaskById(id: 2) {
+  getTaskById(id: 3) {
     id
     name
     completed
+    user{
+      id
+      name
+    }
   }
 }
 

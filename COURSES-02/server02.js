@@ -56,13 +56,12 @@ query GetAllUsers {
     email
   }
 }
-
-query GetAllUsersTasks {
-  allUsers: users {
+{
+  users {
     id
     name
     email
-    tasks{
+    tasks {
       id
       name
       completed

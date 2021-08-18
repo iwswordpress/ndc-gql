@@ -52,10 +52,10 @@ const resolvers = {
 			// return { id: 100, name: 'OVERWRITTEN', email: 'replaced@test.com' };
 		},
 		// demos how field level resolvers overwrite top level resolver.
-		// name: () => {
-		// 	console.log(`---> Task.name returning TEST TASK ${Math.floor(Math.random() * 100000 + 100000)}`);
-		// 	return `Task.name overwritten - ${Math.floor(Math.random() * 100000 + 100000)}`;
-		// },
+		name: () => {
+			console.log(`---> Task.name returning TEST TASK ${Math.floor(Math.random() * 100000 + 100000)}`);
+			return `Task.name overwritten - ${Math.floor(Math.random() * 100000 + 100000)}`;
+		},
 	},
 };
 
@@ -65,13 +65,12 @@ const server = new ApolloServer({ typeDefs, resolvers });
 server.listen({ port: PORT }).then(({ url }) => console.log(`Server03 running at port ${url}`));
 
 /*
-
 {
-  tasks{
+  tasks {
     id
     name
     completed
-    user{
+    user {
       id
       name
       email
