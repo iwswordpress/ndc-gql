@@ -1,26 +1,27 @@
 const { ApolloServer, gql } = require('apollo-server');
 
-const { students } = require('../data/students');
-const { projects } = require('../data/projects');
+const { students } = require('./data/students');
+const { projects } = require('./data/projects');
 
 const dotEnv = require('dotenv');
 
 dotEnv.config();
 
 // These constants can be imported...
-const STUDENT = `	
-		type Student {
-			id: ID! 
-			name: String!
-			email: String!
-			projects: [Project!]
-	}`;
-const PROJECTS = `	
-		type Project {
-			id: ID!
-			name: String!
-			completed: Boolean!
-		}
+const STUDENT = `
+	type Student {
+		id: ID!
+		name: String!
+		email: String!
+		projects: [Project!]
+	}
+`;
+const PROJECTS = `
+	type Project {
+		id: ID!
+		name: String!
+		completed: Boolean!
+	}
 `;
 
 const typeDefs = gql`
