@@ -32,13 +32,13 @@ Being a Graph, GQL knows all the interconnections.
 
 Use to show how resolution passes down
 
-## index01 has basic Query.cat
+### index01 has basic Query.cat
 
 ![gql](../_images/15-index01.png)
 
 ![gql](../_images/15-index01-console.png)
 
-## index02 has a CAT type at root of schema that can be used to resolve its fields.
+### index02 has a CAT type at root of schema that can be used to resolve its fields.
 
 We see the parent argument in action as we can pass down values from the cat resolver. Normally an empty object is passed down and we let the top level Cat type resolve all the fields.
 
@@ -50,4 +50,4 @@ As a GRAPH, all nodes are connected and GQL knows the whole graph/tree.
 
 ![gql](../_images/15-index02-console.png)
 
-## index03 has CAT and CARER resolution as well as intro to CONTEXT.
+### index03 has CAT and CARER resolution as well as intro to CONTEXT using AJAX to get User data.

@@ -105,12 +105,15 @@ const server = new ApolloServer({
 		// Get details from auth headers but omitted here...
 		// Needs to be a function rather than object so that it runs with every request.
 		let user;
+
 		try {
 			const tutor = await fetch(`${JSON_SERVER}/staff/51`);
 			const data = await tutor.json();
 			console.log('tutor id', data.id);
 			user = { userId: data.id, isLoggedIn: true, role: 'ADMIN' };
+			console.log('=== CTX ===');
 			console.log('ctx.user', user);
+			console.log('=== CTX ===');
 		} catch {
 			console.log('error getting user');
 			user = null;

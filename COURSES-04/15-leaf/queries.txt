@@ -1,9 +1,0 @@
-query{
-  cat(name: "Tigger"){
-    catName
-    age
-    carer{
-      carerName
-    }
-  }
-}

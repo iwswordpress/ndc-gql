@@ -1,11 +1,11 @@
 const { ApolloServer, gql } = require('apollo-server');
 
-// A cat has an carer.
+// A cat has a carer.
 // We are not attaching a cat to a carer for this demo as we are looking at Resolving Types
-// A carer has a dog.
+// A carer also has a dog.
 const typeDefs = gql`
 	type Query {
-		cat(name: String!): Cat!
+		cat(name: String): Cat!
 		carer(name: String!): Carer!
 	}
 
@@ -64,8 +64,23 @@ const server = new ApolloServer({
 	typeDefs,
 	resolvers,
 	context: () => {
-		isLoggedIn: true;
+		// function so it runs with every request
+		return { isLoggedIn: true };
 	},
 });
 // defaults to port 4000
 server.listen({ port: 5000 }).then(({ url }) => console.log(`Index01 running at port ${url}`));
+
+/*
+
+query{
+  cat(name: "Garfield"){
+    catName
+    age
+    carer{
+      carerName
+    }
+  }
+}
+
+*/
