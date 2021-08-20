@@ -1,5 +1,7 @@
 # 26-errors
 
+Example in 31-custom-directives
+
 We have throw new Error('Error message to display')
 
 Apollo has many possibilities:

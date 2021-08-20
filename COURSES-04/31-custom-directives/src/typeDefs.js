@@ -18,7 +18,7 @@ const typeDefs = gql`
 	}
 
 	type Query {
-		currentUser(id: Int): User @auth(requires: ADMIN)
+		viewUser(id: Int): User @auth(requires: ADMIN)
 	}
 `;
 
