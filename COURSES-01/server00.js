@@ -6,6 +6,7 @@ dotEnv.config();
 
 // ES6 template literal using back tick next to 1 on keyboard
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates
+// https://codeburst.io/javascript-what-are-tag-functions-97682f29521b
 
 // We can write gql(`...`) which resembles our regular functions.
 // With () we lose IDE highlighting and the usual format for template tag functions is no bracket.

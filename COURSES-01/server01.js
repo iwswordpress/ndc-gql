@@ -18,6 +18,7 @@ const typeDefs = gql`
 		# list: [Boolean!]!
 		# restAPI(id: Int): String
 		# restAPI2(id: Int): String
+		# restAPI3: String
 		# me: Me
 		# me(firstName: String!): Me
 	}
@@ -38,12 +39,14 @@ const resolvers = {
 		// we can have a Schema type without resolver, defaults to null, but not a resolver with no Schema type
 		hello: () => 'HELLO!', // change to return a string
 		// test: (parent, args, context, info) => `Hello World! ${Math.floor(Math.random() * args.x + args.x)}`,
+
 		// getNum: (parent, args, context, info) => {
 		// 	return Math.floor(Math.random() * 100);
 		// },
 		// list: (parent, args, context, info) => {
 		// 	return ['a'];
 		// },
+
 		// restAPI: async (parent, args, context, info) => {
 		// 	console.log('args.id:', args.id);
 		// 	const course = await fetch(`https://randomuser.me/api`);
@@ -53,6 +56,7 @@ const resolvers = {
 		// 	console.log(`firstName: ${firstName}`);
 		// 	return firstName;
 		// },
+
 		// restAPI2: async (parent, args, context, info) => {
 		// 	console.log('args.id:', args.id);
 		// 	const course = await fetch(`https://jsonplaceholder.typicode.com/users/${args.id}`);
@@ -61,10 +65,23 @@ const resolvers = {
 		// 	console.log(`fullName: ${fullName}`);
 		// 	return fullName;
 		// },
+
+		// restAPI3: async () => {
+		// 	const res = await fetch(`https://random-data-api.com/api/address/random_address`);
+		// 	const location = await res.json();
+		// 	const city = location.city;
+		// 	const res2 = await fetch(`https://random-data-api.com/api/company/random_company`);
+		// 	const company = await res2.json();
+		// 	const companyName = company.business_name;
+		// 	console.log(`company: ${companyName}`);
+		// 	return `I work at ${companyName} based in ${city}`;
+		// },
+
 		// me: (parent, args, context, info) => {
 		// 	console.log(args.firstName);
 		// 	return { id: 1, stack: `JS` };
 		// },
+
 		// me: (parent, args, context, info) => {
 		// 	console.log(args.firstName);
 		// 	return { id: 1, stack: `${args.firstName}'s main skill is JS` };
@@ -76,7 +93,7 @@ const resolvers = {
 // Add more fields (location, job, etc) to Me and adjust resolver.
 // In schema for list, ensure that a list must be returned, it can be empty and have nulls.
 // In schema for list, ensure that a list must be returned, it can be empty but if not it must be of String type.
-// Use restAPI that uses a REST API
+// Use restAPI that uses a REST API - https://random-data-api.com/api/address/random_address
 
 const PORT = process.env.PORT || 5000;
 const server = new ApolloServer({ typeDefs, resolvers });

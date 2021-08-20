@@ -113,6 +113,7 @@ const server = new ApolloServer({
 			user = { userId: data.id, isLoggedIn: true, role: 'ADMIN' };
 			console.log('=== CTX ===');
 			console.log('ctx.user', user);
+			console.log('ctx.body.query', req.body.query);
 			console.log('=== CTX ===');
 		} catch {
 			console.log('error getting user');
