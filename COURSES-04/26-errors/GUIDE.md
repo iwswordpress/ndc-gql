@@ -11,21 +11,6 @@ https://www.apollographql.com/docs/apollo-server/data/errors/#custom-errors
 We can use the formatError().
 
 ```
-import { ApolloError } from 'apollo-server-errors';
-
-export class MyError extends ApolloError {
-  constructor(message: string) {
-    super(message, 'MY_ERROR_CODE');
-
-    Object.defineProperty(this, 'name', { value: 'MyError' });
-  }
-}
-
-throw new MyError('My error message')
-
-```
-
-```
 const server = new ApolloServer({
  typeDefs,
  resolvers,
@@ -64,6 +49,21 @@ server.listen().then(({ url }) => {
     const code = err.originalError.code || 500;
     return { message: message, status: code, data: data };
   },
+```
+
+```
+import { ApolloError } from 'apollo-server-errors';
+
+export class MyError extends ApolloError {
+  constructor(message: string) {
+    super(message, 'MY_ERROR_CODE');
+
+    Object.defineProperty(this, 'name', { value: 'MyError' });
+  }
+}
+
+throw new MyError('My error message')
+
 ```
 
 ### Omitting or including stacktrace
