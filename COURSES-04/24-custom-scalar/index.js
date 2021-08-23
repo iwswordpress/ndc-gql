@@ -10,14 +10,9 @@ const typeDefs = gql`
 		"""
 		getTime: DateTime
 		getTimeString: String
-		
 	}
 `;
-// Run this query
-// query demoCustomScalar{
-//   withCustomScalar:getTime
-//   withString:getTimeString
-// }
+
 const resolvers = {
 	DateTime: new GraphQLScalarType({
 		name: 'DateTime',
@@ -36,3 +31,13 @@ const resolvers = {
 
 const server = new ApolloServer({ typeDefs, resolvers });
 server.listen(5000).then((serverInfo) => console.info(`Server running at ${serverInfo.url}`));
+/*
+
+Run this query
+
+query demoCustomScalar{
+  withCustomScalar:getTime
+  withString:getTimeString
+}
+
+*/

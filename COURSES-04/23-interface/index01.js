@@ -79,15 +79,16 @@ server.listen({ port: 5000 }).then(({ url }) => {
 	console.log(`🚀 Running index01 on ${url}...`);
 });
 /*
+
 query {
-  Students: users {
+  People: users {
     ... on Student {
       __typename
       id
       firstName
       role
-
       year
+			gradStatus
     }
     ... on Staff {
       __typename

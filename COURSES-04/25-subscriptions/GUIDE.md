@@ -2,6 +2,8 @@
 
 In server.js
 
+We can see another way to load schemas.
+
 ```
 
 apolloServer.applyMiddleware({ app, path: '/graphql' });
