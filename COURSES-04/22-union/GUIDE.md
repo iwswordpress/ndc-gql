@@ -15,6 +15,7 @@ Union: A collection of related but different objects
 Interface: A collection of similar objects with most of their properties the same but some different ones too.
 
 ```
+
 query {
   Books: search(contains: "GraphQL") {
     ... on Book {
@@ -33,6 +34,7 @@ query {
     }
   }
 }
+
 
 ```
 

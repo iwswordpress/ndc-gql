@@ -1,7 +1,6 @@
 const URL = 'http://localhost:5000';
 
-async function fetchMessage(firstName) {
-	console.log(firstName);
+async function getUnion() {
 	const response = await fetch(URL, {
 		method: 'POST',
 		headers: {
@@ -9,11 +8,25 @@ async function fetchMessage(firstName) {
 		},
 		body: JSON.stringify({
 			query: `
-       query Greet($firstName: String!){
-				greet(firstName :$firstName )
-			}
+				query {
+					Books: search(contains: "GraphQL") {
+						... on Book {
+							__typename
+							bookTitle
+							page
+							price
+						}
+					}
+					Videos: search(contains: "test") {
+						... on Video {
+							__typename
+							videoTitle
+							length
+							isFree
+						}
+					}
+				}
      `,
-			variables: { firstName },
 		}),
 	});
 
@@ -22,7 +35,6 @@ async function fetchMessage(firstName) {
 	return data;
 }
 
-fetchMessage('PETER').then((data) => {
+getUnion().then((data) => {
 	console.log(data);
-	document.querySelector('output').textContent = data.greet;
 });

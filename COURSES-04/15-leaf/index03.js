@@ -128,3 +128,19 @@ server.listen({ port: 5000 }).then(({ url }) => {
 	console.log(`Index03 running at port ${url}`);
 	console.log(`Need JSON SERVER running...`);
 });
+
+/*
+query{
+  cat(name: "Garfield"){
+    catName
+    age
+    carer{
+      carerName
+      cat{
+        catName
+        age
+      }
+    }
+  }
+}
+*/

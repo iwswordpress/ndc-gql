@@ -40,9 +40,9 @@ const resolvers = {
 		cat: (parent, args, ctx, info) => {
 			console.log('---> In Query > cat');
 			showAST(info);
-			// console.log('Query > cat > parent: ', parent);
-			// console.log('Query > cat > args.name: ', args.name);
-			// console.log('Query > cat > ctx: ', ctx.isLoggedIn);
+			console.log('Query > cat > parent: ', parent);
+			console.log('Query > cat > args.name: ', args.name);
+			console.log('Query > cat > ctx: ', ctx.isLoggedIn);
 
 			return { catName: args.name, age: 3, carer: { carerName: 'Query.cat.SALLY', dog: 'FIDO' } };
 			// return {  };
@@ -75,14 +75,16 @@ const resolvers = {
 
 			return Math.floor(Math.random() * 5000 + 1000);
 		},
+
 		carer: (parent, args, ctx, info) => {
 			console.log('---> In Cat > carer');
 			showAST(info);
 			// console.log('Cat > carerName > ctx isLoggedIn ', ctx.isLoggedIn);
 			// console.log('Cat > carerName > parent', parent);
-			return { carerName: 'Query.cat.carer', dog: 'Query.cat.carer.dog' };
+			return { carerName: 'Cat.carer', dog: 'Query.cat.carer.dog' };
 		},
 	},
+
 	// Carer: {
 	// 	carerName: (parent, args, ctx) => {
 	// 		console.log('In Carer > carerName');
