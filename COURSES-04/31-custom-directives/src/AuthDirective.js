@@ -41,6 +41,7 @@ class AuthDirective extends SchemaDirectiveVisitor {
 			);
 
 			// Various ways to code this but we check first if authenticated
+			// If no token, data will end up being null
 			if (context.user.token.substring(0, 5) == 'TOKEN') {
 				// token = 'TOKEN-NAME' so a demo way of seeing if user is AUTHENTICATED
 				console.log('+++++ AUTHENTICATION +++++');

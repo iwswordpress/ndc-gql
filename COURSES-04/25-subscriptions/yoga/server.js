@@ -46,6 +46,7 @@ const resolvers = {
 			subscribe: (parent, args, { pubsub }) => {
 				const channel = Math.random().toString(36).slice(2, 15);
 				onMessagesUpdates(() => pubsub.publish(channel, { messages }));
+				// send back current store of messages straight away...
 				setTimeout(() => pubsub.publish(channel, { messages }), 0);
 				return pubsub.asyncIterator(channel);
 			},

@@ -9,7 +9,7 @@ const server = new ApolloServer({
 		// we can get custom headers and pass them to API if needed
 		console.log('index.js > HEADERS > NDC', req.headers.ndc);
 		// we can see query and many other properties...
-		console.log('index.js > query sent ', req.body.query);
+		// console.log('index.js > query sent ', req.body.query);
 		// DO AUTH...return credentials...
 		return {
 			user: {
@@ -26,3 +26,33 @@ const server = new ApolloServer({
 server.listen({ port: 5000 }).then(({ url }) => {
 	console.log(`🚀 index.js ready at ${url}`);
 });
+
+/*
+
+query Authentication {
+  userAuthenticated {
+    id
+    firstName
+    lastName
+    role
+    email
+  }
+}
+query Authorization {
+  userAuthorized {
+    id
+    firstName
+    lastName
+    role
+    email
+  }
+}
+
+HEADERS TAB
+
+{
+	"NDC": "NDC-GQL-2021"
+}
+
+
+*/

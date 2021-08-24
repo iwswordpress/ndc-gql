@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "dataloader.js",
 	"scripts": {
-		"start": "node dataloader.js"
+		"start": "nodemon dataloader.js"
 	},
 	"keywords": [],
 	"author": "",

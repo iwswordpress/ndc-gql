@@ -16,7 +16,7 @@ module.exports = gql`
 	}
 
 	type Query {
-		meAuth(id: Int): User
-		meAuth2(id: Int): User
+		userAuthenticated(id: Int): User
+		userAuthorized(id: Int): User
 	}
 `;
