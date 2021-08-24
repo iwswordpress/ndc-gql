@@ -33,18 +33,11 @@ const resolvers = {
 	Query: {
 		cat: (parent, args, ctx, info) => {
 			console.log('In Query > cat');
-			// console.log('Query > cat > parent: ', parent);
-			// console.log('Query > cat > args.name: ', args.name);
-			// console.log('Query > cat > ctx: ', ctx.isLoggedIn);
-
 			return { catName: args.name, age: 3, carer: { carerName: 'Query.cat.SALLY', dog: 'FIDO' } };
 			// return {  };
 		},
 		carer: (parent, args, ctx, info) => {
 			console.log('In Query > carer');
-			// console.log('Query > owner > parent: ', parent);
-			// console.log('Query > owner > args.name: ', args.name);
-			// console.log('Query > owner > ctx: ', ctx.isLoggedIn);
 			return {
 				carer: `Query.carer args.name: ${args.name}`,
 				dog: 'Query.owner.TED',
@@ -55,38 +48,30 @@ const resolvers = {
 	Cat: {
 		catName: (parent, args, ctx) => {
 			console.log('In Cat > catName');
-			// console.log('Cat > catName > ctx isLoggedIn ', ctx.isLoggedIn);
-			// console.log('Cat > catName > parent', parent);
 			const catName = `Cat.catName`;
 			return catName;
 		},
 		age: (parent, args, ctx) => {
+			// if we comment this out then Carer.cat.age = 0 returned.
 			console.log('In Cat > age');
-			// console.log('Cat > age > ctx isLoggedIn ', ctx.isLoggedIn);
-			// console.log('Cat > age > parent', parent);
-
 			return Math.floor(Math.random() * 5000 + 1000);
 		},
 		carer: (parent, args, ctx) => {
 			console.log('In Cat > carer');
-			// console.log('Cat > carerName > ctx isLoggedIn ', ctx.isLoggedIn);
-			// console.log('Cat > carerName > parent', parent);
-			return { carerName: 'Query.cat.carer', dog: 'Query.cat.carer.dog' };
+			return { carerName: 'Cat.carer.carerName', dog: 'Query.cat.carer.dog' };
 		},
 	},
 	Carer: {
 		carerName: (parent, args, ctx) => {
 			console.log('In Carer > carerName');
-			// console.log('Carer > carerName > ctx isLoggedIn ', ctx.isLoggedIn);
-			// console.log('Carer > carerName > parent', parent);
 			const catName = `Carer.carerName`;
 			return catName;
 		},
 		cat: () => {
-			console.log('In Carer > cata');
+			console.log('In Carer > cat');
 			return {
 				catName: 'Carer.cat',
-				age: 0,
+				age: 0, // can return null if last in chain. If not error occurs.
 				carer: { carerName: 'Carer.cat.carer' },
 			};
 		},
@@ -114,6 +99,7 @@ const server = new ApolloServer({
 			console.log('=== CTX ===');
 			console.log('ctx.user', user);
 			console.log('ctx.body.query', req.body.query);
+			// console.log('ctx.body.query', req.body.query.replace(/\s/g, ''));
 			console.log('=== CTX ===');
 		} catch {
 			console.log('error getting user');
@@ -130,6 +116,7 @@ server.listen({ port: 5000 }).then(({ url }) => {
 });
 
 /*
+
 query{
   cat(name: "Garfield"){
     catName
@@ -143,4 +130,5 @@ query{
     }
   }
 }
+
 */

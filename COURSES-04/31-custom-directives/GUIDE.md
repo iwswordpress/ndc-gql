@@ -15,6 +15,8 @@ We believe confining this logic to your schema is more sustainable than burdenin
 
 https://www.npmjs.com/package/graphql-custom-directives
 
+graphql lodash - https://github.com/APIs-guru/graphql-lodash
+
 Custom header to pass on...
 
 ```json

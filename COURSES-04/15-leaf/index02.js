@@ -63,49 +63,20 @@ const resolvers = {
 		catName: (parent, args, ctx, info) => {
 			console.log('---> In Cat > catName');
 			showAST(info);
-			// console.log('Cat > catName > ctx isLoggedIn ', ctx.isLoggedIn);
-			// console.log('Cat > catName > parent', parent);
 			const catName = `Cat.catName`;
 			return catName;
 		},
 		age: (parent, args, ctx) => {
 			console.log('In Cat > age');
-			// console.log('Cat > age > ctx isLoggedIn ', ctx.isLoggedIn);
-			// console.log('Cat > age > parent', parent);
-
 			return Math.floor(Math.random() * 5000 + 1000);
 		},
 
 		carer: (parent, args, ctx, info) => {
 			console.log('---> In Cat > carer');
 			showAST(info);
-			// console.log('Cat > carerName > ctx isLoggedIn ', ctx.isLoggedIn);
-			// console.log('Cat > carerName > parent', parent);
 			return { carerName: 'Cat.carer', dog: 'Query.cat.carer.dog' };
 		},
 	},
-
-	// Carer: {
-	// 	carerName: (parent, args, ctx) => {
-	// 		console.log('In Carer > carerName');
-	// 		// console.log('Carer > carerName > ctx isLoggedIn ', ctx.isLoggedIn);
-	// 		// console.log('Carer > carerName > parent', parent);
-	// 		const catName = `Carer.carerName`;
-	// 		return catName;
-	// 	},
-	// 	cat: () => {
-	// 		console.log('In Carer > cata');
-	// 		return {
-	// 			catName: 'Carer.cat',
-	// 			age: 0,
-	// 			carer: { carerName: 'Carer.cat.carer' },
-	// 		};
-	// 	},
-	// 	dog: () => {
-	// 		console.log('In Carer > caDogName');
-	// 		return 'Carer.dog';
-	// 	},
-	// },
 };
 
 const server = new ApolloServer({
@@ -118,3 +89,16 @@ const server = new ApolloServer({
 });
 // defaults to port 4000
 server.listen({ port: 5000 }).then(({ url }) => console.log(`Index02 running at port ${url}`));
+
+/*
+query{
+  cat(name: "Garfield"){
+    catName
+    age
+    carer{
+      carerName
+    }
+  }
+}
+
+*/

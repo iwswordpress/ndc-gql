@@ -25,7 +25,7 @@ apolloServer.installSubscriptionHandlers(httpServer);
 httpServer.listen(PORT, () => console.log(`Server started on http://localhost:${PORT}/graphql`));
 
 /*
-Separate browser tabs not new tab in playground
+
 TAB 1
 
  subscription{
