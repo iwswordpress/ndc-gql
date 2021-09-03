@@ -12,13 +12,11 @@ const typeDefs = gql`
 	type User {
 		id: ID
 		firstName: String
-		lastName: String
-		email: String
 		role: Role
 	}
 
 	type Query {
-		viewUser(id: Int): User @auth(requires: ADMIN)
+		viewUser(id: Int): User @auth(requires: ADMIN) # place on firstName instead to see effect...
 	}
 `;
 

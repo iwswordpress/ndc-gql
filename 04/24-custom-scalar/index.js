@@ -18,8 +18,8 @@ const resolvers = {
 		name: 'DateTime',
 		description: 'A date and time, represented as an ISO-8601 string',
 		serialize: (value) => value.toISOString(), // output
-		parseValue: (value) => new Date(value), // input
-		parseLiteral: (ast) => new Date(ast.value), // input - this is the Abstract Syntax Tree found on the 4th info argument.
+		parseValue: (value) => new Date(value), // value from resolver
+		parseLiteral: (ast) => new Date(ast.value), // value sent in query - this is the Abstract Syntax Tree found on the 4th info argument. Changes could be applied here too if needed.
 	}),
 
 	Query: {
