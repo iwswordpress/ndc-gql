@@ -14,6 +14,8 @@ The reason is that the client may not ask for some fields and if we did the comp
 
 This however causes the N+1 problem.
 
+For every 1 database query that returns N results, you will need to make N additional queries
+
 If we have a user with 10 tasks then we have 1 query to get user and then 10 queries to get details on all their tasks.
 
 If we want a user and all their tasks, we have a number of different strategies:
@@ -25,6 +27,8 @@ If we want a user and all their tasks, we have a number of different strategies:
 3. Hybrid. Analzye the info argument and determine if there is a need for many requests. If so use dataloading, if not using the SQL JOIN approach.
 
 This is based an an excellent video on this matter by Ben Awad: https://www.youtube.com/watch?v=uCbFMZYQbxE
+
+https://gajus.medium.com/using-dataloader-to-batch-requests-c345f4b23433
 
 ## Caching Directives
 
