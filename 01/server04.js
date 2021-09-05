@@ -1,3 +1,5 @@
+// Use of Query Tab and HTML client request
+
 const { ApolloServer, gql } = require('apollo-server');
 const { students } = require('./data/students');
 const { projects } = require('./data/projects');
@@ -57,6 +59,7 @@ const PORT = process.env.PORT || 5000;
 const server = new ApolloServer({ typeDefs, resolvers });
 
 server.listen({ port: PORT }).then(({ url }) => console.log(`Server04 running at port ${url}`));
+
 /*
 NB if we have id as query parameter, varaible must be $id not $x. It is not a generic placeholder.
 
@@ -70,4 +73,5 @@ query ProjectQuery($id: ID!) {
 {
   "id": 1
 }
+
 */

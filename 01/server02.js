@@ -1,3 +1,5 @@
+// Returning data sets but no sub type resolving.
+
 const { ApolloServer, gql } = require('apollo-server');
 
 const { students } = require('./data/students');

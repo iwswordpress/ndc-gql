@@ -28,9 +28,9 @@ const typeDefs = gql`
 	# 	stack: String!
 	# }
 
-	# schema is included by default but shows why query is a reserved work in playground
+	# schema is included by default but shows why query is a reserved word in playground
 	schema {
-		query: Query ## Query could be changed to anything else but not advised.
+		query: Query # Query could be changed to anything else but not advised.
 	}
 `;
 
@@ -43,6 +43,7 @@ const resolvers = {
 		// getNum: (parent, args, context, info) => {
 		// 	return Math.floor(Math.random() * 100);
 		// },
+
 		// list: (parent, args, context, info) => {
 		// 	return ['a'];
 		// },
@@ -89,11 +90,12 @@ const resolvers = {
 	},
 };
 
-// Exercises
+// --- EXERCISES
+
 // Add more fields (location, job, etc) to Me and adjust resolver.
 // In schema for list, ensure that a list must be returned, it can be empty and have nulls.
 // In schema for list, ensure that a list must be returned, it can be empty but if not it must be of String type.
-// Use restAPI that uses a REST API - https://random-data-api.com/api/address/random_address
+// Use restAPI that uses a different REST API - https://random-data-api.com/api/address/random_address and get it to work.
 
 const PORT = process.env.PORT || 5000;
 const server = new ApolloServer({ typeDefs, resolvers });
