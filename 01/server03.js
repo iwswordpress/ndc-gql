@@ -1,11 +1,12 @@
 // Use of resolvers for Project.
+// See effect of commenting out some fields and effect when filed is required.
+// Any template queries are placed at bottom of file.
 
 const { ApolloServer, gql } = require('apollo-server');
 const { students } = require('./data/students');
 const { projects } = require('./data/projects');
 
-// Any template queries are placed at bottom of file.
-
+// Port variable in .env file
 const dotEnv = require('dotenv');
 
 dotEnv.config();
@@ -59,8 +60,8 @@ const resolvers = {
 
 	// --- EXERCISES
 
-	// Remove Project in resolver and see what happens - you will need to change the type Student.projects to return a list not an object.
-	// Remove resolver Project.id and see what happens. If type Project.id is required, what difference does it make?
+	// Comment out resolver Project.id and see what happens.
+	// Make Project.id required. What difference does it make?
 };
 
 const PORT = process.env.PORT || 5000;
@@ -69,6 +70,7 @@ const server = new ApolloServer({ typeDefs, resolvers });
 server.listen({ port: PORT }).then(({ url }) => console.log(`Server03 running at port ${url}`));
 
 /*
+
 query{
   students{
     id
@@ -81,4 +83,5 @@ query{
     }
   }
 }
+
 */

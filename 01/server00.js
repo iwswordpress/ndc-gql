@@ -1,6 +1,6 @@
 const { ApolloServer, gql } = require('apollo-server');
-
-// use .env for PORT at this stage
+const colors = require('colors');
+// Port variable in .env file
 const dotEnv = require('dotenv');
 dotEnv.config();
 
@@ -21,7 +21,6 @@ const typeDefs = gql`
 
 	# --- EXERCISES
 
-	# schema is included by default but shows why query is a reserved work in playground
 	# rename Query to Q in typeDefs and schema...Crash?
 	# comment out schema {}...Crash?
 	# remove resolver hello...Crash?
@@ -30,6 +29,7 @@ const typeDefs = gql`
 	# add subfields and note status code - 400
 	# throw Error server side by making hello: String! with resolver giving null (as we did a few exercises ago) and run query in playground. In DEV > Netrwork look at status code - 200.
 
+	# schema is included by default but shows why query is a reserved work in playground
 	schema {
 		query: Query # Query could be changed to anything else but not advised.
 	}
@@ -44,4 +44,4 @@ const resolvers = {
 const PORT = process.env.PORT || 5000; // default port is 4000
 const server = new ApolloServer({ typeDefs, resolvers });
 
-server.listen({ port: PORT }).then(({ url }) => console.log(`Server00 running at port ${url}`));
+server.listen({ port: PORT }).then(({ url }) => console.log(colors.yellow(`Server00 running at port ${url}`)));

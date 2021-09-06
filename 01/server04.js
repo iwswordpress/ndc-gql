@@ -1,4 +1,4 @@
-// Use of Query Tab and HTML client request
+// Use of Query Tab and HTML 04-get-project-by-id.html request in client folder.
 
 const { ApolloServer, gql } = require('apollo-server');
 const { students } = require('./data/students');

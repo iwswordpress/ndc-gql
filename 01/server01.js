@@ -2,6 +2,7 @@ const { ApolloServer, gql } = require('apollo-server');
 const fetch = require('node-fetch');
 const dotEnv = require('dotenv');
 
+// Port variable in .env file
 dotEnv.config();
 
 const typeDefs = gql`
@@ -38,6 +39,7 @@ const resolvers = {
 	Query: {
 		// we can have a Schema type without resolver, defaults to null, but not a resolver with no Schema type
 		hello: () => 'HELLO!', // change to return a string
+
 		// test: (parent, args, context, info) => `Hello World! ${Math.floor(Math.random() * args.x + args.x)}`,
 
 		// getNum: (parent, args, context, info) => {

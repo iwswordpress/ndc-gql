@@ -7,6 +7,7 @@ const { projects } = require('./data/projects');
 
 const dotEnv = require('dotenv');
 
+// Port variable in .env file
 dotEnv.config();
 
 const typeDefs = gql`
@@ -53,3 +54,20 @@ const PORT = process.env.PORT || 5000;
 const server = new ApolloServer({ typeDefs, resolvers });
 
 server.listen({ port: PORT }).then(({ url }) => console.log(`Server02 running at port ${url}`));
+
+/*
+
+{
+  getAllStudents:students {
+    id
+    name
+    email
+  }
+  getAllProjects:projects {
+    id
+    name
+    completed
+  }
+}
+
+*/

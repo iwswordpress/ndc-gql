@@ -1,6 +1,7 @@
-// Mutation with Query Tab and HTML client post.
+// Mutation with Query Tab and HTML 06-add-project.html in client folder.
 
 const { ApolloServer, gql } = require('apollo-server');
+const colors = require('colors');
 const { students } = require('./data/students');
 const { projects } = require('./data/projects');
 
@@ -83,7 +84,7 @@ const resolvers = {
 			// const project = { id: rnd(100000), name, completed };
 			const project = { ...args.input, id: rnd(100000) };
 			projects.push(project);
-			console.log('Added project is', project);
+			console.log(colors.bgRed.inverse('Added project is'), project);
 			return project;
 		},
 	},
@@ -102,8 +103,21 @@ mutation AddProject($input:CreateProjectInput){
     completed
   }
 }
+
 QUERY VARIABLES TAB
+
 {
   "input": {"name": "TESTCASE 4", "completed": true}
 }
+
+
+In memory so one can see it here:
+
+{
+  projects {
+    id
+    name
+  }
+}
+
 */
