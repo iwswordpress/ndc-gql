@@ -1,7 +1,7 @@
 // connect to GraphQL
 const URL = 'http://localhost:5000/graphql';
 
-getProjectById(2).then((data) => {
+getProjectById(1).then((data) => {
 	console.log(data.getProjectById);
 	document.querySelector('output').textContent = data.getProjectById.result;
 	// we use an alias in query.
@@ -21,7 +21,7 @@ async function getProjectById(x) {
 				query ProjectQuery($id: ID!) {
 					getProjectById(id: $id) {
 						id
-						result:name 
+						result:name # we rename field for client
 					}
 				}
      `,
