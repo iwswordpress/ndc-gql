@@ -37,26 +37,31 @@ const schema = gql`
 		carsById(id: ID!): Car
 		partsById(id: ID!): Part
 	}
-	type Mutation {
-		insertCar(brand: String!, color: String!, doors: Int!, type: CarTypes!): [Car]!
-	}
+
+	# note how we do not have to send back the schema {query:Query}
 `;
 
-// create the resolvers
-// const cacheStore = [];
+// We will use this cacheStore in a bit...
 let cacheStore = [];
-cacheStore.push({ id: 1, color: `CACHED VALUE FOR COLOR ${Math.floor(Math.random() * 1000)}` });
+// cacheStore.push({ id: 1, color: `CACHED VALUE FOR COLOR ${Math.floor(Math.random() * 1000)}` });
+
+// create the resolvers
+
+// When we run the carsById query, we dp not resolve the fields but just return the args.
+// GQL knows that there are other resolvers for Car based on the schema so it uses those resolvers
+// with the parent parameter passed down. This is the car id.
 
 const resolvers = {
 	Query: {
 		carsById: (parent, args, context, info) => {
-			console.log(args);
+			console.log(colors.yellow.inverse('carsById:'), args);
+			console.log(colors.yellow('-------------------'));
 			return args;
 		},
 
 		// we return a filtered array of cars that then gets its parts resolved
 		carsByType: (parent, args, context, info) => {
-			console.log('TYPE:', args.type);
+			// console.log('TYPE:', args.type);
 			const carsByType = cars.filter((car) => {
 				return car.type == args.type;
 			});
@@ -64,51 +69,55 @@ const resolvers = {
 			return carsByType; // NB we need to send an iterable back as error asking for this will occur
 		},
 		partsById: (parent, args, context, info) => {
-			console.log(args);
+			// console.log(args);
 			return args;
 		},
 	},
 	Part: {
 		name: (parent, args, context, info) => {
-			console.log('Part > name: parentId', parent.id);
+			console.log(colors.yellow.italic('Part > name: parentId'), parent.id);
 			if (parts.filter((part) => part.id == parent.id)[0]) {
-				return parts.filter((part) => part.id == parent.id)[0].name;
+				const Partdotname = parts.filter((part) => part.id == parent.id)[0].name;
+				console.log(colors.cyan('Partdotname:'), Partdotname);
+				return Partdotname;
 			}
 			return null;
 		},
 		cars: (parent, args, context, info) => {
-			console.log('Part > cars: parentId', parent.id);
+			// console.log('Part > cars: parentId', parent.id);
 			return parts.filter((part) => part.partId == parent.partId)[0].cars;
 		},
 	},
 	Car: {
 		brand: (parent, args, context, info) => {
-			console.log('Car > brand: parentId', parent.id);
+			// 	console.log('Car > brand: parentId', parent.id);
 			return cars.filter((car) => car.id == parent.id)[0].brand;
 			// return 'CUSTOM BRAND with parentId: ' + parent.id;
 		},
 		type: (parent, args, context, info) => {
-			console.log('Car > type: parentId', parent.id);
+			// console.log('Car > type: parentId', parent.id);
 			return cars.filter((car) => car.id == parent.id)[0].type;
 		},
 		color: (parent, args, context, info) => {
-			console.log('Car > color: parentId', parent.id);
+			// console.log('Car > color: parentId', parent.id);
 			// This will check to see if we have cacheStore and use that value.
 			// Comment out cacheStore.push line and see effect
 			if (cacheStore[0]) {
-				console.log(colors.yellow('Using cacheStore for Car.color'));
+				// console.log(colors.yellow('Using cacheStore for Car.color'));
 				return cacheStore[0].color;
 			} else {
 				return cars.filter((car) => car.id == parent.id)[0].color;
 			}
 		},
 		doors: (parent, args, context, info) => {
-			console.log('Car > doors: parentId', parent.id);
+			// console.log('Car > doors: parentId', parent.id);
 			return cars.filter((car) => car.id == parent.id)[0].doors;
 		},
 		parts: (parent, args, context, info) => {
-			console.log('Car > parts: parentId', parent.id);
-			return cars.filter((car) => car.id == parent.id)[0].parts;
+			// console.log('Car > parts: parentId', parent.id);
+			const data = cars.filter((car) => car.id == parent.id)[0].parts;
+			// console.log(colors.yellow('Car.parts'), data);
+			return data;
 		},
 	},
 };
@@ -125,6 +134,7 @@ server.listen({ port: 5000 }).then(({ url }) => {
 /*
 
 # Query.carsById returns args i.e. selected carId which becomes parent for Cars.brand
+
 {
   carsById(id: 1) {
     id
@@ -162,7 +172,7 @@ fragment basics on Car {
 // Fragment Query
 ///////////////////
 
-// Using enum as input variable
+// Using enum as input variable. For carsByType we need to send back an array/iterable.
 
 {
   carsByType(type: ESTATE) {
