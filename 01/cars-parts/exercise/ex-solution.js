@@ -1,14 +1,7 @@
-/*
-
-Exercise: Be able to run this query:
-_images/cars-parts-custom-exercise.png for playground query
-
-*/
-
 const { ApolloServer, gql } = require('apollo-server');
 
 // create a memory db
-const { cars, parts } = require('./data');
+const { cars, parts } = require('../data');
 
 // create the schema
 const schema = gql(` 
@@ -25,10 +18,9 @@ const schema = gql(`
 		type: CarTypes!
 		parts:[Part]
 	}
-
 	type Part {
 		id: ID!
-		name: String
+		name(custom: Boolean): String
 		cars: [Car]
 	}
 
@@ -70,6 +62,10 @@ const resolvers = {
 			console.log('Part > name', parent.id);
 			console.log('Part > name:custom', args.custom);
 			if (parts.filter((part) => part.id == parent.id)[0]) {
+				if (args.custom) {
+					return 'CUSTOM MSG: ' + parts.filter((part) => part.id == parent.id)[0].name;
+				} else {
+				}
 				return parts.filter((part) => part.id == parent.id)[0].name;
 			}
 			return null;
@@ -117,3 +113,22 @@ const server = new ApolloServer({
 server.listen({ port: 5000 }).then(({ url }) => {
 	console.log(`🚀  INDEX02 ready at ${url}`);
 });
+
+/*
+
+{
+  cars{
+    id
+    brand
+    parts{
+      id
+      name
+      cars{
+        id
+        brand
+      }
+    }
+  }
+}
+
+*/
