@@ -1,5 +1,6 @@
 const { ApolloServer, gql } = require('apollo-server');
 const colors = require('colors');
+
 // Port variable in .env file
 const dotEnv = require('dotenv');
 dotEnv.config();
@@ -44,4 +45,4 @@ const resolvers = {
 const PORT = process.env.PORT || 5000; // default port is 4000
 const server = new ApolloServer({ typeDefs, resolvers });
 
-server.listen({ port: PORT }).then(({ url }) => console.log(colors.yellow(`Server00 running at port ${url}`)));
+server.listen({ port: PORT }).then(({ url }) => console.log(colors.cyan.inverse(`Server00 running at port ${url}`)));
