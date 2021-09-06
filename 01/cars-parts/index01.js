@@ -1,48 +1,10 @@
+// Pass resolution all the way down to final fields.
+// Use of Fragment in query.
+
 const { ApolloServer, gql } = require('apollo-server');
+
 // create a memory db
-const cars = [
-	{
-		id: 1,
-		brand: 'VW',
-		color: 'Red',
-		doors: 4,
-		type: 'ESTATE',
-		parts: [{ id: 2 }, { id: 3 }],
-	},
-	{
-		id: 2,
-		brand: 'Toyota',
-		color: 'Blue',
-		doors: 2,
-		type: 'COUPE',
-		parts: [{ id: 1 }, { id: 3 }],
-	},
-	{
-		id: 3,
-		brand: 'Ford',
-		color: 'Green',
-		doors: 4,
-		type: 'SUV',
-		parts: [{ id: 1 }, { id: 2 }],
-	},
-];
-const parts = [
-	{
-		id: 1,
-		name: 'Transmission',
-		cars: [{ id: 2 }, { id: 2 }],
-	},
-	{
-		id: 2,
-		name: 'Suspension',
-		cars: [{ id: 1 }],
-	},
-	{
-		id: 3,
-		name: 'Brakes',
-		cars: [{ id: 1 }, { id: 2 }],
-	},
-];
+const { cars, parts } = require('./data');
 
 // create the schema
 const schema = gql`
@@ -169,6 +131,8 @@ server.listen({ port: 5000 }).then(({ url }) => {
   }
 }
 
+///////////////////
+// Fragment Query
 {
   carsById(id: 2) {
     id
@@ -187,6 +151,8 @@ fragment basics on Car {
   doors
 }
 
+// Fragment Query
+///////////////////
 
 {
   carsByType(type: ESTATE) {
