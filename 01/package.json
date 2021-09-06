@@ -12,8 +12,7 @@
 		"dev04": "nodemon server04.js",
 		"dev05": "nodemon server05.js",
 		"dev06": "nodemon server06.js",
-		"dev:cars": "nodemon cars-parts/index01.js",
-		"dev:cars-brand": "nodemon cars-parts/index02.js"
+		"dev:cars": "nodemon cars-parts/index01.js"
 	},
 	"keywords": [],
 	"author": "",
