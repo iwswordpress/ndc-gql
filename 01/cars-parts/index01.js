@@ -1,4 +1,4 @@
-// Pass resolution all the way down to final fields.
+// Pass resolution all the way down to final fields with colored debugging.
 // Use of Fragment in query.
 // Use of ENUMS and passing enum input value.
 // Demo of using cache value via Car.color which checks local cache and then returns
