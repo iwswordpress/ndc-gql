@@ -20,7 +20,7 @@ const schema = gql`
 	}
 	type Car {
 		id: ID!
-		brand: String # make non required for demo.
+		brand: String # make non required for demo. we will see effect if made required...
 		color: String
 		doors: Int
 		type: CarTypes # must be one of the enum values.
@@ -38,7 +38,7 @@ const schema = gql`
 		partsById(id: ID!): Part
 	}
 
-	# note how we do not have to send back the schema {query:Query}
+	# note how we do not have to use: schema {query:Query}
 `;
 
 // We will use this cacheStore in a bit...
@@ -50,6 +50,8 @@ let cacheStore = [];
 // When we run the carsById query, we dp not resolve the fields but just return the args.
 // GQL knows that there are other resolvers for Car based on the schema so it uses those resolvers
 // with the parent parameter passed down. This is the car id.
+// Even though it is an INT/ID , the Car type only has ID as required.
+// If we comment out Car reolver and make one of the other fields required, we will get an error in playground.
 
 const resolvers = {
 	Query: {
