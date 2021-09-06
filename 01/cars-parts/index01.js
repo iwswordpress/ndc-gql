@@ -154,6 +154,7 @@ fragment basics on Car {
 // Fragment Query
 ///////////////////
 
+// Using enum as input variable
 {
   carsByType(type: ESTATE) {
     id
@@ -177,7 +178,8 @@ fragment basics on Car {
     }
   }
 }
-
+//////////
+// DDOS example  - see _images/ddos.png
 {
   partsById(id: 2) {
     id
