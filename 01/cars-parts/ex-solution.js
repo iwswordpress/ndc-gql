@@ -1,43 +1,7 @@
 const { ApolloServer, gql } = require('apollo-server');
+
 // create a memory db
-const cars = [
-	{
-		id: 1,
-		brand: 'Renault',
-		color: 'Red',
-		doors: 4,
-		type: 'ESTATE',
-		parts: [{ id: 1 }, { id: 2 }],
-	},
-	{
-		id: 2,
-		brand: 'Toyota',
-		color: 'Blue',
-		doors: 2,
-		type: 'COUPE',
-		parts: [{ id: 1 }, { id: 2 }],
-	},
-	{
-		id: 3,
-		brand: 'Ford',
-		color: 'Green',
-		doors: 4,
-		type: 'SUV',
-		parts: [{ id: 1 }],
-	},
-];
-const parts = [
-	{
-		id: 1,
-		name: 'Transmission',
-		cars: [{ id: 1 }, { id: 2 }],
-	},
-	{
-		id: 2,
-		name: 'Suspension',
-		cars: [{ id: 1 }],
-	},
-];
+const { cars, parts } = require('./data');
 
 // create the schema
 const schema = gql(` 
@@ -149,3 +113,22 @@ const server = new ApolloServer({
 server.listen({ port: 5000 }).then(({ url }) => {
 	console.log(`🚀  INDEX02 ready at ${url}`);
 });
+
+/*
+
+{
+  cars{
+    id
+    brand
+    parts{
+      id
+      name
+      cars{
+        id
+        brand
+      }
+    }
+  }
+}
+
+*/
