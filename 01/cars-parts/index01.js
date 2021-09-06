@@ -1,7 +1,12 @@
 // Pass resolution all the way down to final fields.
 // Use of Fragment in query.
+// Use of ENUMS and passing enum input value.
+// Demo of using cache value via Car.color which checks local cache and then returns
+// EX: comment out cacheStore.push line
+// Queries at bottom of file.
 
 const { ApolloServer, gql } = require('apollo-server');
+const colors = require('colors');
 
 // create a memory db
 const { cars, parts } = require('./data');
@@ -15,10 +20,10 @@ const schema = gql`
 	}
 	type Car {
 		id: ID!
-		brand: String # make non required for demo
+		brand: String # make non required for demo.
 		color: String
 		doors: Int
-		type: CarTypes
+		type: CarTypes # must be one of the enum values.
 		parts: [Part]
 	}
 	type Part {
@@ -39,16 +44,12 @@ const schema = gql`
 
 // create the resolvers
 // const cacheStore = [];
-const cacheStore = [{ id: 1, result: 'JSON.stringified' }];
+let cacheStore = [];
+cacheStore.push({ id: 1, color: `CACHED VALUE FOR COLOR ${Math.floor(Math.random() * 1000)}` });
 
 const resolvers = {
 	Query: {
 		carsById: (parent, args, context, info) => {
-			if (cacheStore[0]) {
-				console.log('In Memory found...');
-			} else {
-				console.log('Do API and cache ...');
-			}
 			console.log(args);
 			return args;
 		},
@@ -92,7 +93,14 @@ const resolvers = {
 		},
 		color: (parent, args, context, info) => {
 			console.log('Car > color: parentId', parent.id);
-			return cars.filter((car) => car.id == parent.id)[0].color;
+			// This will check to see if we have cacheStore and use that value.
+			// Comment out cacheStore.push line and see effect
+			if (cacheStore[0]) {
+				console.log(colors.yellow('Using cacheStore for Car.color'));
+				return cacheStore[0].color;
+			} else {
+				return cars.filter((car) => car.id == parent.id)[0].color;
+			}
 		},
 		doors: (parent, args, context, info) => {
 			console.log('Car > doors: parentId', parent.id);
@@ -115,7 +123,7 @@ server.listen({ port: 5000 }).then(({ url }) => {
 });
 
 /*
-# Query.carsById => Cars.brand
+
 # Query.carsById returns args i.e. selected carId which becomes parent for Cars.brand
 {
   carsById(id: 1) {
@@ -155,6 +163,7 @@ fragment basics on Car {
 ///////////////////
 
 // Using enum as input variable
+
 {
   carsByType(type: ESTATE) {
     id
@@ -180,6 +189,7 @@ fragment basics on Car {
 }
 //////////
 // DDOS example  - see _images/ddos.png
+
 {
   partsById(id: 2) {
     id
@@ -193,9 +203,18 @@ fragment basics on Car {
         cars{
           id
           doors
+					parts{
+						id
+						name
+						cars{
+							id
+							brand
+						}
+					}
         }
       }
     }
   }
 }
+
 */
