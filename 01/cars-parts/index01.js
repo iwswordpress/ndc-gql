@@ -13,6 +13,13 @@ const { cars, parts } = require('./data');
 
 // create the schema
 const schema = gql`
+	# These are the queries our clients can execute...
+	type Query {
+		carsByType(type: CarTypes!): [Car]
+		carsById(id: ID!): Car
+		partsById(id: ID!): Part
+	}
+	# We define types...
 	enum CarTypes {
 		ESTATE
 		SUV
@@ -32,12 +39,6 @@ const schema = gql`
 		cars: [Car]
 	}
 
-	type Query {
-		carsByType(type: CarTypes!): [Car]
-		carsById(id: ID!): Car
-		partsById(id: ID!): Part
-	}
-
 	# note how we do not have to use: schema {query:Query}
 `;
 
@@ -51,11 +52,12 @@ let cacheStore = [];
 // GQL knows that there are other resolvers for Car based on the schema so it uses those resolvers
 // with the parent parameter passed down. This is the car id.
 // Even though it is an INT/ID , the Car type only has ID as required.
-// If we comment out Car reolver and make one of the other fields required, we will get an error in playground.
+// If we comment out Child Resolvers and make one of the other fields required, we will get an error in playground --->  "message": "Cannot return null for non-nullable field Car.doors.",
 
 const resolvers = {
 	Query: {
 		carsById: (parent, args, context, info) => {
+			console.log(colors.yellow('-------------------'));
 			console.log(colors.yellow.inverse('carsById:'), args);
 			console.log(colors.yellow('-------------------'));
 			return args;
@@ -75,6 +77,9 @@ const resolvers = {
 			return args;
 		},
 	},
+
+	// Resolve child types
+
 	Part: {
 		name: (parent, args, context, info) => {
 			console.log(colors.yellow.italic('Part > name: parentId'), parent.id);
@@ -122,6 +127,8 @@ const resolvers = {
 			return data;
 		},
 	},
+
+	// Child resolvers
 };
 
 const server = new ApolloServer({
