@@ -9,15 +9,16 @@ dotEnv.config();
 const typeDefs = gql`
 	type Query {
 		# https://github.com/graphql/graphql-js/issues/1324 - loose coercion for results
+		# numbers -> string, numbers (not string) => Boolean
 
 		hello: String!
 		test(x: Int!): String!
 		getError: ID! # used to show errors still give 200 status code
 		getNum: Int
-		list: [String]
+		# list: [Int]
 		# list: [String]!
-		# list: [Int!]!
-		# list: [Boolean!]!
+		# list: [Int]!
+		list: [Boolean!]!
 		restAPI(id: Int): String
 		restAPI2(id: Int): String
 		restAPI3: String
@@ -53,7 +54,7 @@ const resolvers = {
 		},
 
 		list: (parent, args, context, info) => {
-			return ['a'];
+			return [true, false, 'd'];
 		},
 
 		restAPI: async (parent, args, context, info) => {
