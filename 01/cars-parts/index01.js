@@ -65,7 +65,7 @@ const resolvers = {
 
 		// we return a filtered array of cars that then gets its parts resolved
 		carsByType: (parent, args, context, info) => {
-			// console.log('TYPE:', args.type);
+			console.log(colors.green.inverse('TYPE:'), args.type);
 			const carsByType = cars.filter((car) => {
 				return car.type == args.type;
 			});
@@ -84,9 +84,9 @@ const resolvers = {
 		name: (parent, args, context, info) => {
 			console.log(colors.yellow.italic('Part > name: parentId'), parent.id);
 			if (parts.filter((part) => part.id == parent.id)[0]) {
-				const Partdotname = parts.filter((part) => part.id == parent.id)[0].name;
-				console.log(colors.cyan('Partdotname:'), Partdotname);
-				return Partdotname;
+				const Part_name = parts.filter((part) => part.id == parent.id)[0].name;
+				console.log(colors.cyan('Part_name:'), Part_name);
+				return Part_name;
 			}
 			return null;
 		},
@@ -100,14 +100,14 @@ const resolvers = {
 		brand: (parent, args, context, info) => {
 			console.log('Car > brand: parentId', parent.id);
 			const Car_brand = cars.filter((car) => car.id == parent.id)[0].brand;
-			console.log('Car_brand:', Car_brand);
+			console.log(colors.green.inverse('Car_brand:'), Car_brand);
 			return Car_brand;
 			// return 'CUSTOM BRAND with parentId: ' + parent.id;
 		},
 		type: (parent, args, context, info) => {
 			console.log('Car > type: parentId', parent.id);
 			const Car_type = cars.filter((car) => car.id == parent.id)[0].type;
-			console.log('Car_type:', Car_type);
+			console.log(colors.green.inverse('Car_type:'), Car_type);
 			return Car_type;
 		},
 		color: (parent, args, context, info) => {
@@ -115,15 +115,19 @@ const resolvers = {
 			// This will check to see if we have cacheStore and use that value.
 			// Comment out cacheStore.push line and see effect
 			if (cacheStore[0]) {
-				// console.log(colors.yellow('Using cacheStore for Car.color'));
+				console.log(colors.yellow('Using cacheStore for Car.color'));
 				return cacheStore[0].color;
 			} else {
-				return cars.filter((car) => car.id == parent.id)[0].color;
+				const Car_color = cars.filter((car) => car.id == parent.id)[0].color;
+				console.log(colors.green.inverse('Car_color:'), Car_color);
+				return Car_color;
 			}
 		},
 		doors: (parent, args, context, info) => {
 			console.log('Car > doors: parentId', parent.id);
-			return cars.filter((car) => car.id == parent.id)[0].doors;
+			const Car_doors = cars.filter((car) => car.id == parent.id)[0].doors;
+			console.log(colors.green.inverse('Car_doors:'), Car_doors);
+			return Car_doors;
 		},
 		parts: (parent, args, context, info) => {
 			console.log('Car > parts: parentId', parent.id);
@@ -142,7 +146,7 @@ const server = new ApolloServer({
 });
 
 server.listen({ port: 5000 }).then(({ url }) => {
-	console.log(`🚀  INDEX01 ready at ${url}`);
+	console.log(colors.cyan.inverse(`🚀 INDEX01 ready at ${url}`));
 });
 
 /*

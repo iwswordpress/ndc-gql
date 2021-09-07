@@ -1,12 +1,13 @@
 // Use of variables in sub fields.
 
 const { ApolloServer, gql } = require('apollo-server');
+const colors= require('colors')
 
 // create a memory db
 const { cars, parts } = require('./data');
 
 // create the schema
-const schema = gql(` 
+const schema = gql`
 	enum CarTypes {
 		ESTATE
 		SUV
@@ -18,7 +19,7 @@ const schema = gql(`
 		color: String!
 		doors: Int!
 		type: CarTypes!
-		parts:[Part]
+		parts: [Part]
 	}
 	type Part {
 		id: ID!
@@ -26,16 +27,16 @@ const schema = gql(`
 		cars: [Car]
 	}
 
-  type Query {
-    carsByType(type:CarTypes!): [Car]
-    carsById(id:ID!): Car
-    partsById(id:ID!): Part
-    cars: [Car]
-  }
-  type Mutation {
-    insertCar(brand: String!, color: String!, doors: Int!, type:CarTypes!): [Car]!
-  }
-`);
+	type Query {
+		carsByType(type: CarTypes!): [Car]
+		carsById(id: ID!): Car
+		partsById(id: ID!): Part
+		cars: [Car]
+	}
+	type Mutation {
+		insertCar(brand: String!, color: String!, doors: Int!, type: CarTypes!): [Car]!
+	}
+`;
 
 // create the resolvers
 
@@ -115,7 +116,7 @@ const server = new ApolloServer({
 });
 
 server.listen({ port: 5000 }).then(({ url }) => {
-	console.log(`🚀  INDEX02 ready at ${url}`);
+	console.log(colors.cyan.inverse(`🚀 INDEX02 ready at ${url}`));
 });
 
 /*

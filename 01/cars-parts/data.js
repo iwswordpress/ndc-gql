@@ -21,24 +21,24 @@ const cars = [
 		color: 'Green',
 		doors: 4,
 		type: 'SUV',
-		parts: [{ id: 1 }, { id: 2 }],
+		parts: [{ id: 1 }, { id: 2 }, { id: 3 }],
 	},
 ];
 const parts = [
 	{
 		id: 1,
 		name: 'Transmission',
-		cars: [{ id: 2 }, { id: 2 }],
+		cars: [{ id: 2 }, { id: 3 }],
 	},
 	{
 		id: 2,
 		name: 'Suspension',
-		cars: [{ id: 1 }],
+		cars: [{ id: 1 }, { id: 3 }],
 	},
 	{
 		id: 3,
 		name: 'Brakes',
-		cars: [{ id: 1 }, { id: 2 }],
+		cars: [{ id: 1 }, { id: 2 }, { id: 3 }],
 	},
 ];
 
