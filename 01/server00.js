@@ -17,7 +17,8 @@ const typeDefs = gql`
 		"""
 		This is field level comment in docs - better example in server02 as there are more root types.
 		"""
-		hello: String! # comment
+		hello: String! # a comment
+		# ID, Boolean, String, Int, Float
 	}
 
 	# --- EXERCISES
