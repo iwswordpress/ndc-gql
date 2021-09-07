@@ -1,13 +1,14 @@
 // connect to GraphQL
-const URL = 'http://localhost:5000/graphql';
+const URL = 'http://localhost:5000/';
 
-getProjectById(1).then((data) => {
+getProjectById(5).then((data) => {
 	console.log(data.getProjectById);
 	document.querySelector('output').textContent = data.getProjectById.result;
 	// we use an alias in query.
 });
 // if id used, need $id, it is not just an empty parameter with any reference.
 // replacing $id as $y does not work in client
+
 async function getProjectById(x) {
 	// use something other for clarity
 	console.log('x =', x);

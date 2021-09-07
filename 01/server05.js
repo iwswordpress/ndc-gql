@@ -1,6 +1,8 @@
 // Mutation type to post data.
 
 const { ApolloServer, gql } = require('apollo-server');
+const colors = require('colors');
+
 const { students } = require('./data/students');
 const { projects } = require('./data/projects');
 
