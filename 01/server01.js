@@ -18,12 +18,12 @@ const typeDefs = gql`
 		# list: [Int]
 		# list: [String]!
 		# list: [Int]!
-		list: [Boolean!]!
-		restAPI(id: Int): String
-		restAPI2(id: Int): String
-		restAPI3: String
-		me: Me
-		# me(firstName: String!): Mec
+		# list: [Boolean!]!
+		# restAPI(id: Int): String
+		# restAPI2(id: Int!): String
+		# restAPI3: String
+		# me: Me
+		# me(firstName: String): Me
 	}
 
 	type Me {
@@ -46,56 +46,56 @@ const resolvers = {
 			console.log(colors.yellow.bold(args));
 			return `Hello World! ${Math.floor(Math.random() * args.x + args.x)}`;
 		},
-		getError: () => {
-			throw Error;
-		},
-		getNum: (parent, args, context, info) => {
-			return Math.floor(Math.random() * 100);
-		},
+		// getError: () => {
+		// 	throw Error;
+		// },
+		// getNum: (parent, args, context, info) => {
+		// 	return Math.floor(Math.random() * 100);
+		// },
 
-		list: (parent, args, context, info) => {
-			return [true, false, 'd'];
-		},
+		// list: (parent, args, context, info) => {
+		// 	return [true, false, 'd'];
+		// },
 
-		restAPI: async (parent, args, context, info) => {
-			console.log('args.id:', args.id);
-			const course = await fetch(`https://randomuser.me/api`);
-			const result = await course.json();
-			console.log(result.results[0].name.first);
-			const firstName = result.results[0].name.first;
-			console.log(`firstName: ${firstName}`);
-			return firstName;
-		},
+		// restAPI: async (parent, args, context, info) => {
+		// 	console.log('args.id:', args.id);
+		// 	const course = await fetch(`https://randomuser.me/api`);
+		// 	const result = await course.json();
+		// 	console.log(colors.yellow(result.results[0].name.first));
+		// 	const firstName = result.results[0].name.first;
+		// 	console.log(colors.green(`firstName: ${firstName}`));
+		// 	return firstName;
+		// },
 
-		restAPI2: async (parent, args, context, info) => {
-			console.log('args.id:', args.id);
-			const course = await fetch(`https://jsonplaceholder.typicode.com/users/${args.id}`);
-			const result = await course.json();
-			const fullName = result.name;
-			console.log(`fullName: ${fullName}`);
-			return fullName;
-		},
+		// restAPI2: async (parent, args, context, info) => {
+		// 	console.log('args.id:', args.id);
+		// 	const course = await fetch(`https://jsonplaceholder.typicode.com/users/${args.id}`);
+		// 	const result = await course.json();
+		// 	const fullName = result.name;
+		// 	console.log(`fullName: ${fullName}`);
+		// 	return fullName;
+		// },
 
-		restAPI3: async () => {
-			const res = await fetch(`https://random-data-api.com/api/address/random_address`);
-			const location = await res.json();
-			const city = location.city;
-			const res2 = await fetch(`https://random-data-api.com/api/company/random_company`);
-			const company = await res2.json();
-			const companyName = company.business_name;
-			console.log(`company: ${companyName}`);
-			return `I work at ${companyName} based in ${city}`;
-		},
+		// restAPI3: async () => {
+		// 	const res = await fetch(`https://random-data-api.com/api/address/random_address`);
+		// 	const location = await res.json();
+		// 	const city = location.city;
+		// 	const res2 = await fetch(`https://random-data-api.com/api/company/random_company`);
+		// 	const company = await res2.json();
+		// 	const companyName = company.business_name;
+		// 	console.log(`company: ${companyName}`);
+		// 	return `I work at ${companyName} based in ${city}`;
+		// },
 
-		me: (parent, args, context, info) => {
-			console.log(args.firstName);
-			return { id: 1, stack: `JS` };
-		},
+		// me: (parent, args, context, info) => {
+		// 	console.log(args.firstName);
+		// 	return { id: 1, stack: `JS` };
+		// },
 
-		me: (parent, args, context, info) => {
-			console.log(args.firstName);
-			return { id: 1, stack: `${args.firstName}'s main skill is JS` };
-		},
+		// me: (parent, args, context, info) => {
+		// 	console.log(args.firstName);
+		// 	return { id: 1, stack: `${args.firstName}'s main skill is JS` };
+		// },
 	},
 };
 
