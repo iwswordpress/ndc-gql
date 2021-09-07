@@ -1,6 +1,7 @@
 // Use of resolvers for Project as demo rather than getting Project data.
 // See effect of commenting out some fields and effect when filed is required.
 // Any template queries are placed at bottom of file.
+// We will use just one student - 2 - with projects 5,6,7 to clarity.
 
 const { ApolloServer, gql } = require('apollo-server');
 const colors = require('colors');
@@ -51,6 +52,8 @@ const resolvers = {
 		},
 	},
 	Project: {
+		// parent can be thought of as what was passed in from before...
+		// in this case it is the value in the array projects of Student 2 === [5,6,7]
 		id: (parent, args, context, info) => {
 			console.log(colors.blue.inverse('Project > id:'), parent);
 			const project = projects.filter((project) => project.id == parent);
