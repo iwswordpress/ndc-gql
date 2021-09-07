@@ -1,4 +1,5 @@
 // Mutation with Query Tab and HTML 06-add-project.html in client folder.
+// Use of input Type.
 
 const { ApolloServer, gql } = require('apollo-server');
 const colors = require('colors');
@@ -34,8 +35,14 @@ const typeDefs = gql`
 
 	type Mutation {
 		createProject(input: CreateProjectInput): Project!
+		# if we add ! to CreateProjectInput above it won't cause error but if we spec! and miss it out it will cause error
+
+		#  "message": "Variable "$input" of type "CreateProjectInput" used in position expecting type "CreateProjectInput!".",
 	}
-	# input type allowed only in Mutations not Queries
+	# input type allowed in Mutations not Queries
+	# http://spec.graphql.org/June2018/#sec-Variables-Are-Input-Types
+	# general practice is not to use them for Queries
+
 	input CreateProjectInput {
 		name: String!
 		completed: Boolean!
@@ -92,7 +99,7 @@ const resolvers = {
 const PORT = process.env.PORT || 5000;
 const server = new ApolloServer({ typeDefs, resolvers });
 
-server.listen({ port: PORT }).then(({ url }) => console.log(`Server06 running at port ${url}`));
+server.listen({ port: PORT }).then(({ url }) => console.log(colors.cyan.inverse(`Server06 running at port ${url}`)));
 
 /*
 

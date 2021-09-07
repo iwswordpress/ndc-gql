@@ -1,4 +1,4 @@
-// Mutation type to post data.
+// Mutation type to perform update, delete or insert.
 
 const { ApolloServer, gql } = require('apollo-server');
 const colors = require('colors');
@@ -32,7 +32,7 @@ const typeDefs = gql`
 	type Project {
 		id: ID!
 		name: String!
-		completed: Boolean!
+		completed: Boolean
 	}
 
 	type Mutation {
@@ -73,14 +73,17 @@ const resolvers = {
 		},
 	},
 	Mutation: {
-		createProject: (parent, args) => {
+		createProject: (parent, args, context, info) => {
 			console.log('input', args);
-			const input = args.input;
+			const inputName = args.name;
+			const inputCompleted = args.completed;
+			console.log(colors.green('Data sent:'), inputName, inputCompleted);
 			const id = rnd(100000);
-			const project = { ...input, id };
-			console.log(project);
-			projects.push(project);
-			return `Project added with id: ${id}`;
+			const newProject = { id, inputName, inputCompleted };
+
+			console.log(colors.green.italic('Do INSERT with '), newProject);
+
+			return `Project with id: ${id}, name: ${inputName}, completed: ${inputName ? 'YES' : 'NO'}`;
 		},
 	},
 };
@@ -92,20 +95,9 @@ server.listen({ port: PORT }).then(({ url }) => console.log(colors.cyan.inverse(
 /*
 
 -- add a new project
-mutation {
-  createProject(input: { name: "new", completed: false }) {
-    id
-    name
-    completed
-  }
-}
--- get all projects (in memory not file)
-query {
-  projects {
-    id
-    name
-		completed
-  }
+
+mutation{
+  createProject(name:"TEST",completed: false)
 }
 
 */

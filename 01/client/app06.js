@@ -5,15 +5,14 @@ const newProject = {
 	completed: true,
 };
 
-createProject(newProject).then((data) => {
+addProject(newProject).then((data) => {
 	console.log(data);
 	document.querySelector(
 		'output',
 	).innerHTML = `'<b>${data.ProjectCreated.name}'</b> added with id: <b>${data.ProjectCreated.id}</b> and completed: <b>${data.ProjectCreated.completed}</b>`;
 });
-// if id used, need $id, it is not just an empty parameter with any reference.
-// replacing $id as $y does not work in client
-async function createProject(newProject) {
+
+async function addProject(newProject) {
 	// use something other for clarity
 	const response = await fetch(URL, {
 		method: 'POST',
@@ -22,8 +21,8 @@ async function createProject(newProject) {
 		},
 		body: JSON.stringify({
 			query: `
-				mutation CreateProject($input: CreateProjectInput) {
-					ProjectCreated: createProject(input: $input) {
+				mutation CreateProject($input: CreateProjectInput!) {
+					ProjectCreated: createProject(input: $input) { # note we have aliased response with ProjectCreated
 						id
 						name
 						completed
