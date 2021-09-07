@@ -1,8 +1,9 @@
-// Use of resolvers for Project.
+// Use of resolvers for Project as demo rather than getting Project data.
 // See effect of commenting out some fields and effect when filed is required.
 // Any template queries are placed at bottom of file.
 
 const { ApolloServer, gql } = require('apollo-server');
+const colors = require('colors');
 const { students } = require('./data/students');
 const { projects } = require('./data/projects');
 
@@ -38,24 +39,34 @@ const typeDefs = gql`
 
 const resolvers = {
 	Query: {
-		students: () => {
+		students: (parent, args, context, info) => {
+			console.log(colors.green.inverse('STUDENT'));
+			console.log(colors.green.inverse('----------------'));
+
 			return students;
 		},
-		projects: () => {
+		projects: (parent, args, context, info) => {
 			console.log(projects);
 			return projects;
 		},
 	},
 	Project: {
-		id: (parent, args) => {
-			console.log(args);
-			return 100;
+		id: (parent, args, context, info) => {
+			console.log(colors.blue.inverse('Project > id:'), parent);
+			const project = projects.filter((project) => project.id == parent);
+			console.log('project.id', project[0].id);
+			return project[0].id;
 		},
-		name: () => {
-			console.log(`---> Project.name returning TEST Project ${Math.floor(Math.random() * 100000 + 100000)}`);
-			return `TEST Project - ${Math.floor(Math.random() * 100000 + 100000)}`;
+		name: (parent, args, context, info) => {
+			const project = projects.filter((project) => project.id == parent);
+			console.log('project.name', project[0].name);
+			return project[0].name;
 		},
-		completed: () => true,
+		completed: (parent, args, context, info) => {
+			const project = projects.filter((project) => project.id == parent);
+			console.log('project.completed', project[0].completed);
+			return project[0].completed;
+		},
 	},
 
 	// --- EXERCISES
@@ -67,7 +78,7 @@ const resolvers = {
 const PORT = process.env.PORT || 5000;
 const server = new ApolloServer({ typeDefs, resolvers });
 
-server.listen({ port: PORT }).then(({ url }) => console.log(`Server03 running at port ${url}`));
+server.listen({ port: PORT }).then(({ url }) => console.log(colors.cyan.inverse(`Server03 running at port ${url}`)));
 
 /*
 

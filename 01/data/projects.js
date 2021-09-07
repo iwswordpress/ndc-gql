@@ -27,7 +27,7 @@ module.exports.projects = [
 	{
 		id: 6,
 		name: 'Firebase',
-		completed: false,
+		completed: true,
 	},
 	{
 		id: 7,
