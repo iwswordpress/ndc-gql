@@ -48,7 +48,7 @@ let cacheStore = [];
 
 // create the resolvers
 
-// When we run the carsById query, we dp not resolve the fields but just return the args.
+// When we run the carsById query, we do not resolve the fields but just return the args.
 // GQL knows that there are other resolvers for Car based on the schema so it uses those resolvers
 // with the parent parameter passed down. This is the car id.
 // Even though it is an INT/ID , the Car type only has ID as required.
@@ -96,17 +96,22 @@ const resolvers = {
 		},
 	},
 	Car: {
+		//Car_brand denotes Car and then field brand
 		brand: (parent, args, context, info) => {
-			// 	console.log('Car > brand: parentId', parent.id);
-			return cars.filter((car) => car.id == parent.id)[0].brand;
+			console.log('Car > brand: parentId', parent.id);
+			const Car_brand = cars.filter((car) => car.id == parent.id)[0].brand;
+			console.log('Car_brand:', Car_brand);
+			return Car_brand;
 			// return 'CUSTOM BRAND with parentId: ' + parent.id;
 		},
 		type: (parent, args, context, info) => {
-			// console.log('Car > type: parentId', parent.id);
-			return cars.filter((car) => car.id == parent.id)[0].type;
+			console.log('Car > type: parentId', parent.id);
+			const Car_type = cars.filter((car) => car.id == parent.id)[0].type;
+			console.log('Car_type:', Car_type);
+			return Car_type;
 		},
 		color: (parent, args, context, info) => {
-			// console.log('Car > color: parentId', parent.id);
+			console.log('Car > color: parentId', parent.id);
 			// This will check to see if we have cacheStore and use that value.
 			// Comment out cacheStore.push line and see effect
 			if (cacheStore[0]) {
@@ -117,13 +122,13 @@ const resolvers = {
 			}
 		},
 		doors: (parent, args, context, info) => {
-			// console.log('Car > doors: parentId', parent.id);
+			console.log('Car > doors: parentId', parent.id);
 			return cars.filter((car) => car.id == parent.id)[0].doors;
 		},
 		parts: (parent, args, context, info) => {
-			// console.log('Car > parts: parentId', parent.id);
+			console.log('Car > parts: parentId', parent.id);
 			const data = cars.filter((car) => car.id == parent.id)[0].parts;
-			// console.log(colors.yellow('Car.parts'), data);
+			console.log(colors.yellow('Car.parts'), data);
 			return data;
 		},
 	},
