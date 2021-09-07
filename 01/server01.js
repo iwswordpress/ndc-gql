@@ -8,13 +8,14 @@ dotEnv.config();
 
 const typeDefs = gql`
 	type Query {
+		# Later in our queries we will see some type coercion. Ignore this comment section for now.
 		# https://github.com/graphql/graphql-js/issues/1324 - loose coercion for results
 		# numbers -> string, numbers (not string) => Boolean
 
 		hello: String!
 		test(x: Int!): String!
-		getError: ID! # used to show errors still give 200 status code
-		getNum: Int
+		# getError: ID! # used to show errors still give 200 status code
+		# getNum: Int
 		# list: [Int]
 		# list: [String]!
 		# list: [Int]!
@@ -109,4 +110,4 @@ const resolvers = {
 const PORT = process.env.PORT || 5000;
 const server = new ApolloServer({ typeDefs, resolvers });
 
-server.listen({ port: PORT }).then(({ url }) => console.log(`Server01 running at port ${url}`));
+server.listen({ port: PORT }).then(({ url }) => console.log(colors.cyan.inverse(`Server01 running at port ${url}`)));
