@@ -1,4 +1,5 @@
 // Use of variables in sub fields.
+// We add a Boolean vairable <upper> to Car.brand and if true, the resolver UpperCases it.
 
 const { ApolloServer, gql } = require('apollo-server');
 const colors= require('colors')
