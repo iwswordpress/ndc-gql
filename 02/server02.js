@@ -9,7 +9,10 @@ dotEnv.config();
 
 const typeDefs = gql`
 	type Query {
-		users: [User!]
+		users: [User] # can be null, can contain null but must be list.
+		# users: [User!] # can be empty array, must be fo type User if not empty.
+		# users: [User]! # can be empty array, if not empty must be of type User.
+		# users: [User!]! # can be empty, no nulls, must return array.
 		tasks: [Task!]
 	}
 
@@ -36,6 +39,16 @@ const resolvers = {
 	Query: {
 		users: () => {
 			return users;
+			// return null;
+			// return 3;
+			// return [2];
+			// return [
+			// 	{
+			// 		id: 2,
+			// 		name: 'ted',
+			// 		email: 'ted@test.com',
+			// 	},
+			// ];
 		},
 		tasks: () => {
 			return tasks;

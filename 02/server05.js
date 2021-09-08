@@ -1,3 +1,5 @@
+// User > Task resolution with Query Variable Tab.
+
 const { ApolloServer, gql } = require('apollo-server');
 const colors = require('colors');
 const { users } = require('./data/users');

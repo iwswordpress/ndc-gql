@@ -1,3 +1,6 @@
+// Use of variables and Query Varaible tab.
+// Display serialization of ID.
+
 const { ApolloServer, gql } = require('apollo-server');
 const colors = require('colors');
 const { users } = require('./data/users');

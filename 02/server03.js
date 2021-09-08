@@ -1,3 +1,5 @@
+// We can resolve task > user as we have resolvers for Task type.
+
 const { ApolloServer, gql } = require('apollo-server');
 const colors = require('colors');
 const { users } = require('./data/users');
@@ -66,6 +68,7 @@ const server = new ApolloServer({ typeDefs, resolvers });
 server.listen({ port: PORT }).then(({ url }) => console.log(colors.cyan.inverse(`Server03 running at port ${url}`)));
 
 /*
+
 {
   tasks {
     id
