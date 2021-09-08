@@ -6,6 +6,7 @@ which occur within a single tick of an event loop
 and then call your batch loading function */
 
 const DataLoader = require('dataloader');
+const colors = require('colors');
 
 const batchUsers = async (ids) => {
 	console.log('batchuser called ---> ', ids);

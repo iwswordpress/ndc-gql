@@ -1,4 +1,6 @@
 const { ApolloServer } = require('apollo-server');
+const colors = require('colors');
+
 const typeDefs = require('./typeDefs');
 const resolvers = require('./resolvers');
 const AuthDirective = require('./AuthDirective');

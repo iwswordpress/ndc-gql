@@ -1,5 +1,6 @@
 const { AuthenticationError, SchemaDirectiveVisitor } = require('apollo-server');
 const { defaultFieldResolver } = require('graphql');
+const colors = require('colors');
 
 class AuthDirective extends SchemaDirectiveVisitor {
 	visitFieldDefinition(field) {

@@ -1,3 +1,5 @@
+const colors = require('colors');
+
 const resolvers = {
 	Query: {
 		viewUser: (parent, args, ctx) => {

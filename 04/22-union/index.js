@@ -1,4 +1,5 @@
 const { ApolloServer, gql } = require('apollo-server');
+const colors = require('colors');
 
 const typeDefs = gql`
 	union Result = Book | Video
@@ -25,7 +26,7 @@ const typeDefs = gql`
 `;
 const resolvers = {
 	Result: {
-		// We need to tell GQL which of the Union types we have currently
+		// We need to tell GQL which of the Union types we have currently.
 		// We provide the name by resolvingType based on a unique attribute of that Union type...
 		__resolveType(obj, context, info) {
 			if (obj.videoTitle) {

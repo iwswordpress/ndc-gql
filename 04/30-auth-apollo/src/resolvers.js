@@ -1,4 +1,5 @@
 const { authenticated, authorized } = require('./auth');
+const colors = require('colors');
 
 module.exports = {
 	Query: {

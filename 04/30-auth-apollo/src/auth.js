@@ -1,4 +1,5 @@
 const { AuthenticationError } = require('apollo-server');
+const colors = require('colors');
 
 const authenticated = (resolver) => (parent, args, context, info) => {
 	console.log('auth > authenticated> args', args);

@@ -1,4 +1,5 @@
 const { ApolloServer, gql } = require('apollo-server');
+const colors = require('colors');
 
 const typeDefs = gql`
 	enum GradStatus {
@@ -64,6 +65,8 @@ const resolvers = {
 
 	Person: {
 		__resolveType(person, context, info) {
+			// In this case the value in person.role will be the Interface type so it will yield the correct Type.
+			// We can enforce the value using ENUMS.
 			console.log(`__resolving Person type as ---> ${person.role}`);
 			return person.role;
 		},

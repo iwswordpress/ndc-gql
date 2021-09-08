@@ -1,5 +1,6 @@
 const { ApolloServer, gql } = require('apollo-server');
 const { GraphQLScalarType } = require('graphql');
+const colors = require('colors');
 
 const typeDefs = gql`
 	scalar DateTime

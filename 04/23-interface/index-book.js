@@ -1,4 +1,5 @@
 const { ApolloServer, gql } = require('apollo-server');
+const colors = require('colors');
 
 const textbooks = {
 	title: 'textbook title',
