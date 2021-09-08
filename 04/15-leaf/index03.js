@@ -1,4 +1,5 @@
 const { ApolloServer, gql } = require('apollo-server');
+const colors = require('colors');
 const fetch = require('node-fetch');
 const JSON_SERVER = 'http://localhost:4010';
 

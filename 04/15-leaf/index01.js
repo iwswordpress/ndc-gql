@@ -1,4 +1,5 @@
 const { ApolloServer, gql } = require('apollo-server');
+const colors = require('colors');
 
 // A cat has a carer.
 // We are not attaching a cat to a carer for this demo as we are looking at Resolving Types
