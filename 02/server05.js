@@ -1,4 +1,5 @@
 const { ApolloServer, gql } = require('apollo-server');
+const colors = require('colors');
 const { users } = require('./data/users');
 const { tasks } = require('./data/tasks');
 
@@ -76,7 +77,7 @@ const resolvers = {
 const PORT = process.env.PORT || 5000;
 const server = new ApolloServer({ typeDefs, resolvers });
 
-server.listen({ port: PORT }).then(({ url }) => console.log(`Server05 running at port ${url}`));
+server.listen({ port: PORT }).then(({ url }) => console.log(colors.cyan.inverse(`Server05 running at port ${url}`)));
 
 /*
 
