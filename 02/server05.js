@@ -38,7 +38,7 @@ const typeDefs = gql`
 
 const resolvers = {
 	Query: {
-		users: () => {
+		users: (parent, args) => {
 			return users;
 		},
 		tasks: () => {
@@ -51,6 +51,7 @@ const resolvers = {
 			return task;
 		},
 		getUserById: (parent, args) => {
+			console.log('Query > getUserById - args:', args);
 			console.log('id is serialized to --->', typeof args.id);
 			const user = users.find((user) => user.id == args.id);
 			return user;
@@ -67,10 +68,12 @@ const resolvers = {
 		},
 	},
 	User: {
-		tasks: (parent) => {
-			console.log('In User.tasks');
-			console.log('User.tasks > parent.userId', parent.id);
+		tasks: (parent, args) => {
+			console.log(colors.yellow.inverse('In User.tasks'));
+			console.log('User.tasks > parent.userId = userId: ', parent.id);
 			const allTasks = tasks.filter((task) => task.userId === parent.id);
+			console.log(colors.green(`Tasks for userId=${parent.id}`));
+			console.log(allTasks);
 			return allTasks;
 		},
 	},

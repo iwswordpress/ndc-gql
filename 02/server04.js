@@ -1,4 +1,4 @@
-// Use of variables and Query Varaible tab.
+// Use of variables and Query Variable tab.
 // Display serialization of ID.
 
 const { ApolloServer, gql } = require('apollo-server');

@@ -40,14 +40,14 @@ const resolvers = {
 			return users;
 		},
 		tasks: () => {
-			console.log(tasks);
+			// console.log(tasks);
 			return tasks;
 		},
 	},
 	Task: {
 		user: (parent) => {
 			// we can destucture but left in for teaching purposes
-			console.log('In Task.user');
+			console.log(colors.yellow.inverse('In Task.user'));
 			console.log('Task.user > parent.userId', parent.userId);
 			const user = users.find((user) => user.id === parent.userId);
 			console.log('user is', user);
@@ -55,10 +55,10 @@ const resolvers = {
 			// return { id: 100, name: 'OVERWRITTEN', email: 'replaced@test.com' };
 		},
 		// demos how field level resolvers overwrite top level resolver.
-		name: () => {
-			console.log(`---> Task.name returning TEST TASK ${Math.floor(Math.random() * 100000 + 100000)}`);
-			return `Task.name overwritten - ${Math.floor(Math.random() * 100000 + 100000)}`;
-		},
+		// name: () => {
+		// 	console.log(`---> Task.name returning TEST TASK ${Math.floor(Math.random() * 100000 + 100000)}`);
+		// 	return `Task.name overwritten - ${Math.floor(Math.random() * 100000 + 100000)}`;
+		// },
 	},
 };
 

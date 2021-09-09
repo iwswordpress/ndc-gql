@@ -1,6 +1,6 @@
-const URL = 'http://localhost:5000/graphql';
+const URL = 'http://localhost:5000';
 
-getTaskById(2).then((data) => {
+getTaskById(3).then((data) => {
 	console.log(data);
 	document.querySelector('output').textContent = data.getTaskById.TaskName;
 });

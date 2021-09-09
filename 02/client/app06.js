@@ -1,4 +1,4 @@
-const URL = 'http://localhost:5000/graphql';
+const URL = 'http://localhost:5000';
 
 const newTask = {
 	name: 'TASK ' + Math.floor(Math.random() * 10),
