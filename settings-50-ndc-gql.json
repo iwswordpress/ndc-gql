@@ -1,0 +1,78 @@
+{
+	"workbench.tree.indent": 20,
+	"editor.tokenColorCustomizations": {
+		"comments": "#11d49d"
+	},
+	"workbench.iconTheme": "vscode-simpler-icons",
+	"editor.fontFamily": "'Fira Code',Consolas, 'Courier New', monospace",
+	"editor.fontLigatures": false,
+
+	"breadcrumbs.enabled": false,
+	"explorer.openEditors.visible": 0,
+	"editor.tabSize": 2,
+	"editor.minimap.scale": 3,
+	"editor.minimap.enabled": false,
+	"editor.wordWrap": "on",
+	"editor.wordWrapColumn": 120,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true,
+	"prettier.singleQuote": true,
+	"prettier.jsxSingleQuote": true,
+	"prettier.trailingComma": "all",
+	"prettier.printWidth": 120,
+	"prettier.tabWidth": 3,
+	"prettier.semi": true,
+
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"liveServer.settings.donotShowInfoMsg": true,
+	"rest-client.previewResponseInUntitledDocument": true,
+	"javascript.preferences.quoteStyle": "single",
+	"emmet.includeLanguages": {
+		"javascript": "javascriptreact"
+	},
+
+	"git.suggestSmartCommit": true,
+	"editor.hover.enabled": true,
+	"editor.parameterHints": true,
+	"editor.quickSuggestions": true,
+	"editor.autoClosingQuotes": "always",
+	"autoimport.filesToScan": "**/*.{ts,tsx, js, jsx}",
+	"explorer.compactFolders": false,
+	"editor.selectionBackground": "#fff",
+	"editor.acceptSuggestionOnEnter": "on",
+	"editor.suggest.filterGraceful": true,
+	"editor.quickSuggestionsDelay": 5000,
+	"explorer.confirmDragAndDrop": false,
+	"editor.acceptSuggestionOnCommitCharacter": true,
+	"javascript.format.semicolons": "insert",
+	"html.format.indentInnerHtml": true,
+	"[html]": {
+		"editor.suggest.insertMode": "replace",
+		"editor.defaultFormatter": "vscode.html-language-features"
+	},
+	"diffEditor.ignoreTrimWhitespace": false,
+	"editor.formatOnPaste": true,
+	"files.autoSave": "afterDelay",
+	"prettier.jsxBracketSameLine": true,
+	"prettier.useTabs": true,
+	"explorer.openEditors.sortOrder": "alphabetical",
+	"workbench.colorCustomizations": {
+		"tree.indentGuidesStroke": "#2196f3",
+		"tab.activeBackground": "#2196f3",
+		"statusBar.background": "#ffa500",
+		"tab.inactiveBackground": "#000",
+		"tab.border": "#fff"
+	},
+	"workbench.colorTheme": "Monokai Crete",
+	"files.eol": "\n",
+	"prettier.endOfLine": "crlf",
+	"terminal.integrated.tabs.enabled": true,
+	"security.workspace.trust.untrustedFiles": "open",
+	"workbench.sideBar.location": "right",
+	"window.zoomLevel": 2,
+	"liveServer.settings.donotVerifyTags": true,
+	"editor.largeFileOptimizations": false,
+	"files.associations": {
+		"*.js": "javascriptreact"
+	}
+}
