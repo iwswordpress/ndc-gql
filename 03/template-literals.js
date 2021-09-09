@@ -1,3 +1,6 @@
+// Use of template literals to comine Schemas.
+// Alos folder mergeShcemas.
+
 const { ApolloServer, gql } = require('apollo-server');
 const colors = require('colors');
 

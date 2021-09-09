@@ -1,3 +1,7 @@
+// We carry on from 02.
+// Use of extend type Query to demonstrate it.
+// Can only have one User type.
+
 const { ApolloServer, gql } = require('apollo-server');
 const colors = require('colors');
 const { users } = require('./data/users');
@@ -15,6 +19,12 @@ const typeDefs = gql`
 		getUserById(id: ID!): User!
 	}
 
+	# we can extend Query (and Mutations) as follows.
+	# This will be of use in the Part to combine many Schema files.
+
+	extend type Query {
+		hello: String
+	}
 	type User {
 		id: ID!
 		name: String!
@@ -46,6 +56,7 @@ const typeDefs = gql`
 
 const resolvers = {
 	Query: {
+		hello: () => 'HELLO',
 		users: () => {
 			return users;
 		},
