@@ -16,3 +16,23 @@ app.use(
 app.listen(5000, () => {
 	console.log('app.js listening for requests on port http://localhost:5000/graphql');
 });
+
+/*
+
+{
+  tutor(id: 1) {
+    id
+    name
+    age
+    courses{
+      id
+      name
+      tech
+      tutor {
+        id
+      }
+    }
+  }
+}
+
+*/
